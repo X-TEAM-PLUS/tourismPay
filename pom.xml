@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+
+    <groupId>cn.tourism.pay.payment</groupId>
+    <artifactId>tourismPay</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>tourism-alibaba</module>
+        <module>tourismPay-api</module>
+    </modules>
+    <properties>
+        <jdk.version>1.6</jdk.version>
+        <c3p0-version>0.9.5-pre8</c3p0-version>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+        <druid-version>1.0.14</druid-version>
+        <springframework-version>4.2.5.RELEASE</springframework-version>
+        <json-version>2.6.0-rc1</json-version>
+        <mybatis-version>3.1.1</mybatis-version>
+        <mybatis-spring-version>1.2.3</mybatis-spring-version>
+        <mybatis-ehcache-version>1.0.0</mybatis-ehcache-version>
+        <aspectj-version>1.7.4</aspectj-version>
+        <mysql-connector-version>5.1.30</mysql-connector-version>
+        <ehcache-version>2.6.8</ehcache-version>
+        <slf4j-version>1.7.6</slf4j-version>
+        <log4j-version>1.2.17</log4j-version>
+        <httpclient.version>4.5</httpclient.version>
+        <redis.version>2.7.3</redis.version>
+        <xmemcached.version>2.0.0</xmemcached.version>
+        <supercsv.version>2.3.1</supercsv.version>
+        <dubbo.version>2.5.3</dubbo.version>
+        <zkclient.version>0.7</zkclient.version>
+        <oracle.driver-version>10.2.0.4.0</oracle.driver-version>
+        <junit-version>4.11</junit-version>
+        <gson-version>2.2.2</gson-version>
+        <json-version>2.6.0-rc1</json-version>
+        <org.mybatis.generator-version>1.3.2</org.mybatis.generator-version>
+        <spring-data-cassandra>1.4.0.RELEASE</spring-data-cassandra>
+        <org.apache.cassandra-version>3.5</org.apache.cassandra-version>
+        <quartz.version>2.2.3</quartz.version>
+    </properties>
+</project>
