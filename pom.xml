@@ -13,6 +13,7 @@
         <module>tourismpay-service</module>
         <module>tourismpay-api</module>
         <module>tourismpay-webapp</module>
+        <module>tourism-alibaba</module>
     </modules>
 
     <properties>
@@ -32,6 +33,7 @@
         <dubbo.version>2.5.3</dubbo.version>
         <zkclient.version>0.7</zkclient.version>
         <oracle.driver-version>11.2.0.1.0</oracle.driver-version>
+        <junit-version>4.11</junit-version>
     </properties>
 
 
