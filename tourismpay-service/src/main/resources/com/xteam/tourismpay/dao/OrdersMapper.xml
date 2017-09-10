@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xteam.tourismpay.dao.OrdersDao" >
+  <resultMap id="BaseResultMap" type="com.xteam.tourismpay.domain.Orders" >
+      <id  column="ID" property="id" jdbcType="INTEGER"  />
+<result  column="OPEN_ID" property="openId" jdbcType="VARCHAR"  />
+<result  column="ACTION_TYPE" property="actionType" jdbcType="INTEGER"  />
+<result  column="ID_NUMBER" property="idNumber" jdbcType="VARCHAR"  />
+<result  column="RETURN_MESSAGE" property="returnMessage" jdbcType="VARCHAR"  />
+<result  column="RESERVATION_NAME" property="reservationName" jdbcType="VARCHAR"  />
+<result  column="QR_CODE" property="qrCode" jdbcType="VARCHAR"  />
+<result  column="ORDER_ID" property="orderId" jdbcType="VARCHAR"  />
+<result  column="MOBILE" property="mobile" jdbcType="VARCHAR"  />
+<result  column="TRAVEL_NAME" property="travelName" jdbcType="VARCHAR"  />
+<result  column="PAY_STATE" property="payState" jdbcType="INTEGER"  />
+<result  column="DISTINCT_NAME" property="distinctName" jdbcType="VARCHAR"  />
+<result  column="ORDER_STATE" property="orderState" jdbcType="INTEGER"  />
+<result  column="TICKET_UUID" property="ticketUuid" jdbcType="VARCHAR"  />
+<result  column="BEGIN_DATE" property="beginDate" jdbcType="VARCHAR"  />
+<result  column="TOURIST_TYPE" property="touristType" jdbcType="VARCHAR"  />
+<result  column="PAY_NAME" property="payName" jdbcType="VARCHAR"  />
+<result  column="TICKET_PRICE" property="ticketPrice" jdbcType="DECIMAL"  />
+<result  column="ORDER_DATE" property="orderDate" jdbcType="VARCHAR"  />
+<result  column="TICKET_NAME" property="ticketName" jdbcType="VARCHAR"  />
+<result  column="END_DATE" property="endDate" jdbcType="VARCHAR"  />
+<result  column="TICKET_AMOUNT" property="ticketAmount" jdbcType="DECIMAL"  />
+<result  column="TICKET_COUNT" property="ticketCount" jdbcType="INTEGER"  />
+<result  column="RETURN_CODE" property="returnCode" jdbcType="VARCHAR"  />
+
+  </resultMap>
+  <!--删除记录-->
+  <delete id="delete" parameterType="com.xteam.tourismpay.domain.Orders" >
+      delete from T_ORDERS  where ID=#{id,jdbcType=INTEGER}
+  </delete>
+
+  <!--插入记录-->
+  <insert id="insert" parameterType="com.xteam.tourismpay.domain.Orders" useGeneratedKeys="true" keyProperty="id">
+         insert into T_ORDERS ( OPEN_ID
+ , ACTION_TYPE
+ , ID_NUMBER
+ , RETURN_MESSAGE
+ , RESERVATION_NAME
+ , QR_CODE
+ , ORDER_ID
+ , MOBILE
+ , TRAVEL_NAME
+ , PAY_STATE
+ , DISTINCT_NAME
+ , ORDER_STATE
+ , TICKET_UUID
+ , BEGIN_DATE
+ , TOURIST_TYPE
+ , PAY_NAME
+ , TICKET_PRICE
+ , ORDER_DATE
+ , TICKET_NAME
+ , END_DATE
+ , TICKET_AMOUNT
+ , TICKET_COUNT
+ , RETURN_CODE
+)values(#{openId,jdbcType=VARCHAR}
+ , #{actionType,jdbcType=INTEGER}
+ , #{idNumber,jdbcType=VARCHAR}
+ , #{returnMessage,jdbcType=VARCHAR}
+ , #{reservationName,jdbcType=VARCHAR}
+ , #{qrCode,jdbcType=VARCHAR}
+ , #{orderId,jdbcType=VARCHAR}
+ , #{mobile,jdbcType=VARCHAR}
+ , #{travelName,jdbcType=VARCHAR}
+ , #{payState,jdbcType=INTEGER}
+ , #{distinctName,jdbcType=VARCHAR}
+ , #{orderState,jdbcType=INTEGER}
+ , #{ticketUuid,jdbcType=VARCHAR}
+ , #{beginDate,jdbcType=VARCHAR}
+ , #{touristType,jdbcType=VARCHAR}
+ , #{payName,jdbcType=VARCHAR}
+ , #{ticketPrice,jdbcType=DECIMAL}
+ , #{orderDate,jdbcType=VARCHAR}
+ , #{ticketName,jdbcType=VARCHAR}
+ , #{endDate,jdbcType=VARCHAR}
+ , #{ticketAmount,jdbcType=DECIMAL}
+ , #{ticketCount,jdbcType=INTEGER}
+ , #{returnCode,jdbcType=VARCHAR}
+)
+  </insert>
+
+   <!--插入记录-->
+    <insert id="batchInsert" parameterType="java.util.List">
+           insert into T_ORDERS ( OPEN_ID
+ , ACTION_TYPE
+ , ID_NUMBER
+ , RETURN_MESSAGE
+ , RESERVATION_NAME
+ , QR_CODE
+ , ORDER_ID
+ , MOBILE
+ , TRAVEL_NAME
+ , PAY_STATE
+ , DISTINCT_NAME
+ , ORDER_STATE
+ , TICKET_UUID
+ , BEGIN_DATE
+ , TOURIST_TYPE
+ , PAY_NAME
+ , TICKET_PRICE
+ , ORDER_DATE
+ , TICKET_NAME
+ , END_DATE
+ , TICKET_AMOUNT
+ , TICKET_COUNT
+ , RETURN_CODE
+) values 
+ <foreach collection="list" item="item" index="index" separator="," > 
+ ( 
+#{item.openId,jdbcType=VARCHAR}
+ , #{item.actionType,jdbcType=INTEGER}
+ , #{item.idNumber,jdbcType=VARCHAR}
+ , #{item.returnMessage,jdbcType=VARCHAR}
+ , #{item.reservationName,jdbcType=VARCHAR}
+ , #{item.qrCode,jdbcType=VARCHAR}
+ , #{item.orderId,jdbcType=VARCHAR}
+ , #{item.mobile,jdbcType=VARCHAR}
+ , #{item.travelName,jdbcType=VARCHAR}
+ , #{item.payState,jdbcType=INTEGER}
+ , #{item.distinctName,jdbcType=VARCHAR}
+ , #{item.orderState,jdbcType=INTEGER}
+ , #{item.ticketUuid,jdbcType=VARCHAR}
+ , #{item.beginDate,jdbcType=VARCHAR}
+ , #{item.touristType,jdbcType=VARCHAR}
+ , #{item.payName,jdbcType=VARCHAR}
+ , #{item.ticketPrice,jdbcType=DECIMAL}
+ , #{item.orderDate,jdbcType=VARCHAR}
+ , #{item.ticketName,jdbcType=VARCHAR}
+ , #{item.endDate,jdbcType=VARCHAR}
+ , #{item.ticketAmount,jdbcType=DECIMAL}
+ , #{item.ticketCount,jdbcType=INTEGER}
+ , #{item.returnCode,jdbcType=VARCHAR}
+ )
+</foreach>
+    </insert>
+
+<!--更新记录-->
+<update id="update" parameterType="com.xteam.tourismpay.domain.Orders" >
+    update  T_ORDERS
+<set>
+<trim prefix="" suffix="" suffixOverrides=",">
+<if test="openId!=null ">
+OPEN_ID=#{openId,jdbcType=VARCHAR},
+</if>
+<if test="actionType!=null ">
+ACTION_TYPE=#{actionType,jdbcType=INTEGER},
+</if>
+<if test="idNumber!=null ">
+ID_NUMBER=#{idNumber,jdbcType=VARCHAR},
+</if>
+<if test="returnMessage!=null ">
+RETURN_MESSAGE=#{returnMessage,jdbcType=VARCHAR},
+</if>
+<if test="reservationName!=null ">
+RESERVATION_NAME=#{reservationName,jdbcType=VARCHAR},
+</if>
+<if test="qrCode!=null ">
+QR_CODE=#{qrCode,jdbcType=VARCHAR},
+</if>
+<if test="orderId!=null ">
+ORDER_ID=#{orderId,jdbcType=VARCHAR},
+</if>
+<if test="mobile!=null ">
+MOBILE=#{mobile,jdbcType=VARCHAR},
+</if>
+<if test="travelName!=null ">
+TRAVEL_NAME=#{travelName,jdbcType=VARCHAR},
+</if>
+<if test="payState!=null ">
+PAY_STATE=#{payState,jdbcType=INTEGER},
+</if>
+<if test="distinctName!=null ">
+DISTINCT_NAME=#{distinctName,jdbcType=VARCHAR},
+</if>
+<if test="orderState!=null ">
+ORDER_STATE=#{orderState,jdbcType=INTEGER},
+</if>
+<if test="ticketUuid!=null ">
+TICKET_UUID=#{ticketUuid,jdbcType=VARCHAR},
+</if>
+<if test="beginDate!=null ">
+BEGIN_DATE=#{beginDate,jdbcType=VARCHAR},
+</if>
+<if test="touristType!=null ">
+TOURIST_TYPE=#{touristType,jdbcType=VARCHAR},
+</if>
+<if test="payName!=null ">
+PAY_NAME=#{payName,jdbcType=VARCHAR},
+</if>
+<if test="ticketPrice!=null ">
+TICKET_PRICE=#{ticketPrice,jdbcType=DECIMAL},
+</if>
+<if test="orderDate!=null ">
+ORDER_DATE=#{orderDate,jdbcType=VARCHAR},
+</if>
+<if test="ticketName!=null ">
+TICKET_NAME=#{ticketName,jdbcType=VARCHAR},
+</if>
+<if test="endDate!=null ">
+END_DATE=#{endDate,jdbcType=VARCHAR},
+</if>
+<if test="ticketAmount!=null ">
+TICKET_AMOUNT=#{ticketAmount,jdbcType=DECIMAL},
+</if>
+<if test="ticketCount!=null ">
+TICKET_COUNT=#{ticketCount,jdbcType=INTEGER},
+</if>
+<if test="returnCode!=null ">
+RETURN_CODE=#{returnCode,jdbcType=VARCHAR},
+</if>
+</trim>
+</set>
+  where ID=#{id,jdbcType=INTEGER}
+</update>
+
+ <!--查询单条记录-->
+ <select id="get" resultMap="BaseResultMap" parameterType="com.xteam.tourismpay.domain.Orders" >
+    select  ID , OPEN_ID , ACTION_TYPE , ID_NUMBER , RETURN_MESSAGE , RESERVATION_NAME , QR_CODE , ORDER_ID , MOBILE , TRAVEL_NAME , PAY_STATE , DISTINCT_NAME , ORDER_STATE , TICKET_UUID , BEGIN_DATE , TOURIST_TYPE , PAY_NAME , TICKET_PRICE , ORDER_DATE , TICKET_NAME , END_DATE , TICKET_AMOUNT , TICKET_COUNT , RETURN_CODE from T_ORDERS  where ID=#{id,jdbcType=INTEGER}
+</select>
+
+<!--查询记录-->
+<select id="query" resultMap="BaseResultMap" parameterType="com.xteam.tourismpay.domain.Orders">
+      select  ID , OPEN_ID , ACTION_TYPE , ID_NUMBER , RETURN_MESSAGE , RESERVATION_NAME , QR_CODE , ORDER_ID , MOBILE , TRAVEL_NAME , PAY_STATE , DISTINCT_NAME , ORDER_STATE , TICKET_UUID , BEGIN_DATE , TOURIST_TYPE , PAY_NAME , TICKET_PRICE , ORDER_DATE , TICKET_NAME , END_DATE , TICKET_AMOUNT , TICKET_COUNT , RETURN_CODE from T_ORDERS 
+<where>
+<if test="id!=null">
+<![CDATA[
+ and ID=#{id,jdbcType=INTEGER}
+]]>
+</if>
+<if test="openId!=null and openId!=''">
+<![CDATA[ and OPEN_ID=#{openId,jdbcType=VARCHAR}]]>
+</if>
+<if test="actionType!=null">
+<![CDATA[
+ and ACTION_TYPE=#{actionType,jdbcType=INTEGER}
+]]>
+</if>
+<if test="idNumber!=null and idNumber!=''">
+<![CDATA[ and ID_NUMBER=#{idNumber,jdbcType=VARCHAR}]]>
+</if>
+<if test="returnMessage!=null and returnMessage!=''">
+<![CDATA[ and RETURN_MESSAGE=#{returnMessage,jdbcType=VARCHAR}]]>
+</if>
+<if test="reservationName!=null and reservationName!=''">
+<![CDATA[ and RESERVATION_NAME=#{reservationName,jdbcType=VARCHAR}]]>
+</if>
+<if test="qrCode!=null and qrCode!=''">
+<![CDATA[ and QR_CODE=#{qrCode,jdbcType=VARCHAR}]]>
+</if>
+<if test="orderId!=null and orderId!=''">
+<![CDATA[ and ORDER_ID=#{orderId,jdbcType=VARCHAR}]]>
+</if>
+<if test="mobile!=null and mobile!=''">
+<![CDATA[ and MOBILE=#{mobile,jdbcType=VARCHAR}]]>
+</if>
+<if test="travelName!=null and travelName!=''">
+<![CDATA[ and TRAVEL_NAME=#{travelName,jdbcType=VARCHAR}]]>
+</if>
+<if test="payState!=null">
+<![CDATA[
+ and PAY_STATE=#{payState,jdbcType=INTEGER}
+]]>
+</if>
+<if test="distinctName!=null and distinctName!=''">
+<![CDATA[ and DISTINCT_NAME=#{distinctName,jdbcType=VARCHAR}]]>
+</if>
+<if test="orderState!=null">
+<![CDATA[
+ and ORDER_STATE=#{orderState,jdbcType=INTEGER}
+]]>
+</if>
+<if test="ticketUuid!=null and ticketUuid!=''">
+<![CDATA[ and TICKET_UUID=#{ticketUuid,jdbcType=VARCHAR}]]>
+</if>
+<if test="beginDate!=null and beginDate!=''">
+<![CDATA[ and BEGIN_DATE=#{beginDate,jdbcType=VARCHAR}]]>
+</if>
+<if test="touristType!=null and touristType!=''">
+<![CDATA[ and TOURIST_TYPE=#{touristType,jdbcType=VARCHAR}]]>
+</if>
+<if test="payName!=null and payName!=''">
+<![CDATA[ and PAY_NAME=#{payName,jdbcType=VARCHAR}]]>
+</if>
+<if test="ticketPrice!=null">
+<![CDATA[
+ and TICKET_PRICE=#{ticketPrice,jdbcType=DECIMAL}
+]]>
+</if>
+<if test="orderDate!=null and orderDate!=''">
+<![CDATA[ and ORDER_DATE=#{orderDate,jdbcType=VARCHAR}]]>
+</if>
+<if test="ticketName!=null and ticketName!=''">
+<![CDATA[ and TICKET_NAME=#{ticketName,jdbcType=VARCHAR}]]>
+</if>
+<if test="endDate!=null and endDate!=''">
+<![CDATA[ and END_DATE=#{endDate,jdbcType=VARCHAR}]]>
+</if>
+<if test="ticketAmount!=null">
+<![CDATA[
+ and TICKET_AMOUNT=#{ticketAmount,jdbcType=DECIMAL}
+]]>
+</if>
+<if test="ticketCount!=null">
+<![CDATA[
+ and TICKET_COUNT=#{ticketCount,jdbcType=INTEGER}
+]]>
+</if>
+<if test="returnCode!=null and returnCode!=''">
+<![CDATA[ and RETURN_CODE=#{returnCode,jdbcType=VARCHAR}]]>
+</if>
+</where>
+   limit #{start},#{limit} 
+</select>
+
+<!--查询记录数-->
+<select id="queryCount"   resultType="int"   parameterType="com.xteam.tourismpay.domain.Orders">
+      select count(1) from T_ORDERS 
+<where>
+<if test="id!=null">
+<![CDATA[
+ and ID=#{id,jdbcType=INTEGER}
+]]>
+</if>
+<if test="openId!=null and openId!=''">
+<![CDATA[
+ and OPEN_ID=#{openId,jdbcType=VARCHAR}
+]]>
+</if>
+<if test="actionType!=null">
+<![CDATA[
+ and ACTION_TYPE=#{actionType,jdbcType=INTEGER}
+]]>
+</if>
+<if test="idNumber!=null and idNumber!=''">
+<![CDATA[
+ and ID_NUMBER=#{idNumber,jdbcType=VARCHAR}
+]]>
+</if>
+<if test="returnMessage!=null and returnMessage!=''">
+<![CDATA[
+ and RETURN_MESSAGE=#{returnMessage,jdbcType=VARCHAR}
+]]>
+</if>
+<if test="reservationName!=null and reservationName!=''">
+<![CDATA[
+ and RESERVATION_NAME=#{reservationName,jdbcType=VARCHAR}
+]]>
+</if>
+<if test="qrCode!=null and qrCode!=''">
+<![CDATA[
+ and QR_CODE=#{qrCode,jdbcType=VARCHAR}
+]]>
+</if>
+<if test="orderId!=null and orderId!=''">
+<![CDATA[
+ and ORDER_ID=#{orderId,jdbcType=VARCHAR}
+]]>
+</if>
+<if test="mobile!=null and mobile!=''">
+<![CDATA[
+ and MOBILE=#{mobile,jdbcType=VARCHAR}
+]]>
+</if>
+<if test="travelName!=null and travelName!=''">
+<![CDATA[
+ and TRAVEL_NAME=#{travelName,jdbcType=VARCHAR}
+]]>
+</if>
+<if test="payState!=null">
+<![CDATA[
+ and PAY_STATE=#{payState,jdbcType=INTEGER}
+]]>
+</if>
+<if test="distinctName!=null and distinctName!=''">
+<![CDATA[
+ and DISTINCT_NAME=#{distinctName,jdbcType=VARCHAR}
+]]>
+</if>
+<if test="orderState!=null">
+<![CDATA[
+ and ORDER_STATE=#{orderState,jdbcType=INTEGER}
+]]>
+</if>
+<if test="ticketUuid!=null and ticketUuid!=''">
+<![CDATA[
+ and TICKET_UUID=#{ticketUuid,jdbcType=VARCHAR}
+]]>
+</if>
+<if test="beginDate!=null and beginDate!=''">
+<![CDATA[
+ and BEGIN_DATE=#{beginDate,jdbcType=VARCHAR}
+]]>
+</if>
+<if test="touristType!=null and touristType!=''">
+<![CDATA[
+ and TOURIST_TYPE=#{touristType,jdbcType=VARCHAR}
+]]>
+</if>
+<if test="payName!=null and payName!=''">
+<![CDATA[
+ and PAY_NAME=#{payName,jdbcType=VARCHAR}
+]]>
+</if>
+<if test="ticketPrice!=null">
+<![CDATA[
+ and TICKET_PRICE=#{ticketPrice,jdbcType=DECIMAL}
+]]>
+</if>
+<if test="orderDate!=null and orderDate!=''">
+<![CDATA[
+ and ORDER_DATE=#{orderDate,jdbcType=VARCHAR}
+]]>
+</if>
+<if test="ticketName!=null and ticketName!=''">
+<![CDATA[
+ and TICKET_NAME=#{ticketName,jdbcType=VARCHAR}
+]]>
+</if>
+<if test="endDate!=null and endDate!=''">
+<![CDATA[
+ and END_DATE=#{endDate,jdbcType=VARCHAR}
+]]>
+</if>
+<if test="ticketAmount!=null">
+<![CDATA[
+ and TICKET_AMOUNT=#{ticketAmount,jdbcType=DECIMAL}
+]]>
+</if>
+<if test="ticketCount!=null">
+<![CDATA[
+ and TICKET_COUNT=#{ticketCount,jdbcType=INTEGER}
+]]>
+</if>
+<if test="returnCode!=null and returnCode!=''">
+<![CDATA[
+ and RETURN_CODE=#{returnCode,jdbcType=VARCHAR}
+]]>
+</if>
+</where>
+
+</select>
+</mapper>
