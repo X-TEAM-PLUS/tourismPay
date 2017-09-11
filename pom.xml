@@ -14,6 +14,7 @@
         <module>tourismpay-api</module>
         <module>tourismpay-webapp</module>
         <module>tourism-alibaba</module>
+        <module>tourism-wxpay</module>
     </modules>
 
     <properties>

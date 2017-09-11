@@ -1,6 +1,5 @@
 package com.tourism.api.service.impl;
 
-import com.tourismpay.api.service.ThirdPartyPaymentService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -10,19 +9,20 @@ import javax.annotation.Resource;
 import java.util.Map;
 
 /**
- * Created by xinleisong on 2017/9/9.
+ * Created by xinleisong on 2017/9/11.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
-        "classpath:applicationContext-alipay.xml"})
-public class TestAliPayThirdPartyPaymentService {
+        "classpath:applicationContext-wxpay.xml"})
+public class TestWxPayThirdPartyPaymentServiceImpl {
 
     @Resource
-    private ThirdPartyPaymentService aliPayThirdPartyPaymentService;
+    private WxPayThirdPartyPaymentServiceImpl wxPayThirdPartyPaymentService;
 
     @Test
     public void getQRCode() {
-        Map<String, Object> returnValue = aliPayThirdPartyPaymentService.getQRCode("12313", "2", "12","");
+        Map<String, Object> returnValue = wxPayThirdPartyPaymentService.getQRCode("1", "2", "3", "3");
         System.out.println(returnValue);
+
     }
 }

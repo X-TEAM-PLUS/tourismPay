@@ -16,5 +16,5 @@ public interface ThirdPartyPaymentService {
      * @param subject      订单名称
      * @return
      */
-    public Map<String, Object> getQRCode(String out_trade_no, String total_amount, String subject);
+    public Map<String, Object> getQRCode(String out_trade_no, String total_amount, String subject,String productId);
 }

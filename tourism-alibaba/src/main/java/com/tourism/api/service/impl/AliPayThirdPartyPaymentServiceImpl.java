@@ -27,7 +27,7 @@ public class AliPayThirdPartyPaymentServiceImpl implements ThirdPartyPaymentServ
      * @param subject      订单名称
      * @return
      */
-    public Map<String, Object> getQRCode(String out_trade_no, String total_amount, String subject) {
+    public Map<String, Object> getQRCode(String out_trade_no, String total_amount, String subject,String productId) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String time_expire = sdf.format(System.currentTimeMillis() + 24 * 60 * 60 * 1000);
 
