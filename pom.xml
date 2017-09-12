@@ -31,10 +31,8 @@
         <ehcache-version>2.6.8</ehcache-version>
         <slf4j-version>1.7.6</slf4j-version>
         <log4j-version>1.2.17</log4j-version>
-        <dubbo.version>2.5.3</dubbo.version>
-        <zkclient.version>0.7</zkclient.version>
-        <oracle.driver-version>11.2.0.1.0</oracle.driver-version>
         <junit-version>4.11</junit-version>
+        <axis-version>1.7.6</axis-version>
     </properties>
 
 
