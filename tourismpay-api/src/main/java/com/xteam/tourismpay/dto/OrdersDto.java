@@ -1,541 +1,480 @@
 package com.xteam.tourismpay.dto;
 
 import java.io.Serializable;
+import java.util.Date;
+
+import java.math.BigDecimal;
 
 
 /**
  * Created by IntelliJ IDEA.
  * User: yankun
- * Date: 2017年09月10日
- * Time: 09:47:05
+ * Date: 2017年09月12日
+ * Time: 13:21:25
  * TableName:T_ORDERS  DTO对象
  */
 
 public class OrdersDto implements Serializable {
 
-    private Integer start = 0;
+  private  Integer start =0 ;
 
-    private Integer limit = 20;
+  private Integer limit = 20;
+     
 
+/**
+*  order_no
+*/
+private Integer orderNo;
+/**
+*  lid
+*/
+private String lid;
+/**
+*  tid
+*/
+private Integer tid;
+/**
+*  series
+*/
+private String series;
+/**
+*  tnum
+*/
+private Integer tnum;
+/**
+*  p_code
+*/
+private String pCode;
+/**
+*  tprice
+*/
+private BigDecimal tprice;
+/**
+*  concat_id
+*/
+private String concatId;
+/**
+*  order_name
+*/
+private String orderName;
+/**
+*  person_id
+*/
+private String personId;
+/**
+*  play_time
+*/
+private String playTime;
+/**
+*  m
+*/
+private String m;
+/**
+*  contact_tel
+*/
+private String contactTel;
+/**
+*  uu_order_num
+*/
+private String uuOrderNum;
+/**
+*  order_tel
+*/
+private String orderTel;
+/**
+*  memo
+*/
+private String memo;
+/**
+*  pay_mode
+*/
+private Integer payMode;
+/**
+*  updated
+*/
+private Date updated;
+/**
+*  sms_send
+*/
+private Integer smsSend;
+/**
+*  created
+*/
+private Date created;
+/**
+*  assembly
+*/
+private String assembly;
+/**
+*  order_mode
+*/
+private Integer orderMode;
 
-    /**
-     * id
-     */
-    private Integer id;
-    /**
-     * open_id
-     */
-    private String openId;
-    /**
-     * action_type
-     */
-    private Integer actionType;
-    /**
-     * id_number
-     */
-    private String idNumber;
-    /**
-     * return_message
-     */
-    private String returnMessage;
-    /**
-     * reservation_name
-     */
-    private String reservationName;
-    /**
-     * qr_code
-     */
-    private String qrCode;
-    /**
-     * order_id
-     */
-    private String orderId;
-    /**
-     * mobile
-     */
-    private String mobile;
-    /**
-     * travel_name
-     */
-    private String travelName;
-    /**
-     * pay_state
-     */
-    private Integer payState;
-    /**
-     * distinct_name
-     */
-    private String distinctName;
-    /**
-     * order_state
-     */
-    private Integer orderState;
-    /**
-     * ticket_UUID
-     */
-    private String ticketUuid;
-    /**
-     * begin_date
-     */
-    private String beginDate;
-    /**
-     * tourist_type
-     */
-    private String touristType;
-    /**
-     * pay_name
-     */
-    private String payName;
-    /**
-     * ticket_price
-     */
-    private java.math.BigDecimal ticketPrice;
-    /**
-     * order_date
-     */
-    private String orderDate;
-    /**
-     * ticket_name
-     */
-    private String ticketName;
-    /**
-     * end_date
-     */
-    private String endDate;
-    /**
-     * ticket_amount
-     */
-    private java.math.BigDecimal ticketAmount;
-    /**
-     * ticket_count
-     */
-    private Integer ticketCount;
-    /**
-     * return_code
-     */
-    private String returnCode;
+/**
+*   设置 orderNo
+* @param orderNo order_no
+*/
+public void  setOrderNo(Integer orderNo){
+      this.orderNo = orderNo;
+}
 
-    /**
-     * 设置 id
-     *
-     * @param id id
-     */
-    public void setId(Integer id) {
-        this.id = id;
-    }
+/**
+*   获取 orderNo
+* return  
+*/
+public Integer  getOrderNo(){
+      return this.orderNo;
+}
 
-    /**
-     * 获取 id
-     * return
-     */
-    public Integer getId() {
-        return this.id;
-    }
+/**
+*   设置 lid
+* @param lid lid
+*/
+public void  setLid(String lid){
+      this.lid = lid;
+}
 
-    /**
-     * 设置 openId
-     *
-     * @param openId open_id
-     */
-    public void setOpenId(String openId) {
-        this.openId = openId;
-    }
+/**
+*   获取 lid
+* return  
+*/
+public String  getLid(){
+      return this.lid;
+}
 
-    /**
-     * 获取 openId
-     * return
-     */
-    public String getOpenId() {
-        return this.openId;
-    }
+/**
+*   设置 tid
+* @param tid tid
+*/
+public void  setTid(Integer tid){
+      this.tid = tid;
+}
 
-    /**
-     * 设置 actionType
-     *
-     * @param actionType action_type
-     */
-    public void setActionType(Integer actionType) {
-        this.actionType = actionType;
-    }
+/**
+*   获取 tid
+* return  
+*/
+public Integer  getTid(){
+      return this.tid;
+}
 
-    /**
-     * 获取 actionType
-     * return
-     */
-    public Integer getActionType() {
-        return this.actionType;
-    }
+/**
+*   设置 series
+* @param series series
+*/
+public void  setSeries(String series){
+      this.series = series;
+}
 
-    /**
-     * 设置 idNumber
-     *
-     * @param idNumber id_number
-     */
-    public void setIdNumber(String idNumber) {
-        this.idNumber = idNumber;
-    }
+/**
+*   获取 series
+* return  
+*/
+public String  getSeries(){
+      return this.series;
+}
 
-    /**
-     * 获取 idNumber
-     * return
-     */
-    public String getIdNumber() {
-        return this.idNumber;
-    }
+/**
+*   设置 tnum
+* @param tnum tnum
+*/
+public void  setTnum(Integer tnum){
+      this.tnum = tnum;
+}
 
-    /**
-     * 设置 returnMessage
-     *
-     * @param returnMessage return_message
-     */
-    public void setReturnMessage(String returnMessage) {
-        this.returnMessage = returnMessage;
-    }
+/**
+*   获取 tnum
+* return  
+*/
+public Integer  getTnum(){
+      return this.tnum;
+}
 
-    /**
-     * 获取 returnMessage
-     * return
-     */
-    public String getReturnMessage() {
-        return this.returnMessage;
-    }
+/**
+*   设置 pCode
+* @param pCode p_code
+*/
+public void  setPCode(String pCode){
+      this.pCode = pCode;
+}
 
-    /**
-     * 设置 reservationName
-     *
-     * @param reservationName reservation_name
-     */
-    public void setReservationName(String reservationName) {
-        this.reservationName = reservationName;
-    }
+/**
+*   获取 pCode
+* return  
+*/
+public String  getPCode(){
+      return this.pCode;
+}
 
-    /**
-     * 获取 reservationName
-     * return
-     */
-    public String getReservationName() {
-        return this.reservationName;
-    }
+/**
+*   设置 tprice
+* @param tprice tprice
+*/
+public void  setTprice(BigDecimal tprice){
+      this.tprice = tprice;
+}
 
-    /**
-     * 设置 qrCode
-     *
-     * @param qrCode qr_code
-     */
-    public void setQrCode(String qrCode) {
-        this.qrCode = qrCode;
-    }
+/**
+*   获取 tprice
+* return  
+*/
+public BigDecimal  getTprice(){
+      return this.tprice;
+}
 
-    /**
-     * 获取 qrCode
-     * return
-     */
-    public String getQrCode() {
-        return this.qrCode;
-    }
+/**
+*   设置 concatId
+* @param concatId concat_id
+*/
+public void  setConcatId(String concatId){
+      this.concatId = concatId;
+}
 
-    /**
-     * 设置 orderId
-     *
-     * @param orderId order_id
-     */
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
-    }
+/**
+*   获取 concatId
+* return  
+*/
+public String  getConcatId(){
+      return this.concatId;
+}
 
-    /**
-     * 获取 orderId
-     * return
-     */
-    public String getOrderId() {
-        return this.orderId;
-    }
+/**
+*   设置 orderName
+* @param orderName order_name
+*/
+public void  setOrderName(String orderName){
+      this.orderName = orderName;
+}
 
-    /**
-     * 设置 mobile
-     *
-     * @param mobile mobile
-     */
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
+/**
+*   获取 orderName
+* return  
+*/
+public String  getOrderName(){
+      return this.orderName;
+}
 
-    /**
-     * 获取 mobile
-     * return
-     */
-    public String getMobile() {
-        return this.mobile;
-    }
+/**
+*   设置 personId
+* @param personId person_id
+*/
+public void  setPersonId(String personId){
+      this.personId = personId;
+}
 
-    /**
-     * 设置 travelName
-     *
-     * @param travelName travel_name
-     */
-    public void setTravelName(String travelName) {
-        this.travelName = travelName;
-    }
+/**
+*   获取 personId
+* return  
+*/
+public String  getPersonId(){
+      return this.personId;
+}
 
-    /**
-     * 获取 travelName
-     * return
-     */
-    public String getTravelName() {
-        return this.travelName;
-    }
+/**
+*   设置 playTime
+* @param playTime play_time
+*/
+public void  setPlayTime(String playTime){
+      this.playTime = playTime;
+}
 
-    /**
-     * 设置 payState
-     *
-     * @param payState pay_state
-     */
-    public void setPayState(Integer payState) {
-        this.payState = payState;
-    }
+/**
+*   获取 playTime
+* return  
+*/
+public String  getPlayTime(){
+      return this.playTime;
+}
 
-    /**
-     * 获取 payState
-     * return
-     */
-    public Integer getPayState() {
-        return this.payState;
-    }
+/**
+*   设置 m
+* @param m m
+*/
+public void  setM(String m){
+      this.m = m;
+}
 
-    /**
-     * 设置 distinctName
-     *
-     * @param distinctName distinct_name
-     */
-    public void setDistinctName(String distinctName) {
-        this.distinctName = distinctName;
-    }
+/**
+*   获取 m
+* return  
+*/
+public String  getM(){
+      return this.m;
+}
 
-    /**
-     * 获取 distinctName
-     * return
-     */
-    public String getDistinctName() {
-        return this.distinctName;
-    }
+/**
+*   设置 contactTel
+* @param contactTel contact_tel
+*/
+public void  setContactTel(String contactTel){
+      this.contactTel = contactTel;
+}
 
-    /**
-     * 设置 orderState
-     *
-     * @param orderState order_state
-     */
-    public void setOrderState(Integer orderState) {
-        this.orderState = orderState;
-    }
+/**
+*   获取 contactTel
+* return  
+*/
+public String  getContactTel(){
+      return this.contactTel;
+}
 
-    /**
-     * 获取 orderState
-     * return
-     */
-    public Integer getOrderState() {
-        return this.orderState;
-    }
+/**
+*   设置 uuOrderNum
+* @param uuOrderNum uu_order_num
+*/
+public void  setUuOrderNum(String uuOrderNum){
+      this.uuOrderNum = uuOrderNum;
+}
 
-    /**
-     * 设置 ticketUuid
-     *
-     * @param ticketUuid ticket_UUID
-     */
-    public void setTicketUuid(String ticketUuid) {
-        this.ticketUuid = ticketUuid;
-    }
+/**
+*   获取 uuOrderNum
+* return  
+*/
+public String  getUuOrderNum(){
+      return this.uuOrderNum;
+}
 
-    /**
-     * 获取 ticketUuid
-     * return
-     */
-    public String getTicketUuid() {
-        return this.ticketUuid;
-    }
+/**
+*   设置 orderTel
+* @param orderTel order_tel
+*/
+public void  setOrderTel(String orderTel){
+      this.orderTel = orderTel;
+}
 
-    /**
-     * 设置 beginDate
-     *
-     * @param beginDate begin_date
-     */
-    public void setBeginDate(String beginDate) {
-        this.beginDate = beginDate;
-    }
+/**
+*   获取 orderTel
+* return  
+*/
+public String  getOrderTel(){
+      return this.orderTel;
+}
 
-    /**
-     * 获取 beginDate
-     * return
-     */
-    public String getBeginDate() {
-        return this.beginDate;
-    }
+/**
+*   设置 memo
+* @param memo memo
+*/
+public void  setMemo(String memo){
+      this.memo = memo;
+}
 
-    /**
-     * 设置 touristType
-     *
-     * @param touristType tourist_type
-     */
-    public void setTouristType(String touristType) {
-        this.touristType = touristType;
-    }
+/**
+*   获取 memo
+* return  
+*/
+public String  getMemo(){
+      return this.memo;
+}
 
-    /**
-     * 获取 touristType
-     * return
-     */
-    public String getTouristType() {
-        return this.touristType;
-    }
+/**
+*   设置 payMode
+* @param payMode pay_mode
+*/
+public void  setPayMode(Integer payMode){
+      this.payMode = payMode;
+}
 
-    /**
-     * 设置 payName
-     *
-     * @param payName pay_name
-     */
-    public void setPayName(String payName) {
-        this.payName = payName;
-    }
+/**
+*   获取 payMode
+* return  
+*/
+public Integer  getPayMode(){
+      return this.payMode;
+}
 
-    /**
-     * 获取 payName
-     * return
-     */
-    public String getPayName() {
-        return this.payName;
-    }
+/**
+*   设置 updated
+* @param updated updated
+*/
+public void  setUpdated(Date updated){
+      this.updated = updated;
+}
 
-    /**
-     * 设置 ticketPrice
-     *
-     * @param ticketPrice ticket_price
-     */
-    public void setTicketPrice(java.math.BigDecimal ticketPrice) {
-        this.ticketPrice = ticketPrice;
-    }
+/**
+*   获取 updated
+* return  
+*/
+public Date  getUpdated(){
+      return this.updated;
+}
 
-    /**
-     * 获取 ticketPrice
-     * return
-     */
-    public java.math.BigDecimal getTicketPrice() {
-        return this.ticketPrice;
-    }
+/**
+*   设置 smsSend
+* @param smsSend sms_send
+*/
+public void  setSmsSend(Integer smsSend){
+      this.smsSend = smsSend;
+}
 
-    /**
-     * 设置 orderDate
-     *
-     * @param orderDate order_date
-     */
-    public void setOrderDate(String orderDate) {
-        this.orderDate = orderDate;
-    }
+/**
+*   获取 smsSend
+* return  
+*/
+public Integer  getSmsSend(){
+      return this.smsSend;
+}
 
-    /**
-     * 获取 orderDate
-     * return
-     */
-    public String getOrderDate() {
-        return this.orderDate;
-    }
+/**
+*   设置 created
+* @param created created
+*/
+public void  setCreated(Date created){
+      this.created = created;
+}
 
-    /**
-     * 设置 ticketName
-     *
-     * @param ticketName ticket_name
-     */
-    public void setTicketName(String ticketName) {
-        this.ticketName = ticketName;
-    }
+/**
+*   获取 created
+* return  
+*/
+public Date  getCreated(){
+      return this.created;
+}
 
-    /**
-     * 获取 ticketName
-     * return
-     */
-    public String getTicketName() {
-        return this.ticketName;
-    }
+/**
+*   设置 assembly
+* @param assembly assembly
+*/
+public void  setAssembly(String assembly){
+      this.assembly = assembly;
+}
 
-    /**
-     * 设置 endDate
-     *
-     * @param endDate end_date
-     */
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
-    }
+/**
+*   获取 assembly
+* return  
+*/
+public String  getAssembly(){
+      return this.assembly;
+}
 
-    /**
-     * 获取 endDate
-     * return
-     */
-    public String getEndDate() {
-        return this.endDate;
-    }
+/**
+*   设置 orderMode
+* @param orderMode order_mode
+*/
+public void  setOrderMode(Integer orderMode){
+      this.orderMode = orderMode;
+}
 
-    /**
-     * 设置 ticketAmount
-     *
-     * @param ticketAmount ticket_amount
-     */
-    public void setTicketAmount(java.math.BigDecimal ticketAmount) {
-        this.ticketAmount = ticketAmount;
-    }
+/**
+*   获取 orderMode
+* return  
+*/
+public Integer  getOrderMode(){
+      return this.orderMode;
+}
 
-    /**
-     * 获取 ticketAmount
-     * return
-     */
-    public java.math.BigDecimal getTicketAmount() {
-        return this.ticketAmount;
-    }
+      public Integer getStart() {
+                 return start;
+           }
 
-    /**
-     * 设置 ticketCount
-     *
-     * @param ticketCount ticket_count
-     */
-    public void setTicketCount(Integer ticketCount) {
-        this.ticketCount = ticketCount;
-    }
+           public void setStart(Integer start) {
+                 this.start = start;
+           }
 
-    /**
-     * 获取 ticketCount
-     * return
-     */
-    public Integer getTicketCount() {
-        return this.ticketCount;
-    }
+           public Integer getLimit() {
+                 return limit;
+           }
 
-    /**
-     * 设置 returnCode
-     *
-     * @param returnCode return_code
-     */
-    public void setReturnCode(String returnCode) {
-        this.returnCode = returnCode;
-    }
-
-    /**
-     * 获取 returnCode
-     * return
-     */
-    public String getReturnCode() {
-        return this.returnCode;
-    }
-
-    public Integer getStart() {
-        return start;
-    }
-
-    public void setStart(Integer start) {
-        this.start = start;
-    }
-
-    public Integer getLimit() {
-        return limit;
-    }
-
-    public void setLimit(Integer limit) {
-        this.limit = limit;
-    }
+           public void setLimit(Integer limit) {
+                 this.limit = limit;
+           }
 }

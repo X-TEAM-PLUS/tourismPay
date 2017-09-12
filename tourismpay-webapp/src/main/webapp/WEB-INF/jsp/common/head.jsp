@@ -13,7 +13,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <meta charset="utf-8"/>
-<title>统一后台管理</title>
+<title>订单管理后台</title>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <!-- BEGIN GLOBAL MANDATORY STYLES -->
 <link href="/resources/assets/global/plugins/googleapis/googleapis.css" rel="stylesheet" type="text/css"/>

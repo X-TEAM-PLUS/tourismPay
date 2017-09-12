@@ -56,7 +56,7 @@
                                     <div class="input-group">
                                         <div class="input-icon">
                                             <i class="icon-magnifier"></i>
-                                            <input class="form-control" type="text" name="id" placeholder="id"/>
+                                            <input class="form-control" type="text" name="orderNo" placeholder="order_no"/>
                                         </div>
 												<span class="input-group-btn">
 												<button class="btn btn-success" type="submit" ><i class="fa fa-arrow-left fa-fw"/></i> 搜索</button>
@@ -70,31 +70,29 @@
                         <thead>
                         <tr>
                             
-<th column="id" checkbox="true"><input type="checkbox" name="allCheckBox"></th>
-<th column="id">id</th>
-<th column="openId">open_id</th>
-<th column="actionType">action_type</th>
-<th column="idNumber">id_number</th>
-<th column="returnMessage">return_message</th>
-<th column="reservationName">reservation_name</th>
-<th column="qrCode">qr_code</th>
-<th column="orderId">order_id</th>
-<th column="mobile">mobile</th>
-<th column="travelName">travel_name</th>
-<th column="payState">pay_state</th>
-<th column="distinctName">distinct_name</th>
-<th column="orderState">order_state</th>
-<th column="ticketUuid">ticket_UUID</th>
-<th column="beginDate">begin_date</th>
-<th column="touristType">tourist_type</th>
-<th column="payName">pay_name</th>
-<th column="ticketPrice">ticket_price</th>
-<th column="orderDate">order_date</th>
-<th column="ticketName">ticket_name</th>
-<th column="endDate">end_date</th>
-<th column="ticketAmount">ticket_amount</th>
-<th column="ticketCount">ticket_count</th>
-<th column="returnCode">return_code</th>
+<th column="orderNo" checkbox="true"><input type="checkbox" name="allCheckBox"></th>
+<th column="orderNo">order_no</th>
+<th column="lid">lid</th>
+<th column="tid">tid</th>
+<th column="series">series</th>
+<th column="tnum">tnum</th>
+<th column="pCode">p_code</th>
+<th column="tprice">tprice</th>
+<th column="concatId">concat_id</th>
+<th column="orderName">order_name</th>
+<th column="personId">person_id</th>
+<th column="playTime">play_time</th>
+<th column="m">m</th>
+<th column="contactTel">contact_tel</th>
+<th column="uuOrderNum">uu_order_num</th>
+<th column="orderTel">order_tel</th>
+<th column="memo">memo</th>
+<th column="payMode">pay_mode</th>
+<th column="updated">updated</th>
+<th column="smsSend">sms_send</th>
+<th column="created">created</th>
+<th column="assembly">assembly</th>
+<th column="orderMode">order_mode</th>
 <th action="true">操作</th>
                         </tr>
                         </thead>

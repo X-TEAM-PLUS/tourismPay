@@ -49,175 +49,161 @@
                 <form action="/tourismpay/orders/post" class="form-horizontal">
                     <div class="form-body">
                       
-<div class="form-group"><label class="col-md-3 control-label">id<span class="required">* </span>
+<div class="form-group"><label class="col-md-3 control-label">order_no<span class="required">* </span>
 </label>
 <div class="col-md-5">
 <div class="input-group">
 <span class="input-group-addon input-circle-left">
 <i class="fa   fa-font"></i>
 </span>
-<input type="text" name="id" id="id" class="form-control" placeholder="id" validate="{minlength: 1,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">open_id<span class="required">* </span>
+<input type="text" name="orderNo" id="orderNo" class="form-control" placeholder="order_no" validate="{minlength: 1,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">lid<span class="required">* </span>
 </label>
 <div class="col-md-5">
 <div class="input-group">
 <span class="input-group-addon input-circle-left">
 <i class="fa   fa-font"></i>
 </span>
-<input type="text" name="openId" id="openId" class="form-control" placeholder="open_id" validate="{minlength: 1,maxlength:64,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">action_type<span class="required">* </span>
+<input type="text" name="lid" id="lid" class="form-control" placeholder="lid" validate="{minlength: 1,maxlength:128,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">tid<span class="required">* </span>
 </label>
 <div class="col-md-5">
 <div class="input-group">
 <span class="input-group-addon input-circle-left">
 <i class="fa   fa-font"></i>
 </span>
-<input type="text" name="actionType" id="actionType" class="form-control" placeholder="action_type" validate="{minlength: 1,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">id_number<span class="required">* </span>
+<input type="text" name="tid" id="tid" class="form-control" placeholder="tid" validate="{minlength: 1,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">series<span class="required">* </span>
 </label>
 <div class="col-md-5">
 <div class="input-group">
 <span class="input-group-addon input-circle-left">
 <i class="fa   fa-font"></i>
 </span>
-<input type="text" name="idNumber" id="idNumber" class="form-control" placeholder="id_number" validate="{minlength: 1,maxlength:18,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">return_message<span class="required">* </span>
+<input type="text" name="series" id="series" class="form-control" placeholder="series" validate="{minlength: 1,maxlength:64,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">tnum<span class="required">* </span>
 </label>
 <div class="col-md-5">
 <div class="input-group">
 <span class="input-group-addon input-circle-left">
 <i class="fa   fa-font"></i>
 </span>
-<input type="text" name="returnMessage" id="returnMessage" class="form-control" placeholder="return_message" validate="{minlength: 1,maxlength:500,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">reservation_name<span class="required">* </span>
+<input type="text" name="tnum" id="tnum" class="form-control" placeholder="tnum" validate="{minlength: 1,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">p_code<span class="required">* </span>
 </label>
 <div class="col-md-5">
 <div class="input-group">
 <span class="input-group-addon input-circle-left">
 <i class="fa   fa-font"></i>
 </span>
-<input type="text" name="reservationName" id="reservationName" class="form-control" placeholder="reservation_name" validate="{minlength: 1,maxlength:64,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">qr_code<span class="required">* </span>
+<input type="text" name="pCode" id="pCode" class="form-control" placeholder="p_code" validate="{minlength: 1,maxlength:64,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">tprice<span class="required">* </span>
 </label>
 <div class="col-md-5">
 <div class="input-group">
 <span class="input-group-addon input-circle-left">
 <i class="fa   fa-font"></i>
 </span>
-<input type="text" name="qrCode" id="qrCode" class="form-control" placeholder="qr_code" validate="{minlength: 1,maxlength:8,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">order_id<span class="required">* </span>
+<input type="text" name="tprice" id="tprice" class="form-control" placeholder="tprice" validate="{minlength: 1,maxlength:10,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">concat_id<span class="required">* </span>
 </label>
 <div class="col-md-5">
 <div class="input-group">
 <span class="input-group-addon input-circle-left">
 <i class="fa   fa-font"></i>
 </span>
-<input type="text" name="orderId" id="orderId" class="form-control" placeholder="order_id" validate="{minlength: 1,maxlength:64,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">mobile<span class="required">* </span>
-</label>
-<div class="col-md-5">
-<div class="input-group">
-<span class="input-group-addon input-circle-left">
-<i class="fa  fa-mobile"></i>
-</span>
-<input type="text" name="mobile" id="mobile" class="form-control" placeholder="mobile" validate="{minlength: 1,maxlength:11,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">travel_name<span class="required">* </span>
+<input type="text" name="concatId" id="concatId" class="form-control" placeholder="concat_id" validate="{minlength: 1,maxlength:64,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">order_name<span class="required">* </span>
 </label>
 <div class="col-md-5">
 <div class="input-group">
 <span class="input-group-addon input-circle-left">
 <i class="fa   fa-font"></i>
 </span>
-<input type="text" name="travelName" id="travelName" class="form-control" placeholder="travel_name" validate="{minlength: 1,maxlength:64,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">pay_state<span class="required">* </span>
+<input type="text" name="orderName" id="orderName" class="form-control" placeholder="order_name" validate="{minlength: 1,maxlength:100,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">person_id<span class="required">* </span>
 </label>
 <div class="col-md-5">
 <div class="input-group">
 <span class="input-group-addon input-circle-left">
 <i class="fa   fa-font"></i>
 </span>
-<input type="text" name="payState" id="payState" class="form-control" placeholder="pay_state" validate="{minlength: 1,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">distinct_name<span class="required">* </span>
+<input type="text" name="personId" id="personId" class="form-control" placeholder="person_id" validate="{minlength: 1,maxlength:18,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">play_time<span class="required">* </span>
 </label>
 <div class="col-md-5">
 <div class="input-group">
 <span class="input-group-addon input-circle-left">
 <i class="fa   fa-font"></i>
 </span>
-<input type="text" name="distinctName" id="distinctName" class="form-control" placeholder="distinct_name" validate="{minlength: 1,maxlength:64,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">order_state<span class="required">* </span>
+<input type="text" name="playTime" id="playTime" class="form-control" placeholder="play_time" validate="{minlength: 1,maxlength:10,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">m<span class="required">* </span>
 </label>
 <div class="col-md-5">
 <div class="input-group">
 <span class="input-group-addon input-circle-left">
 <i class="fa   fa-font"></i>
 </span>
-<input type="text" name="orderState" id="orderState" class="form-control" placeholder="order_state" validate="{minlength: 1,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">ticket_UUID<span class="required">* </span>
+<input type="text" name="m" id="m" class="form-control" placeholder="m" validate="{minlength: 1,maxlength:64,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">contact_tel<span class="required">* </span>
 </label>
 <div class="col-md-5">
 <div class="input-group">
 <span class="input-group-addon input-circle-left">
 <i class="fa   fa-font"></i>
 </span>
-<input type="text" name="ticketUuid" id="ticketUuid" class="form-control" placeholder="ticket_UUID" validate="{minlength: 1,maxlength:128,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">begin_date<span class="required">* </span>
+<input type="text" name="contactTel" id="contactTel" class="form-control" placeholder="contact_tel" validate="{minlength: 1,maxlength:20,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">uu_order_num<span class="required">* </span>
 </label>
 <div class="col-md-5">
 <div class="input-group">
 <span class="input-group-addon input-circle-left">
 <i class="fa   fa-font"></i>
 </span>
-<input type="text" name="beginDate" id="beginDate" class="form-control" placeholder="begin_date" validate="{minlength: 1,maxlength:14,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">tourist_type<span class="required">* </span>
+<input type="text" name="uuOrderNum" id="uuOrderNum" class="form-control" placeholder="uu_order_num" validate="{minlength: 1,maxlength:64,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">order_tel<span class="required">* </span>
 </label>
 <div class="col-md-5">
 <div class="input-group">
 <span class="input-group-addon input-circle-left">
 <i class="fa   fa-font"></i>
 </span>
-<input type="text" name="touristType" id="touristType" class="form-control" placeholder="tourist_type" validate="{minlength: 1,maxlength:10,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">pay_name<span class="required">* </span>
+<input type="text" name="orderTel" id="orderTel" class="form-control" placeholder="order_tel" validate="{minlength: 1,maxlength:11,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">memo<span class="required">* </span>
 </label>
 <div class="col-md-5">
 <div class="input-group">
 <span class="input-group-addon input-circle-left">
 <i class="fa   fa-font"></i>
 </span>
-<input type="text" name="payName" id="payName" class="form-control" placeholder="pay_name" validate="{minlength: 1,maxlength:20,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">ticket_price<span class="required">* </span>
+<input type="text" name="memo" id="memo" class="form-control" placeholder="memo" validate="{minlength: 1,maxlength:200,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">pay_mode<span class="required">* </span>
 </label>
 <div class="col-md-5">
 <div class="input-group">
 <span class="input-group-addon input-circle-left">
 <i class="fa   fa-font"></i>
 </span>
-<input type="text" name="ticketPrice" id="ticketPrice" class="form-control" placeholder="ticket_price" validate="{minlength: 1,maxlength:10,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">order_date<span class="required">* </span>
+<input type="text" name="payMode" id="payMode" class="form-control" placeholder="pay_mode" validate="{minlength: 1,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">updated<span class="required">* </span>
+</label>
+<div class="col-md-5">
+<div class="input-group">
+<span class="input-group-addon input-circle-left">
+<i class="fa fa-calendar"></i>
+</span>
+<div class="input-group input-large date-picker input-daterange" data-date="2017-09-12" data-date-format="yyyy-mm-dd"><input type="text" name="updated" class="form-control" readonly=""><span class="input-group-btn"><button class="btn default" type="button"><i class="fa fa-calendar"></i></button></span></div></div></div></div><div class="form-group"><label class="col-md-3 control-label">sms_send<span class="required">* </span>
 </label>
 <div class="col-md-5">
 <div class="input-group">
 <span class="input-group-addon input-circle-left">
 <i class="fa   fa-font"></i>
 </span>
-<input type="text" name="orderDate" id="orderDate" class="form-control" placeholder="order_date" validate="{minlength: 1,maxlength:14,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">ticket_name<span class="required">* </span>
+<input type="text" name="smsSend" id="smsSend" class="form-control" placeholder="sms_send" validate="{minlength: 1,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">created<span class="required">* </span>
+</label>
+<div class="col-md-5">
+<div class="input-group">
+<span class="input-group-addon input-circle-left">
+<i class="fa fa-calendar"></i>
+</span>
+<div class="input-group input-large date-picker input-daterange" data-date="2017-09-12" data-date-format="yyyy-mm-dd"><input type="text" name="created" class="form-control" readonly=""><span class="input-group-btn"><button class="btn default" type="button"><i class="fa fa-calendar"></i></button></span></div></div></div></div><div class="form-group"><label class="col-md-3 control-label">assembly<span class="required">* </span>
 </label>
 <div class="col-md-5">
 <div class="input-group">
 <span class="input-group-addon input-circle-left">
 <i class="fa   fa-font"></i>
 </span>
-<input type="text" name="ticketName" id="ticketName" class="form-control" placeholder="ticket_name" validate="{minlength: 1,maxlength:64,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">end_date<span class="required">* </span>
+<input type="text" name="assembly" id="assembly" class="form-control" placeholder="assembly" validate="{minlength: 1,maxlength:100,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">order_mode<span class="required">* </span>
 </label>
 <div class="col-md-5">
 <div class="input-group">
 <span class="input-group-addon input-circle-left">
 <i class="fa   fa-font"></i>
 </span>
-<input type="text" name="endDate" id="endDate" class="form-control" placeholder="end_date" validate="{minlength: 1,maxlength:14,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">ticket_amount<span class="required">* </span>
-</label>
-<div class="col-md-5">
-<div class="input-group">
-<span class="input-group-addon input-circle-left">
-<i class="fa   fa-font"></i>
-</span>
-<input type="text" name="ticketAmount" id="ticketAmount" class="form-control" placeholder="ticket_amount" validate="{minlength: 1,maxlength:10,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">ticket_count<span class="required">* </span>
-</label>
-<div class="col-md-5">
-<div class="input-group">
-<span class="input-group-addon input-circle-left">
-<i class="fa   fa-font"></i>
-</span>
-<input type="text" name="ticketCount" id="ticketCount" class="form-control" placeholder="ticket_count" validate="{minlength: 1,required: true}"></div></div></div><div class="form-group"><label class="col-md-3 control-label">return_code<span class="required">* </span>
-</label>
-<div class="col-md-5">
-<div class="input-group">
-<span class="input-group-addon input-circle-left">
-<i class="fa   fa-font"></i>
-</span>
-<input type="text" name="returnCode" id="returnCode" class="form-control" placeholder="return_code" validate="{minlength: 1,maxlength:2,required: true}"></div></div></div>
+<input type="text" name="orderMode" id="orderMode" class="form-control" placeholder="order_mode" validate="{minlength: 1,required: true}"></div></div></div>
                     </div>
                     <div class="form-actions right">
                         <button type="button" class="btn default" onclick="history.go(-1)"><i class="fa fa-rotate-left"></i> 取消</button>
