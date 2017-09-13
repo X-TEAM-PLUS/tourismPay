@@ -2,6 +2,7 @@ package com.xteam.tourismpay.service;
 
 import com.xteam.tourismpay.api.PFT_Exception;
 import com.xteam.tourismpay.api.PFT_OrderService;
+import com.xteam.tourismpay.common.JsonUtils;
 import com.xteam.tourismpay.domain.Orders;
 import com.xteam.tourismpay.dto.OrderQueryResonse;
 import com.xteam.tourismpay.dto.SubmitOrderResponseData;
@@ -151,8 +152,15 @@ public class PFT_OrderServiceImpl implements PFT_OrderService {
     }
 
     @Override
-    public void notifyStatus(TicketNotify ticketNotify) {
+    public void notifyStatus(TicketNotify ticketNotify) throws PFT_Exception {
+        log.info("接收到出票消息：" + JsonUtils.toJSON(ticketNotify));
+        //验证加密码
+        String localVerifyCode = systemAccount +secretKey;
+        if(localVerifyCode.equalsIgnoreCase(ticketNotify.getVerifyCode())){
             //更新订单的出票信息
             ordersManager.update(ticketNotify);
+        }else{
+            throw  new PFT_Exception("加密码不一致");
+        }
     }
 }

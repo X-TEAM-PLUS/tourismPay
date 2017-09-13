@@ -30,5 +30,5 @@ public interface PFT_OrderService {
      *
      * @param ticketNotify
      */
-    void notifyStatus(TicketNotify ticketNotify);
+    void notifyStatus(TicketNotify ticketNotify) throws PFT_Exception;
 }
