@@ -15,7 +15,7 @@
             <i class="fa fa-angle-right"></i>
         </li>
         <li>
-            <a href="#">订单管理</a>
+            <a href="#">门票消费记录管理</a>
             <i class="fa fa-cube"></i>
         </li>
 
@@ -30,7 +30,7 @@
             <div class="portlet box grey-cascade">
                 <div class="portlet-title">
                     <div class="caption">
-                        <i class="icon-user"></i>订单管理
+                        <i class="icon-user"></i>门票消费记录管理
                     </div>
                     <div class="tools">
                         <a href="javascript:;" class="collapse">
@@ -41,22 +41,22 @@
                         </a>
                     </div>
                 </div>
-                <div class="portlet-body" id="ordersTable" >
+                <div class="portlet-body" id="recordTable" >
                     <div class="table-toolbar">
                         <div class="row">
                             <div class="col-md-10">
                                 <div class="btn-group">
-                                    <button id="newOrdersButton" class="btn green" onclick="location.href = 'add';">
-                                        添加订单 <i class="fa fa-plus"></i>
+                                    <button id="newRecordButton" class="btn green" onclick="location.href = 'add';">
+                                        添加门票消费记录 <i class="fa fa-plus"></i>
                                     </button>
                                 </div>
                             </div>
                             <div class="col-md-2 pull-right">
-                                <form id="ordersTableForm" onsubmit="init();return false;">
+                                <form id="recordTableForm" onsubmit="init();return false;">
                                     <div class="input-group">
                                         <div class="input-icon">
                                             <i class="icon-magnifier"></i>
-                                            <input class="form-control" type="text" name="orderNo" placeholder="order_no"/>
+                                            <input class="form-control" type="text" name="id" placeholder="id"/>
                                         </div>
 												<span class="input-group-btn">
 												<button class="btn btn-success" type="submit" ><i class="fa fa-arrow-left fa-fw"/></i> 搜索</button>
@@ -70,34 +70,22 @@
                         <thead>
                         <tr>
                             
-<th column="orderNo" checkbox="true"><input type="checkbox" name="allCheckBox"></th>
-<th column="orderNo">order_no</th>
-<th column="pftOrderNo">pft_order_no</th>
-<th column="productSn">product_sn</th>
-<th column="orderMode">order_mode</th>
-<th column="series">series</th>
-<th column="assembly">assembly</th>
-<th column="pCode">p_code</th>
-<th column="concatId">concat_id</th>
-<th column="personId">person_id</th>
-<th column="m">m</th>
-<th column="uuOrderNum">uu_order_num</th>
-<th column="memo">memo</th>
-<th column="orderStatus">order_status</th>
-<th column="responseMsg">response_msg</th>
-<th column="responeCode">respone_code</th>
-<th column="tid">tid</th>
+<th column="id" checkbox="true"><input type="checkbox" name="allCheckBox"></th>
+<th column="actionTime">action_time</th>
 <th column="updated">updated</th>
-<th column="lid">lid</th>
 <th column="created">created</th>
-<th column="tnum">tnum</th>
-<th column="tprice">tprice</th>
-<th column="orderName">order_name</th>
-<th column="playTime">play_time</th>
-<th column="contactTel">contact_tel</th>
-<th column="orderTel">order_tel</th>
-<th column="payMode">pay_mode</th>
-<th column="smsSend">sms_send</th>
+<th column="orderState">order_state</th>
+<th column="tnumber">tnumber</th>
+<th column="source">source</th>
+<th column="allCheckNum">all_check_num</th>
+<th column="refundType">refund_type</th>
+<th column="action">action</th>
+<th column="id">id</th>
+<th column="refundAmount">refund_amount</th>
+<th column="remark">remark</th>
+<th column="pftOrderNo">pft_order_no</th>
+<th column="orderNo">order_no</th>
+<th column="refundFee">refund_fee</th>
 <th action="true">操作</th>
                         </tr>
                         </thead>
@@ -117,14 +105,14 @@
 <script src="/resources/js/PagingGrid.js"></script>
 <script>
     function  init() {
-        $("#ordersTable").pagingGrid(
+        $("#recordTable").pagingGrid(
                 {
-                    dataUrl: '/tourismpay/orders/list'
+                    dataUrl: '/tourismpay/record/list'
                     ,pageSize: 10
                     ,dockedItems: [{
                     name: '修改'
                     , iconClass: 'fa fa-edit'
-                    , action: '/tourismpay/orders/edit'
+                    , action: '/tourismpay/record/edit'
                     , confirm: true
                     , parmaName: 'id'
                     , column: 'id'
@@ -132,7 +120,7 @@
                     , {
                         name: '删除'
                         , iconClass: 'glyphicon glyphicon-trash'
-                        , action: '/tourismpay/orders/delete'
+                        , action: '/tourismpay/record/delete'
                         , ajax:true
                         , confirm: true
                         , parmaName: 'id'

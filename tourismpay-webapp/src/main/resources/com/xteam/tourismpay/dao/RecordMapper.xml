@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xteam.tourismpay.dao.RecordDao" >
+  <resultMap id="BaseResultMap" type="com.xteam.tourismpay.domain.Record" >
+      <id  column="ID" property="id" jdbcType="DECIMAL"  />
+<result  column="ACTION_TIME" property="actionTime" jdbcType="VARCHAR"  />
+<result  column="UPDATED" property="updated" jdbcType="TIMESTAMP"  />
+<result  column="CREATED" property="created" jdbcType="TIMESTAMP"  />
+<result  column="ORDER_STATE" property="orderState" jdbcType="VARCHAR"  />
+<result  column="TNUMBER" property="tnumber" jdbcType="VARCHAR"  />
+<result  column="SOURCE" property="source" jdbcType="VARCHAR"  />
+<result  column="ALL_CHECK_NUM" property="allCheckNum" jdbcType="VARCHAR"  />
+<result  column="REFUND_TYPE" property="refundType" jdbcType="VARCHAR"  />
+<result  column="ACTION" property="action" jdbcType="VARCHAR"  />
+<result  column="REFUND_AMOUNT" property="refundAmount" jdbcType="DECIMAL"  />
+<result  column="REMARK" property="remark" jdbcType="VARCHAR"  />
+<result  column="PFT_ORDER_NO" property="pftOrderNo" jdbcType="VARCHAR"  />
+<result  column="ORDER_NO" property="orderNo" jdbcType="DECIMAL"  />
+<result  column="REFUND_FEE" property="refundFee" jdbcType="DECIMAL"  />
+
+  </resultMap>
+  <!--删除记录-->
+  <delete id="delete" parameterType="com.xteam.tourismpay.domain.Record" >
+      delete from T_TICKET_RECORD  where ID=#{id,jdbcType=DECIMAL}
+  </delete>
+
+  <!--插入记录-->
+  <insert id="insert" parameterType="com.xteam.tourismpay.domain.Record" useGeneratedKeys="true" keyProperty="id">
+         insert into T_TICKET_RECORD ( ACTION_TIME
+ , UPDATED
+ , CREATED
+ , ORDER_STATE
+ , TNUMBER
+ , SOURCE
+ , ALL_CHECK_NUM
+ , REFUND_TYPE
+ , ACTION
+ , REFUND_AMOUNT
+ , REMARK
+ , PFT_ORDER_NO
+ , ORDER_NO
+ , REFUND_FEE
+)values(#{actionTime,jdbcType=VARCHAR}
+ , #{updated,jdbcType=TIMESTAMP}
+ , #{created,jdbcType=TIMESTAMP}
+ , #{orderState,jdbcType=VARCHAR}
+ , #{tnumber,jdbcType=VARCHAR}
+ , #{source,jdbcType=VARCHAR}
+ , #{allCheckNum,jdbcType=VARCHAR}
+ , #{refundType,jdbcType=VARCHAR}
+ , #{action,jdbcType=VARCHAR}
+ , #{refundAmount,jdbcType=DECIMAL}
+ , #{remark,jdbcType=VARCHAR}
+ , #{pftOrderNo,jdbcType=VARCHAR}
+ , #{orderNo,jdbcType=DECIMAL}
+ , #{refundFee,jdbcType=DECIMAL}
+)
+  </insert>
+
+   <!--插入记录-->
+    <insert id="batchInsert" parameterType="java.util.List">
+           insert into T_TICKET_RECORD ( ACTION_TIME
+ , UPDATED
+ , CREATED
+ , ORDER_STATE
+ , TNUMBER
+ , SOURCE
+ , ALL_CHECK_NUM
+ , REFUND_TYPE
+ , ACTION
+ , REFUND_AMOUNT
+ , REMARK
+ , PFT_ORDER_NO
+ , ORDER_NO
+ , REFUND_FEE
+) values 
+ <foreach collection="list" item="item" index="index" separator="," > 
+ ( 
+#{item.actionTime,jdbcType=VARCHAR}
+ , #{item.updated,jdbcType=TIMESTAMP}
+ , #{item.created,jdbcType=TIMESTAMP}
+ , #{item.orderState,jdbcType=VARCHAR}
+ , #{item.tnumber,jdbcType=VARCHAR}
+ , #{item.source,jdbcType=VARCHAR}
+ , #{item.allCheckNum,jdbcType=VARCHAR}
+ , #{item.refundType,jdbcType=VARCHAR}
+ , #{item.action,jdbcType=VARCHAR}
+ , #{item.refundAmount,jdbcType=DECIMAL}
+ , #{item.remark,jdbcType=VARCHAR}
+ , #{item.pftOrderNo,jdbcType=VARCHAR}
+ , #{item.orderNo,jdbcType=DECIMAL}
+ , #{item.refundFee,jdbcType=DECIMAL}
+ )
+</foreach>
+    </insert>
+
+<!--更新记录-->
+<update id="update" parameterType="com.xteam.tourismpay.domain.Record" >
+    update  T_TICKET_RECORD
+<set>
+<trim prefix="" suffix="" suffixOverrides=",">
+<if test="actionTime!=null ">
+ACTION_TIME=#{actionTime,jdbcType=VARCHAR},
+</if>
+<if test="updated!=null ">
+UPDATED=#{updated,jdbcType=TIMESTAMP},
+</if>
+<if test="created!=null ">
+CREATED=#{created,jdbcType=TIMESTAMP},
+</if>
+<if test="orderState!=null ">
+ORDER_STATE=#{orderState,jdbcType=VARCHAR},
+</if>
+<if test="tnumber!=null ">
+TNUMBER=#{tnumber,jdbcType=VARCHAR},
+</if>
+<if test="source!=null ">
+SOURCE=#{source,jdbcType=VARCHAR},
+</if>
+<if test="allCheckNum!=null ">
+ALL_CHECK_NUM=#{allCheckNum,jdbcType=VARCHAR},
+</if>
+<if test="refundType!=null ">
+REFUND_TYPE=#{refundType,jdbcType=VARCHAR},
+</if>
+<if test="action!=null ">
+ACTION=#{action,jdbcType=VARCHAR},
+</if>
+<if test="refundAmount!=null ">
+REFUND_AMOUNT=#{refundAmount,jdbcType=DECIMAL},
+</if>
+<if test="remark!=null ">
+REMARK=#{remark,jdbcType=VARCHAR},
+</if>
+<if test="pftOrderNo!=null ">
+PFT_ORDER_NO=#{pftOrderNo,jdbcType=VARCHAR},
+</if>
+<if test="orderNo!=null ">
+ORDER_NO=#{orderNo,jdbcType=DECIMAL},
+</if>
+<if test="refundFee!=null ">
+REFUND_FEE=#{refundFee,jdbcType=DECIMAL},
+</if>
+</trim>
+</set>
+  where ID=#{id,jdbcType=DECIMAL}
+</update>
+
+ <!--查询单条记录-->
+ <select id="get" resultMap="BaseResultMap" parameterType="com.xteam.tourismpay.domain.Record" >
+    select  ACTION_TIME , UPDATED , CREATED , ORDER_STATE , TNUMBER , SOURCE , ALL_CHECK_NUM , REFUND_TYPE , ACTION , ID , REFUND_AMOUNT , REMARK , PFT_ORDER_NO , ORDER_NO , REFUND_FEE from T_TICKET_RECORD  where ID=#{id,jdbcType=DECIMAL}
+</select>
+
+<!--查询记录-->
+<select id="query" resultMap="BaseResultMap" parameterType="com.xteam.tourismpay.domain.Record">
+      select  ACTION_TIME , UPDATED , CREATED , ORDER_STATE , TNUMBER , SOURCE , ALL_CHECK_NUM , REFUND_TYPE , ACTION , ID , REFUND_AMOUNT , REMARK , PFT_ORDER_NO , ORDER_NO , REFUND_FEE from T_TICKET_RECORD 
+<where>
+<if test="actionTime!=null and actionTime!=''">
+<![CDATA[ and ACTION_TIME=#{actionTime,jdbcType=VARCHAR}]]>
+</if>
+<if test="updated!=null">
+<![CDATA[
+and UPDATED>= str_to_date(CONCAT(date_format(#{updated},'%Y-%m-%d'), ' 00:00:00'),'%Y-%m-%d %h:%i:%s')
+and UPDATED <=  str_to_date(CONCAT(date_format(#{updated},'%Y-%m-%d'), ' 23:59:59'),'%Y-%m-%d %h:%i:%s')
+]]>
+</if>
+<if test="created!=null">
+<![CDATA[
+and CREATED>= str_to_date(CONCAT(date_format(#{created},'%Y-%m-%d'), ' 00:00:00'),'%Y-%m-%d %h:%i:%s')
+and CREATED <=  str_to_date(CONCAT(date_format(#{created},'%Y-%m-%d'), ' 23:59:59'),'%Y-%m-%d %h:%i:%s')
+]]>
+</if>
+<if test="orderState!=null and orderState!=''">
+<![CDATA[ and ORDER_STATE=#{orderState,jdbcType=VARCHAR}]]>
+</if>
+<if test="tnumber!=null and tnumber!=''">
+<![CDATA[ and TNUMBER=#{tnumber,jdbcType=VARCHAR}]]>
+</if>
+<if test="source!=null and source!=''">
+<![CDATA[ and SOURCE=#{source,jdbcType=VARCHAR}]]>
+</if>
+<if test="allCheckNum!=null and allCheckNum!=''">
+<![CDATA[ and ALL_CHECK_NUM=#{allCheckNum,jdbcType=VARCHAR}]]>
+</if>
+<if test="refundType!=null and refundType!=''">
+<![CDATA[ and REFUND_TYPE=#{refundType,jdbcType=VARCHAR}]]>
+</if>
+<if test="action!=null and action!=''">
+<![CDATA[ and ACTION=#{action,jdbcType=VARCHAR}]]>
+</if>
+<if test="id!=null">
+<![CDATA[
+ and ID=#{id,jdbcType=DECIMAL}
+]]>
+</if>
+<if test="refundAmount!=null">
+<![CDATA[
+ and REFUND_AMOUNT=#{refundAmount,jdbcType=DECIMAL}
+]]>
+</if>
+<if test="remark!=null and remark!=''">
+<![CDATA[ and REMARK=#{remark,jdbcType=VARCHAR}]]>
+</if>
+<if test="pftOrderNo!=null and pftOrderNo!=''">
+<![CDATA[ and PFT_ORDER_NO=#{pftOrderNo,jdbcType=VARCHAR}]]>
+</if>
+<if test="orderNo!=null">
+<![CDATA[
+ and ORDER_NO=#{orderNo,jdbcType=DECIMAL}
+]]>
+</if>
+<if test="refundFee!=null">
+<![CDATA[
+ and REFUND_FEE=#{refundFee,jdbcType=DECIMAL}
+]]>
+</if>
+</where>
+   limit #{start},#{limit} 
+</select>
+
+<!--查询记录数-->
+<select id="queryCount"   resultType="int"   parameterType="com.xteam.tourismpay.domain.Record">
+      select count(1) from T_TICKET_RECORD 
+<where>
+<if test="actionTime!=null and actionTime!=''">
+<![CDATA[
+ and ACTION_TIME=#{actionTime,jdbcType=VARCHAR}
+]]>
+</if>
+<if test="updated!=null">
+<![CDATA[
+and UPDATED >= str_to_date(CONCAT(date_format(#{updated},'%Y-%m-%d'), ' 00:00:00'),'%Y-%m-%d %h:%i:%s')
+and UPDATED<=  str_to_date(CONCAT(date_format(#{updated},'%Y-%m-%d'), ' 23:59:59'),'%Y-%m-%d %h:%i:%s')
+]]>
+</if>
+<if test="created!=null">
+<![CDATA[
+and CREATED >= str_to_date(CONCAT(date_format(#{created},'%Y-%m-%d'), ' 00:00:00'),'%Y-%m-%d %h:%i:%s')
+and CREATED<=  str_to_date(CONCAT(date_format(#{created},'%Y-%m-%d'), ' 23:59:59'),'%Y-%m-%d %h:%i:%s')
+]]>
+</if>
+<if test="orderState!=null and orderState!=''">
+<![CDATA[
+ and ORDER_STATE=#{orderState,jdbcType=VARCHAR}
+]]>
+</if>
+<if test="tnumber!=null and tnumber!=''">
+<![CDATA[
+ and TNUMBER=#{tnumber,jdbcType=VARCHAR}
+]]>
+</if>
+<if test="source!=null and source!=''">
+<![CDATA[
+ and SOURCE=#{source,jdbcType=VARCHAR}
+]]>
+</if>
+<if test="allCheckNum!=null and allCheckNum!=''">
+<![CDATA[
+ and ALL_CHECK_NUM=#{allCheckNum,jdbcType=VARCHAR}
+]]>
+</if>
+<if test="refundType!=null and refundType!=''">
+<![CDATA[
+ and REFUND_TYPE=#{refundType,jdbcType=VARCHAR}
+]]>
+</if>
+<if test="action!=null and action!=''">
+<![CDATA[
+ and ACTION=#{action,jdbcType=VARCHAR}
+]]>
+</if>
+<if test="id!=null">
+<![CDATA[
+ and ID=#{id,jdbcType=DECIMAL}
+]]>
+</if>
+<if test="refundAmount!=null">
+<![CDATA[
+ and REFUND_AMOUNT=#{refundAmount,jdbcType=DECIMAL}
+]]>
+</if>
+<if test="remark!=null and remark!=''">
+<![CDATA[
+ and REMARK=#{remark,jdbcType=VARCHAR}
+]]>
+</if>
+<if test="pftOrderNo!=null and pftOrderNo!=''">
+<![CDATA[
+ and PFT_ORDER_NO=#{pftOrderNo,jdbcType=VARCHAR}
+]]>
+</if>
+<if test="orderNo!=null">
+<![CDATA[
+ and ORDER_NO=#{orderNo,jdbcType=DECIMAL}
+]]>
+</if>
+<if test="refundFee!=null">
+<![CDATA[
+ and REFUND_FEE=#{refundFee,jdbcType=DECIMAL}
+]]>
+</if>
+</where>
+
+</select>
+</mapper>

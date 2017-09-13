@@ -23,7 +23,7 @@ public class OrdersDto implements Serializable {
     /**
      * order_no
      */
-    private Integer orderNo;
+    private BigDecimal orderNo;
     /**
      * lid
      */
@@ -114,7 +114,7 @@ public class OrdersDto implements Serializable {
      *
      * @param orderNo order_no
      */
-    public void setOrderNo(Integer orderNo) {
+    public void setOrderNo(BigDecimal orderNo) {
         this.orderNo = orderNo;
     }
 
@@ -122,7 +122,7 @@ public class OrdersDto implements Serializable {
      * 获取 orderNo
      * return
      */
-    public Integer getOrderNo() {
+    public BigDecimal getOrderNo() {
         return this.orderNo;
     }
 

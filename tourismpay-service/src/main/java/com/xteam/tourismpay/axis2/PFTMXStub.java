@@ -7,10 +7,16 @@
 package com.xteam.tourismpay;
 
 
+import org.springframework.core.io.support.PropertiesLoaderUtils;
+
+import java.util.Properties;
+import java.util.ResourceBundle;
+
 /*
  *  PFTMXStub java implementation
  */
 public class PFTMXStub extends org.apache.axis2.client.Stub {
+    private static final ResourceBundle resources = ResourceBundle.getBundle("important");
     private static int counter = 0;
     protected org.apache.axis2.description.AxisOperation[] _operations;
 
@@ -56,14 +62,14 @@ public class PFTMXStub extends org.apache.axis2.client.Stub {
             org.apache.axis2.context.ConfigurationContext configurationContext)
             throws org.apache.axis2.AxisFault {
         this(configurationContext,
-                "http://open.12301dev.com/openService/pftMX.php");
+                resources.getString("PFT.interface.url"));
     }
 
     /**
      * Default Constructor
      */
     public PFTMXStub() throws org.apache.axis2.AxisFault {
-        this("http://open.12301dev.com/openService/pftMX.php");
+        this(resources.getString("PFT.interface.url"));
     }
 
     /**

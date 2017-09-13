@@ -1,9 +1,7 @@
 package com.xteam.tourismpay;
 
+
 import org.junit.Test;
-
-
-import static org.junit.Assert.*;
 
 public class PFTMXStubTest {
     private static final String account = "100019";
@@ -14,7 +12,7 @@ public class PFTMXStubTest {
      * 通过webService调用景区列表接口1.1
      */
     @Test
-    public  void getScenieSpotList() {
+    public  void testGetScenieSpotList() {
 
         try {
             //通过axis2自动生成的web service客户端的代码类
@@ -41,9 +39,8 @@ public class PFTMXStubTest {
 
     }
 
-
     @Test
-    public  void PFT_Order_Submit() {
+    public  void testPFT_Order_Submit() {
 
         try {
             //通过axis2自动生成的web service客户端的代码类
@@ -54,13 +51,9 @@ public class PFTMXStubTest {
             //设置接口调用参数
             order_submit.setAc(account);
             order_submit.setPw(pwd);
-
-            //设置接口调用参数
-            order_submit.setAc(account);
-            order_submit.setPw(pwd);
             order_submit.setLid("2633"); //景区的ID 号int （注：2.1&门票接口的UUlid）  2633
             order_submit.setTid("5715");//门票的ID 号int （注：2.1&门票接口的UUid）
-            order_submit.setRemotenum("JQ11123455123");//远端订单号 String（贵网站的唯一订单号，请确保唯一，不能为空）
+            order_submit.setRemotenum("JQ99999999");//远端订单号 String（贵网站的唯一订单号，请确保唯一，不能为空）JQ11123455123
             order_submit.setTprice("10");//单价(分单位)int
             order_submit.setTnum("1");//数量 int
             order_submit.setPlaytime("2017-10-02");//游玩时间 Date(e.g.2012-03-16)
@@ -77,7 +70,6 @@ public class PFTMXStubTest {
             order_submit.setPCode("0");//套票ID （未开放，请填0）
             order_submit.setM("113");//供应商ID （注：2.1 查询门票列表的UUaid）
             order_submit.setPersonID("640322199307130913");//身份证号码
-
 
             //获取接口响应值
             com.xteam.tourismpay.PFTMXStub.PFT_Order_SubmitResponse  order_submitResponse = pFTMXStub.pFT_Order_Submit(order_submit);

@@ -1,6 +1,7 @@
 package com.xteam.tourismpay.manager;
 
 import com.xteam.tourismpay.domain.Orders;
+import com.xteam.tourismpay.dto.TicketNotify;
 
 import java.util.List;
 
@@ -69,5 +70,12 @@ public interface OrdersManager {
      * @return List<Orders>
      */
     public Integer queryCount(Orders orders) throws Exception;
+
+    /**
+     * 根据出票通知更新信息
+     * @param ticketNotify
+     * @return
+     */
+    int update(TicketNotify ticketNotify);
 
 }

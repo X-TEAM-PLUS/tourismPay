@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>com.xteam</groupId>
+         <groupId>com.xteam</groupId>
         <artifactId>tourismpay</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
@@ -27,11 +27,6 @@
             <groupId>com.xteam</groupId>
             <artifactId>tourismpay-service</artifactId>
             <version>${version}</version>
-        </dependency>
-        <dependency>
-            <groupId>cn.tourism.pay.payment</groupId>
-            <artifactId>tourism-wxpay</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <!-- Spring json-->
@@ -193,17 +188,18 @@
             <version>1.2.1</version>
         </dependency>
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-            <version>1.2</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.google.zxing</groupId>
-            <artifactId>core</artifactId>
-            <version>3.3.0</version>
+                    <groupId>javax.servlet</groupId>
+                    <artifactId>jstl</artifactId>
+                    <version>1.2</version>
+                    <scope>runtime</scope>
         </dependency>
 
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
 
@@ -212,10 +208,9 @@
             <id>develop</id>
             <properties>
                 <!--数据库连接-->
-                <mvn.jdbc.url>
-                    <![CDATA[jdbc:mysql://localhost:3306/tourismpay?useUnicode=true&characterEncoding=utf-8]]></mvn.jdbc.url>
+                <mvn.jdbc.url><![CDATA[jdbc:mysql://localhost:3306/tourismpay?useUnicode=true&characterEncoding=utf-8]]></mvn.jdbc.url>
                 <mvn.jdbc.user>root</mvn.jdbc.user>
-                <mvn.jdbc.pwd>mysql</mvn.jdbc.pwd>
+                <mvn.jdbc.pwd>yankun</mvn.jdbc.pwd>
                 <mvn.jdbc.maxActive>30</mvn.jdbc.maxActive>
                 <mvn.jdbc.maxIdle>5</mvn.jdbc.maxIdle>
                 <mvn.jdbc.minIdle>2</mvn.jdbc.minIdle>
@@ -233,10 +228,9 @@
             <id>test</id>
             <properties>
                 <!--数据库连接-->
-                <mvn.jdbc.url>
-                    <![CDATA[jdbc:mysql://localhost:3306/tourismpay?useUnicode=true&characterEncoding=utf-8]]></mvn.jdbc.url>
+                <mvn.jdbc.url><![CDATA[jdbc:mysql://localhost:3306/tourismpay?useUnicode=true&characterEncoding=utf-8]]></mvn.jdbc.url>
                 <mvn.jdbc.user>root</mvn.jdbc.user>
-                <mvn.jdbc.pwd>mysql</mvn.jdbc.pwd>
+                <mvn.jdbc.pwd>yankun</mvn.jdbc.pwd>
                 <mvn.jdbc.maxActive>30</mvn.jdbc.maxActive>
                 <mvn.jdbc.maxIdle>5</mvn.jdbc.maxIdle>
                 <mvn.jdbc.minIdle>2</mvn.jdbc.minIdle>
@@ -254,8 +248,7 @@
             <id>production</id>
             <properties>
                 <!--数据库连接-->
-                <mvn.jdbc.url>
-                    <![CDATA[jdbc:mysql://localhost:3306/tourismpay?useUnicode=true&characterEncoding=utf-8]]></mvn.jdbc.url>
+                <mvn.jdbc.url><![CDATA[jdbc:mysql://localhost:3306/tourismpay?useUnicode=true&characterEncoding=utf-8]]></mvn.jdbc.url>
                 <mvn.jdbc.user></mvn.jdbc.user>
                 <mvn.jdbc.pwd></mvn.jdbc.pwd>
                 <mvn.jdbc.maxActive>30</mvn.jdbc.maxActive>

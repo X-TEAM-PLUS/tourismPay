@@ -2,6 +2,7 @@ package com.xteam.tourismpay.common;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializerProvider;
@@ -20,8 +21,8 @@ import java.util.List;
 /**
  * Created by IntelliJ IDEA.
  * User: yankun
- * Date: 2017年09月10日
- * Time: 09:47:04
+ * Date: 2017年05月31日
+ * Time: 16:14:03
  * 功能:Json工具类
  */
 public class JsonUtils {
@@ -29,6 +30,7 @@ public class JsonUtils {
     private static final ObjectMapper mapper = new ObjectMapper();
 
     static {
+        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         SimpleDateFormat dateFormat = new SimpleDateFormat(DEFAULT_FORMAT);
         mapper.setDateFormat(dateFormat);
         mapper.setAnnotationIntrospector(new JacksonAnnotationIntrospector() {

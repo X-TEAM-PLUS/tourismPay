@@ -8,8 +8,8 @@ import java.util.Date;
 /**
  * Created by IntelliJ IDEA.
  * User: yankun
- * Date: 2017年09月12日
- * Time: 13:21:24
+ * Date: 2017年09月13日
+ * Time: 13:11:50
  * TableName:T_ORDERS
  */
 
@@ -23,98 +23,118 @@ public class Orders implements Serializable {
     /**
      * order_no
      */
-    private Integer orderNo;
+    private BigDecimal orderNo;
     /**
-     * lid
+     * pft_order_no
      */
-    private String lid;
+    private String pftOrderNo;
     /**
-     * tid
+     * product_sn
      */
-    private String tid;
+    private String productSn;
+    /**
+     * order_mode
+     */
+    private Integer orderMode;
     /**
      * series
      */
     private String series;
     /**
-     * tnum
+     * assembly
      */
-    private Integer tnum;
+    private String assembly;
     /**
      * p_code
      */
     private String pCode;
     /**
-     * tprice
-     */
-    private BigDecimal tprice;
-    /**
      * concat_id
      */
     private String concatId;
-    /**
-     * order_name
-     */
-    private String orderName;
     /**
      * person_id
      */
     private String personId;
     /**
-     * play_time
-     */
-    private String playTime;
-    /**
      * m
      */
     private String m;
-    /**
-     * contact_tel
-     */
-    private String contactTel;
     /**
      * uu_order_num
      */
     private String uuOrderNum;
     /**
-     * order_tel
-     */
-    private String orderTel;
-    /**
      * memo
      */
     private String memo;
     /**
-     * pay_mode
+     * order_status  订单状态 0未支付 1已支付 2 票付通下单成功 3已出票 9已取消
      */
-    private Integer payMode;
+    private Integer orderStatus;
+    /**
+     * response_msg
+     */
+    private String responseMsg;
+    /**
+     * respone_code
+     */
+    private String responeCode;
+    /**
+     * tid
+     */
+    private String tid;
     /**
      * updated
      */
     private Date updated;
     /**
-     * sms_send
+     * lid
      */
-    private Integer smsSend;
+    private String lid;
     /**
      * created
      */
     private Date created;
     /**
-     * assembly
+     * tnum
      */
-    private String assembly;
+    private Integer tnum;
     /**
-     * order_mode
+     * tprice
      */
-    private Integer orderMode;
+    private BigDecimal tprice;
+    /**
+     * order_name
+     */
+    private String orderName;
+    /**
+     * play_time
+     */
+    private String playTime;
+    /**
+     * contact_tel
+     */
+    private String contactTel;
+    /**
+     * order_tel
+     */
+    private String orderTel;
+    /**
+     * pay_mode
+     */
+    private Integer payMode;
+    /**
+     * sms_send
+     */
+    private Integer smsSend;
 
     /**
      * 设置 orderNo
      *
      * @param orderNo order_no
      */
-    public void setOrderNo(Integer orderNo) {
+    public void setOrderNo(BigDecimal orderNo) {
         this.orderNo = orderNo;
     }
 
@@ -122,42 +142,59 @@ public class Orders implements Serializable {
      * 获取 orderNo
      * return
      */
-    public Integer getOrderNo() {
+    public BigDecimal getOrderNo() {
         return this.orderNo;
     }
 
     /**
-     * 设置 lid
+     * 设置 pftOrderNo
      *
-     * @param lid lid
+     * @param pftOrderNo pft_order_no
      */
-    public void setLid(String lid) {
-        this.lid = lid;
+    public void setPftOrderNo(String pftOrderNo) {
+        this.pftOrderNo = pftOrderNo;
     }
 
     /**
-     * 获取 lid
+     * 获取 pftOrderNo
      * return
      */
-    public String getLid() {
-        return this.lid;
+    public String getPftOrderNo() {
+        return this.pftOrderNo;
     }
 
     /**
-     * 设置 tid
+     * 设置 productSn
      *
-     * @param tid tid
+     * @param productSn product_sn
      */
-    public void setTid(String tid) {
-        this.tid = tid;
+    public void setProductSn(String productSn) {
+        this.productSn = productSn;
     }
 
     /**
-     * 获取 tid
+     * 获取 productSn
      * return
      */
-    public String getTid() {
-        return this.tid;
+    public String getProductSn() {
+        return this.productSn;
+    }
+
+    /**
+     * 设置 orderMode
+     *
+     * @param orderMode order_mode
+     */
+    public void setOrderMode(Integer orderMode) {
+        this.orderMode = orderMode;
+    }
+
+    /**
+     * 获取 orderMode
+     * return
+     */
+    public Integer getOrderMode() {
+        return this.orderMode;
     }
 
     /**
@@ -178,20 +215,20 @@ public class Orders implements Serializable {
     }
 
     /**
-     * 设置 tnum
+     * 设置 assembly
      *
-     * @param tnum tnum
+     * @param assembly assembly
      */
-    public void setTnum(Integer tnum) {
-        this.tnum = tnum;
+    public void setAssembly(String assembly) {
+        this.assembly = assembly;
     }
 
     /**
-     * 获取 tnum
+     * 获取 assembly
      * return
      */
-    public Integer getTnum() {
-        return this.tnum;
+    public String getAssembly() {
+        return this.assembly;
     }
 
     /**
@@ -212,23 +249,6 @@ public class Orders implements Serializable {
     }
 
     /**
-     * 设置 tprice
-     *
-     * @param tprice tprice
-     */
-    public void setTprice(BigDecimal tprice) {
-        this.tprice = tprice;
-    }
-
-    /**
-     * 获取 tprice
-     * return
-     */
-    public BigDecimal getTprice() {
-        return this.tprice;
-    }
-
-    /**
      * 设置 concatId
      *
      * @param concatId concat_id
@@ -243,23 +263,6 @@ public class Orders implements Serializable {
      */
     public String getConcatId() {
         return this.concatId;
-    }
-
-    /**
-     * 设置 orderName
-     *
-     * @param orderName order_name
-     */
-    public void setOrderName(String orderName) {
-        this.orderName = orderName;
-    }
-
-    /**
-     * 获取 orderName
-     * return
-     */
-    public String getOrderName() {
-        return this.orderName;
     }
 
     /**
@@ -280,23 +283,6 @@ public class Orders implements Serializable {
     }
 
     /**
-     * 设置 playTime
-     *
-     * @param playTime play_time
-     */
-    public void setPlayTime(String playTime) {
-        this.playTime = playTime;
-    }
-
-    /**
-     * 获取 playTime
-     * return
-     */
-    public String getPlayTime() {
-        return this.playTime;
-    }
-
-    /**
      * 设置 m
      *
      * @param m m
@@ -311,23 +297,6 @@ public class Orders implements Serializable {
      */
     public String getM() {
         return this.m;
-    }
-
-    /**
-     * 设置 contactTel
-     *
-     * @param contactTel contact_tel
-     */
-    public void setContactTel(String contactTel) {
-        this.contactTel = contactTel;
-    }
-
-    /**
-     * 获取 contactTel
-     * return
-     */
-    public String getContactTel() {
-        return this.contactTel;
     }
 
     /**
@@ -348,23 +317,6 @@ public class Orders implements Serializable {
     }
 
     /**
-     * 设置 orderTel
-     *
-     * @param orderTel order_tel
-     */
-    public void setOrderTel(String orderTel) {
-        this.orderTel = orderTel;
-    }
-
-    /**
-     * 获取 orderTel
-     * return
-     */
-    public String getOrderTel() {
-        return this.orderTel;
-    }
-
-    /**
      * 设置 memo
      *
      * @param memo memo
@@ -382,20 +334,71 @@ public class Orders implements Serializable {
     }
 
     /**
-     * 设置 payMode
+     * 设置 orderStatus
      *
-     * @param payMode pay_mode
+     * @param orderStatus order_status
      */
-    public void setPayMode(Integer payMode) {
-        this.payMode = payMode;
+    public void setOrderStatus(Integer orderStatus) {
+        this.orderStatus = orderStatus;
     }
 
     /**
-     * 获取 payMode
+     * 获取 orderStatus
      * return
      */
-    public Integer getPayMode() {
-        return this.payMode;
+    public Integer getOrderStatus() {
+        return this.orderStatus;
+    }
+
+    /**
+     * 设置 responseMsg
+     *
+     * @param responseMsg response_msg
+     */
+    public void setResponseMsg(String responseMsg) {
+        this.responseMsg = responseMsg;
+    }
+
+    /**
+     * 获取 responseMsg
+     * return
+     */
+    public String getResponseMsg() {
+        return this.responseMsg;
+    }
+
+    /**
+     * 设置 responeCode
+     *
+     * @param responeCode respone_code
+     */
+    public void setResponeCode(String responeCode) {
+        this.responeCode = responeCode;
+    }
+
+    /**
+     * 获取 responeCode
+     * return
+     */
+    public String getResponeCode() {
+        return this.responeCode;
+    }
+
+    /**
+     * 设置 tid
+     *
+     * @param tid tid
+     */
+    public void setTid(String tid) {
+        this.tid = tid;
+    }
+
+    /**
+     * 获取 tid
+     * return
+     */
+    public String getTid() {
+        return this.tid;
     }
 
     /**
@@ -416,20 +419,20 @@ public class Orders implements Serializable {
     }
 
     /**
-     * 设置 smsSend
+     * 设置 lid
      *
-     * @param smsSend sms_send
+     * @param lid lid
      */
-    public void setSmsSend(Integer smsSend) {
-        this.smsSend = smsSend;
+    public void setLid(String lid) {
+        this.lid = lid;
     }
 
     /**
-     * 获取 smsSend
+     * 获取 lid
      * return
      */
-    public Integer getSmsSend() {
-        return this.smsSend;
+    public String getLid() {
+        return this.lid;
     }
 
     /**
@@ -450,37 +453,139 @@ public class Orders implements Serializable {
     }
 
     /**
-     * 设置 assembly
+     * 设置 tnum
      *
-     * @param assembly assembly
+     * @param tnum tnum
      */
-    public void setAssembly(String assembly) {
-        this.assembly = assembly;
+    public void setTnum(Integer tnum) {
+        this.tnum = tnum;
     }
 
     /**
-     * 获取 assembly
+     * 获取 tnum
      * return
      */
-    public String getAssembly() {
-        return this.assembly;
+    public Integer getTnum() {
+        return this.tnum;
     }
 
     /**
-     * 设置 orderMode
+     * 设置 tprice
      *
-     * @param orderMode order_mode
+     * @param tprice tprice
      */
-    public void setOrderMode(Integer orderMode) {
-        this.orderMode = orderMode;
+    public void setTprice(BigDecimal tprice) {
+        this.tprice = tprice;
     }
 
     /**
-     * 获取 orderMode
+     * 获取 tprice
      * return
      */
-    public Integer getOrderMode() {
-        return this.orderMode;
+    public BigDecimal getTprice() {
+        return this.tprice;
+    }
+
+    /**
+     * 设置 orderName
+     *
+     * @param orderName order_name
+     */
+    public void setOrderName(String orderName) {
+        this.orderName = orderName;
+    }
+
+    /**
+     * 获取 orderName
+     * return
+     */
+    public String getOrderName() {
+        return this.orderName;
+    }
+
+    /**
+     * 设置 playTime
+     *
+     * @param playTime play_time
+     */
+    public void setPlayTime(String playTime) {
+        this.playTime = playTime;
+    }
+
+    /**
+     * 获取 playTime
+     * return
+     */
+    public String getPlayTime() {
+        return this.playTime;
+    }
+
+    /**
+     * 设置 contactTel
+     *
+     * @param contactTel contact_tel
+     */
+    public void setContactTel(String contactTel) {
+        this.contactTel = contactTel;
+    }
+
+    /**
+     * 获取 contactTel
+     * return
+     */
+    public String getContactTel() {
+        return this.contactTel;
+    }
+
+    /**
+     * 设置 orderTel
+     *
+     * @param orderTel order_tel
+     */
+    public void setOrderTel(String orderTel) {
+        this.orderTel = orderTel;
+    }
+
+    /**
+     * 获取 orderTel
+     * return
+     */
+    public String getOrderTel() {
+        return this.orderTel;
+    }
+
+    /**
+     * 设置 payMode
+     *
+     * @param payMode pay_mode
+     */
+    public void setPayMode(Integer payMode) {
+        this.payMode = payMode;
+    }
+
+    /**
+     * 获取 payMode
+     * return
+     */
+    public Integer getPayMode() {
+        return this.payMode;
+    }
+
+    /**
+     * 设置 smsSend
+     *
+     * @param smsSend sms_send
+     */
+    public void setSmsSend(Integer smsSend) {
+        this.smsSend = smsSend;
+    }
+
+    /**
+     * 获取 smsSend
+     * return
+     */
+    public Integer getSmsSend() {
+        return this.smsSend;
     }
 
     public Integer getStart() {
