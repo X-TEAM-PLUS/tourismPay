@@ -1,69 +1,54 @@
-package com.xteam.tourismpay;
+package com.xteam.tourismpay.service;
 
-import org.junit.Test;
+import com.xteam.tourismpay.api.PFT_Exception;
+import com.xteam.tourismpay.api.PFT_OrderService;
+import com.xteam.tourismpay.dto.OrderSubmitResponse;
+import com.xteam.tourismpay.dto.OrdersDto;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
-
-import static org.junit.Assert.*;
-
-public class PFTMXStubTest {
-    private static final String account = "100019";
-
-    private static final String pwd = "jjl4yk11f82ce6c0f33a5c003f2fec56";
+@Service
+public class PFT_OrderServiceImpl implements PFT_OrderService {
 
     /**
-     * 通过webService调用景区列表接口1.1
+     * 账户
      */
-    @Test
-    public  void getScenieSpotList() {
+    @Value("${sytem.account}")
+    private String systemAccount;
 
-        try {
-            //通过axis2自动生成的web service客户端的代码类
-            com.xteam.tourismpay.PFTMXStub pFTMXStub = new com.xteam.tourismpay.PFTMXStub();
+    /**
+     * 密钥
+     */
+    @Value("${sytem.secretKey}")
+    private String secretKey;
 
-            //创建接口对应对象
-            com.xteam.tourismpay.PFTMXStub.Get_ScenicSpot_List get_ScenicSpot_List = new com.xteam.tourismpay.PFTMXStub.Get_ScenicSpot_List();
-            //设置接口调用参数
-            get_ScenicSpot_List.setAc(account);
-            get_ScenicSpot_List.setPw(pwd);
-            get_ScenicSpot_List.setN("10");
-            get_ScenicSpot_List.setM("");
-            //获取接口响应值
-            com.xteam.tourismpay.PFTMXStub.Get_ScenicSpot_ListResponse get_ScenicSpot_ListResponse = pFTMXStub
-                    .get_ScenicSpot_List(get_ScenicSpot_List);
-            String result = get_ScenicSpot_ListResponse.getGet_ScenicSpot_List();
+    /**
+     * 门店代码
+     */
+    @Value("${sytem.merchantCode}")
+    private String merchantCode;
 
-            System.out.println(result);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
-    }
-
-
-    @Test
-    public  void PFT_Order_Submit() {
-
+//    private static final String account = "100019";
+//    private static final String pwd = "jjl4yk11f82ce6c0f33a5c003f2fec56";
+    @Override
+    public OrderSubmitResponse submit(OrdersDto ordersDto) throws PFT_Exception {
+        OrderSubmitResponse response = null;
         try {
             //通过axis2自动生成的web service客户端的代码类
             com.xteam.tourismpay.PFTMXStub pFTMXStub = new com.xteam.tourismpay.PFTMXStub();
 
             //创建接口对应对象
             com.xteam.tourismpay.PFTMXStub.PFT_Order_Submit order_submit = new com.xteam.tourismpay.PFTMXStub.PFT_Order_Submit();
-            //设置接口调用参数
-            order_submit.setAc(account);
-            order_submit.setPw(pwd);
 
             //设置接口调用参数
-            order_submit.setAc(account);
-            order_submit.setPw(pwd);
-            order_submit.setLid("2633"); //景区的ID 号int （注：2.1&门票接口的UUlid）  2633
-            order_submit.setTid("5715");//门票的ID 号int （注：2.1&门票接口的UUid）
+            order_submit.setAc(systemAccount);
+            order_submit.setPw(secretKey);
+            order_submit.setLid(ordersDto.getLid()); //景区的ID 号int （注：2.1&门票接口的UUlid）  2633
+            order_submit.setTid(ordersDto.getTid());//门票的ID 号int （注：2.1&门票接口的UUid）
             order_submit.setRemotenum("JQ11123455123");//远端订单号 String（贵网站的唯一订单号，请确保唯一，不能为空）
             order_submit.setTprice("10");//单价(分单位)int
             order_submit.setTnum("1");//数量 int
-            order_submit.setPlaytime("2017-10-02");//游玩时间 Date(e.g.2012-03-16)
+            order_submit.setPlaytime("2017-03-02");//游玩时间 Date(e.g.2012-03-16)
             order_submit.setOrdername("测试test");//取票人姓名 String （使用测试接口，取票人姓名必须为‘测试test’）
             order_submit.setOrdertel("13521846578");//取票人手机 String
             order_submit.setContactTEL("13521846578");//联系人手机String
@@ -88,5 +73,7 @@ public class PFTMXStubTest {
             e.printStackTrace();
         }
 
+
+        return response;
     }
 }

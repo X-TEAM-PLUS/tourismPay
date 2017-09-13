@@ -31,7 +31,7 @@ public class Orders implements Serializable {
     /**
      * tid
      */
-    private Integer tid;
+    private String tid;
     /**
      * series
      */
@@ -148,7 +148,7 @@ public class Orders implements Serializable {
      *
      * @param tid tid
      */
-    public void setTid(Integer tid) {
+    public void setTid(String tid) {
         this.tid = tid;
     }
 
@@ -156,7 +156,7 @@ public class Orders implements Serializable {
      * 获取 tid
      * return
      */
-    public Integer getTid() {
+    public String getTid() {
         return this.tid;
     }
 

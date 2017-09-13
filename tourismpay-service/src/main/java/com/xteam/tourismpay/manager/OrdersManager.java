@@ -69,4 +69,5 @@ public interface OrdersManager {
      * @return List<Orders>
      */
     public Integer queryCount(Orders orders) throws Exception;
+
 }
