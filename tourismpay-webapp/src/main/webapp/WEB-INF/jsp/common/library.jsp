@@ -57,7 +57,7 @@
         src="/resources/assets/global/plugins/jquery-validation/js/jquery.validate.min.js"></script>
 <script type="text/javascript"
         src="/resources/assets/global/plugins/jquery-validation/js/localization/messages_zh.min.js"></script>
-<script src="/resources/js/SubmitForm.js" type="text/javascript"></script>
+<%--<script src="/resources/js/SubmitForm.js" type="text/javascript"></script>--%>
 <script src="/resources/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
 
 <script src="/resources/js/iframeAutoHeight.js"></script>

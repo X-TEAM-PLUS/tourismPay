@@ -57,7 +57,7 @@ public class PFT_OrderServiceImplTest {
 
     @Test
     public void getRealTimeStorage() throws Exception {
-        GetRealTimeStorageResonseData response = pft_orderService.getRealTimeStorage("113", "5715","2017-11-02");
+        GetRealTimeStorageResonseData response = pft_orderService.getRealTimeStorage("113", "2803","2017-11-02");
         System.out.println(JsonUtils.toJSON(response));
 
     }

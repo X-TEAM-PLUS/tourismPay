@@ -2,9 +2,9 @@ package com.xteam.tourismpay.dto;
 
 import javax.xml.bind.annotation.*;
 
-@XmlRootElement(name = "Data")
+@XmlRootElement(name = "Rec")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Data", propOrder = {
+@XmlType(name = "items", propOrder = {
         "getRealTimeStorageResonse"
 })
 public class GetRealTimeStorageResonseData {

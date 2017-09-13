@@ -9,7 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -70,19 +73,19 @@ public class OrdersController {
      * @return
      */
     @RequestMapping(value = "/post")
-    @ResponseBody
-    public JsonResult post(OrdersDto ordersDto) throws Exception {
-        JsonResult jsonResult = new JsonResult();
+    public String  post(OrdersDto ordersDto , RedirectAttributes attr, HttpServletRequest request) throws Exception {
         try {
-            //保存
+            //保存本地订单
             ordersService.insert(ordersDto);
-            jsonResult.setSuccess(true);
+            attr.addAttribute("out_trade_no", ordersDto.getOrderNo());
+            Integer  total_amount = ordersDto.getTprice().multiply(BigDecimal.valueOf(ordersDto.getTnum())).multiply(BigDecimal.valueOf(100)).intValue();
+            attr.addAttribute("total_amount",total_amount );
+            attr.addAttribute("subject", "ticket");
+            attr.addAttribute("productId", ordersDto.getProductSn());
         } catch (Exception e) {
             log.error("提交数据异常", e);
-            jsonResult.setMessage("提交数据异常");
-            jsonResult.setSuccess(false);
         }
-        return jsonResult;
+        return "redirect:/tourismpay/getrq/getRqWx?";
     }
 
     /**
