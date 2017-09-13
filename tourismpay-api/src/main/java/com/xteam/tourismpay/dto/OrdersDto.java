@@ -24,6 +24,11 @@ public class OrdersDto implements Serializable {
      * order_no
      */
     private BigDecimal orderNo;
+
+    /**
+     * product_sn
+     */
+    private String productSn;
     /**
      * lid
      */
@@ -483,6 +488,22 @@ public class OrdersDto implements Serializable {
         return this.orderMode;
     }
 
+    public String getProductSn() {
+        return productSn;
+    }
+
+    public void setProductSn(String productSn) {
+        this.productSn = productSn;
+    }
+
+    public String getpCode() {
+        return pCode;
+    }
+
+    public void setpCode(String pCode) {
+        this.pCode = pCode;
+    }
+
     public Integer getStart() {
         return start;
     }
@@ -497,5 +518,5 @@ public class OrdersDto implements Serializable {
 
     public void setLimit(Integer limit) {
         this.limit = limit;
-    }
+}
 }
