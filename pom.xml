@@ -13,8 +13,8 @@
         <module>tourismpay-service</module>
         <module>tourismpay-api</module>
         <module>tourismpay-webapp</module>
-        <module>tourism-alibaba</module>
-        <module>tourism-wxpay</module>
+        <module>tourismpay-alibaba</module>
+        <module>tourismpay-wxpay</module>
     </modules>
 
     <properties>
