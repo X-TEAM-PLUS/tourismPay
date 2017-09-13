@@ -3,6 +3,7 @@ package com.xteam.tourismpay.service;
 import com.xteam.tourismpay.api.OrdersService;
 import com.xteam.tourismpay.api.PFT_OrderService;
 import com.xteam.tourismpay.common.JsonUtils;
+import com.xteam.tourismpay.dto.GetRealTimeStorageResonseData;
 import com.xteam.tourismpay.dto.SubmitOrderResponseData;
 import com.xteam.tourismpay.dto.OrdersDto;
 import org.junit.Test;
@@ -55,7 +56,9 @@ public class PFT_OrderServiceImplTest {
     }
 
     @Test
-    public void query() throws Exception {
+    public void getRealTimeStorage() throws Exception {
+        GetRealTimeStorageResonseData response = pft_orderService.getRealTimeStorage("113", "5715","2017-11-02");
+        System.out.println(JsonUtils.toJSON(response));
 
     }
 

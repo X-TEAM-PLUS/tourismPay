@@ -1,8 +1,6 @@
 package com.xteam.tourismpay.api;
 
-import com.xteam.tourismpay.dto.OrderQueryResonse;
-import com.xteam.tourismpay.dto.SubmitOrderResponseData;
-import com.xteam.tourismpay.dto.TicketNotify;
+import com.xteam.tourismpay.dto.*;
 
 /**
  * 票付通订单接口
@@ -23,7 +21,7 @@ public interface PFT_OrderService {
      * @param orderNo 本地订单号
      * @return
      */
-    public OrderQueryResonse queryOrder(String orderNo) throws PFT_Exception;
+    public QueryOrderResponseData queryOrder(String orderNo) throws PFT_Exception;
 
     /**
      * 出票状态通知
@@ -31,4 +29,14 @@ public interface PFT_OrderService {
      * @param ticketNotify
      */
     void notifyStatus(TicketNotify ticketNotify) throws PFT_Exception;
+
+    /**
+     * 动态价格，实时库存上限获取
+     * @param aid  供应商id
+     * @param pid 产品id
+     *  @param playTime 游玩时间
+     * @return
+     * @throws PFT_Exception
+     */
+    GetRealTimeStorageResonseData getRealTimeStorage(String aid, String pid,String playTime)  throws PFT_Exception;
 }

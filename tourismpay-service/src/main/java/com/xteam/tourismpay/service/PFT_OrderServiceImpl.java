@@ -4,12 +4,10 @@ import com.xteam.tourismpay.api.PFT_Exception;
 import com.xteam.tourismpay.api.PFT_OrderService;
 import com.xteam.tourismpay.common.JsonUtils;
 import com.xteam.tourismpay.domain.Orders;
-import com.xteam.tourismpay.dto.OrderQueryResonse;
-import com.xteam.tourismpay.dto.SubmitOrderResponseData;
-import com.xteam.tourismpay.dto.OrdersDto;
-import com.xteam.tourismpay.dto.TicketNotify;
+import com.xteam.tourismpay.dto.*;
 import com.xteam.tourismpay.manager.OrdersManager;
 import com.xteam.tourismpay.manager.RecordManager;
+import org.apache.axis2.AxisFault;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -114,8 +112,8 @@ public class PFT_OrderServiceImpl implements PFT_OrderService {
     }
 
     @Override
-    public OrderQueryResonse queryOrder(String orderNo) throws PFT_Exception {
-        OrderQueryResonse response = null;
+    public QueryOrderResponseData queryOrder(String orderNo) throws PFT_Exception {
+        QueryOrderResponseData response = null;
         try{
             //查询本地订单
             Orders orders = new Orders();
@@ -139,7 +137,7 @@ public class PFT_OrderServiceImpl implements PFT_OrderService {
                 //解析
                 JAXBContext context = JAXBContext.newInstance(OrderQueryResonse.class);
                 Unmarshaller unmar = context.createUnmarshaller();
-                response = (OrderQueryResonse) unmar.unmarshal( new StringReader(result));
+                response = (QueryOrderResponseData) unmar.unmarshal( new StringReader(result));
 
             }else{
                 throw new Exception("本地订单不存在");
@@ -162,5 +160,35 @@ public class PFT_OrderServiceImpl implements PFT_OrderService {
         }else{
             throw  new PFT_Exception("加密码不一致");
         }
+    }
+
+    @Override
+    public GetRealTimeStorageResonseData getRealTimeStorage(String aid, String pid,String playTime) throws PFT_Exception {
+        GetRealTimeStorageResonseData response = null;
+        try{
+            //通过axis2自动生成的web service客户端的代码类
+            com.xteam.tourismpay.PFTMXStub pFTMXStub = new com.xteam.tourismpay.PFTMXStub();
+            //调用票付通接口
+            com.xteam.tourismpay.PFTMXStub.GetRealTimeStorage  getRealTimeStorage = new com.xteam.tourismpay.PFTMXStub.GetRealTimeStorage();
+            getRealTimeStorage.setAc(systemAccount);
+            getRealTimeStorage.setPw(secretKey);
+            getRealTimeStorage.setAid(aid);
+            getRealTimeStorage.setPid(pid);
+            getRealTimeStorage.setStart_date(playTime);
+            getRealTimeStorage.setEnd_date(playTime);
+            //获取接口响应值
+            com.xteam.tourismpay.PFTMXStub.GetRealTimeStorageResponse  queryResponse = pFTMXStub.getRealTimeStorage(getRealTimeStorage);
+            String result = queryResponse.getGetRealTimeStorage();
+            log.info(result);
+
+            //解析
+            JAXBContext context = JAXBContext.newInstance(GetRealTimeStorageResonseData.class);
+            Unmarshaller unmar = context.createUnmarshaller();
+            response = (GetRealTimeStorageResonseData) unmar.unmarshal( new StringReader(result));
+
+        }catch (Exception  e){
+            log.error("票付通动态价格，实时库存上限获取接口调用异常",e);
+        }
+        return response;
     }
 }
