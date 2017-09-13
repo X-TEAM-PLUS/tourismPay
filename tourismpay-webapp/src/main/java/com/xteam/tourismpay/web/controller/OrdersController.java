@@ -84,8 +84,9 @@ public class OrdersController {
             attr.addAttribute("productId", ordersDto.getProductSn());
         } catch (Exception e) {
             log.error("提交数据异常", e);
+            return "redirect:/tourismpay/error/error";
         }
-        return "redirect:/tourismpay/getrq/getRqWx?";
+        return "redirect:/tourismpay/getrq/getRqWx";
     }
 
     /**
