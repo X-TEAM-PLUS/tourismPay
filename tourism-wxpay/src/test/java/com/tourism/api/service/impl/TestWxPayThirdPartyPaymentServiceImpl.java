@@ -13,7 +13,7 @@ import java.util.Map;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
-        "classpath:applicationContext-wxpay.xml"})
+        "classpath:spring-config-wxpay.xml"})
 public class TestWxPayThirdPartyPaymentServiceImpl {
 
     @Resource
@@ -21,7 +21,7 @@ public class TestWxPayThirdPartyPaymentServiceImpl {
 
     @Test
     public void getQRCode() {
-        Map<String, Object> returnValue = wxPayThirdPartyPaymentService.getQRCode("1", "2", "3", "3");
+        Map<String, Object> returnValue = wxPayThirdPartyPaymentService.getQRCode("10000321", "2", "3", "3");
         System.out.println(returnValue);
 
     }

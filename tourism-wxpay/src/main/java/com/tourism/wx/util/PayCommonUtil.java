@@ -26,7 +26,7 @@ public class PayCommonUtil {
      *
      * @return boolean
      */
-    public static boolean isTenpaySign(String characterEncoding, SortedMap<Object, Object> packageParams, String API_KEY) {
+    public static boolean isTenpaySign(String characterEncoding, SortedMap<String, Object> packageParams, String API_KEY) {
         StringBuffer sb = new StringBuffer();
         Set es = packageParams.entrySet();
         Iterator it = es.iterator();
@@ -195,4 +195,6 @@ public class PayCommonUtil {
         connection.disconnect();
         return buffer;
     }
+
+
 }

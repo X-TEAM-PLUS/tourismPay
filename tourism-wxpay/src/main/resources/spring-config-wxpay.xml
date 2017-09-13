@@ -19,8 +19,10 @@
         <property name="notify_url" value="${notify_url}"/>
         <property name="spbill_create_ip" value="${spbill_create_ip}"/>
     </bean>
-    <!-- 支付宝接口服务类 -->
+    <!-- 微信接口服务类 -->
     <bean id="wxPayThirdPartyPaymentService" class="com.tourism.api.service.impl.WxPayThirdPartyPaymentServiceImpl">
         <property name="wxConfig" ref="wxConfig"/>
     </bean>
 </beans>
+
+

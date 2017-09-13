@@ -13,7 +13,7 @@ import java.util.*;
  */
 public class CommonUtilPub {
 
-    public static String createSign(String characterEncoding, HashMap<String, String> parameters, String Key) {
+    public static String createSign(String characterEncoding, SortedMap<String, Object> parameters, String Key) {
         StringBuffer sb = new StringBuffer();
         Set es = parameters.entrySet();//所有参与传参的参数按照accsii排序（升序）
         Iterator it = es.iterator();
@@ -43,7 +43,7 @@ public class CommonUtilPub {
         return sb.toString();
     }
 
-    public static String map2XmlString(Map<String, String> map) {
+    public static String map2XmlString(SortedMap<String, Object> map) {
         String xmlResult = "";
 
         StringBuffer sb = new StringBuffer();
