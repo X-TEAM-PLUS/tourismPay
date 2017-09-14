@@ -5,9 +5,11 @@ import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
+import com.xteam.tourismpay.api.OrdersService;
 import com.xteam.tourismpay.api.PFT_OrderService;
 import com.xteam.tourismpay.api.service.impl.WxPayThirdPartyPaymentServiceImpl;
 import com.xteam.tourismpay.common.JsonResult;
+import com.xteam.tourismpay.dto.OrdersDto;
 import com.xteam.tourismpay.dto.SubmitOrderResponseData;
 import com.xteam.tourismpay.web.controller.util.XMLUtil4jdom;
 import com.xteam.tourismpay.wx.util.PayCommonUtil;
@@ -27,6 +29,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.math.BigDecimal;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -44,8 +47,8 @@ public class WxPayController {
     private PFT_OrderService pft_orderService;
     @javax.annotation.Resource
     private WxPayThirdPartyPaymentServiceImpl wxPayThirdPartyPaymentService;
-
-
+    @Resource
+    private OrdersService ordersService;
     // 线程安全的订单信息
     private static ConcurrentMap<String, HashMap> concurrentMapWordCounts = new ConcurrentHashMap<String, HashMap>();
 
@@ -60,6 +63,14 @@ public class WxPayController {
             if (StringUtils.isEmpty(out_trade_no) || StringUtils.isEmpty(total_amount) || StringUtils.isEmpty(productId) || StringUtils.isEmpty(subject)) {
                 modelAndView = new ModelAndView("error/error");
                 modelAndView.addObject("errorInfo", "参数不合法");
+                return modelAndView;
+            }
+            OrdersDto ordersDto = new OrdersDto();
+            ordersDto.setOrderNo(new BigDecimal(out_trade_no));
+            OrdersDto temp = ordersService.get(ordersDto);
+            if (temp == null) {
+                modelAndView = new ModelAndView("error/error");
+                modelAndView.addObject("errorInfo", "非法请求，找不到原交易");
                 return modelAndView;
             }
             orderInfo.put("total_amount", total_amount);
@@ -89,17 +100,18 @@ public class WxPayController {
         }
         return modelAndView;
     }
+
     @RequestMapping("/checkStatus")
     @ResponseBody
-    public JsonResult checkStatus(String out_trade_no){
+    public JsonResult checkStatus(String out_trade_no) {
         JsonResult jsonResult = new JsonResult();
         HashMap map = concurrentMapWordCounts.get(out_trade_no);
-        if (!map.isEmpty() && map.get("status").equals("0")){
-            jsonResult.put("status",0);
+        if (!map.isEmpty() && map.get("status").equals("0")) {
+            jsonResult.put("status", 0);
             jsonResult.setMessage("查询异常");
             jsonResult.setSuccess(true);
-        }else {
-            jsonResult.put("status",1);
+        } else {
+            jsonResult.put("status", 1);
             jsonResult.setMessage("查询异常");
             jsonResult.setSuccess(true);
         }
@@ -210,7 +222,7 @@ public class WxPayController {
                 System.out.println("order_id_weixin :" + out_trade_no);
                 SubmitOrderResponseData responseData = pft_orderService.submit(out_trade_no);
                 HashMap map = concurrentMapWordCounts.get(out_trade_no);
-                map.put("status","0");
+                map.put("status", "0");
 
                 String total_fee = (String) packageParams.get("total_fee");
 
