@@ -244,7 +244,7 @@
             <id>test</id>
             <properties>
                 <!--数据库连接-->
-                <mvn.jdbc.url><![CDATA[jdbc:mysql://101.200.210.122:3306/tourismpay?useUnicode=true&characterEncoding=utf-8]]></mvn.jdbc.url>
+                <mvn.jdbc.url><![CDATA[jdbc:mysql://101.200.173.141:3306/tourismpay?useUnicode=true&characterEncoding=utf-8]]></mvn.jdbc.url>
                 <mvn.jdbc.user>root</mvn.jdbc.user>
                 <mvn.jdbc.pwd>hxht2015</mvn.jdbc.pwd>
                 <mvn.jdbc.maxActive>30</mvn.jdbc.maxActive>

@@ -85,7 +85,7 @@ public class OrdersController {
         } catch (Exception e) {
             log.error("提交数据异常", e);
         }
-        return "redirect:/tourismpay/getrq/getRqWx?";
+        return "redirect:/tourismpay/getrq/getRqWx";
     }
 
     /**

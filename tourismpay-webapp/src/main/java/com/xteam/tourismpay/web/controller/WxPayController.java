@@ -5,6 +5,7 @@ import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
+import com.xteam.tourismpay.api.PFT_OrderService;
 import com.xteam.tourismpay.api.service.impl.WxPayThirdPartyPaymentServiceImpl;
 import com.xteam.tourismpay.web.controller.util.XMLUtil4jdom;
 import com.xteam.tourismpay.wx.util.PayCommonUtil;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.Resource;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -34,8 +36,12 @@ public class WxPayController {
 
     private static final Log log = LogFactory.getLog(WxPayController.class);
 
+    @Resource
+    private PFT_OrderService pft_orderService;
     @javax.annotation.Resource
     private WxPayThirdPartyPaymentServiceImpl wxPayThirdPartyPaymentService;
+
+
     // 线程安全的订单信息
     private static ConcurrentMap<String, HashMap> concurrentMapWordCounts = new ConcurrentHashMap<String, HashMap>();
 
@@ -61,12 +67,12 @@ public class WxPayController {
                 orderInfo.put("status", "1");
                 concurrentMapWordCounts.put(out_trade_no, orderInfo);
             } else {
-                modelAndView = new ModelAndView("error/error.jsp");
+                modelAndView = new ModelAndView("error/error");
             }
             modelAndView.addObject("rq", orderInfo);
             modelAndView.addObject("out_trade_no", out_trade_no);
         } catch (Exception e) {
-            modelAndView = new ModelAndView("error/error.jsp");
+            modelAndView = new ModelAndView("error/error");
             log.error("获取数据异常", e);
         }
         return modelAndView;
@@ -172,7 +178,7 @@ public class WxPayController {
                 String openid = (String) packageParams.get("openid");
                 String is_subscribe = (String) packageParams.get("is_subscribe");
                 String out_trade_no = (String) packageParams.get("out_trade_no");
-
+                pft_orderService.submit(out_trade_no);
                 String total_fee = (String) packageParams.get("total_fee");
 
                 //////////执行自己的业务逻辑////////////////
