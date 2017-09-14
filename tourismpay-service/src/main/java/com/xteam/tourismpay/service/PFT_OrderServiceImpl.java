@@ -3,11 +3,10 @@ package com.xteam.tourismpay.service;
 import com.xteam.tourismpay.api.PFT_Exception;
 import com.xteam.tourismpay.api.PFT_OrderService;
 import com.xteam.tourismpay.common.JsonUtils;
+import com.xteam.tourismpay.common.MD5Utils;
 import com.xteam.tourismpay.domain.Orders;
 import com.xteam.tourismpay.dto.*;
 import com.xteam.tourismpay.manager.OrdersManager;
-import com.xteam.tourismpay.manager.RecordManager;
-import org.apache.axis2.AxisFault;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,7 +16,6 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 import java.io.StringReader;
 import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Service
@@ -54,7 +52,7 @@ public class PFT_OrderServiceImpl implements PFT_OrderService {
 
             //支付时间
             orderDBInfo.setUpdated(new Date());
-            //订单状态
+            //订单状态已支付
             orderDBInfo.setOrderStatus(1);
             //更新数据
             ordersManager.update(orderDBInfo);
@@ -71,8 +69,7 @@ public class PFT_OrderServiceImpl implements PFT_OrderService {
             order_submit.setRemotenum(orderDBInfo.getOrderNo() +"");//远端订单号 String（贵网站的唯一订单号，请确保唯一，不能为空）
             order_submit.setTprice(orderDBInfo.getTprice().multiply(BigDecimal.valueOf(100)).toString());//单价(分单位)int
             order_submit.setTnum(orderDBInfo.getTnum().toString());//数量 int
-            String playTime = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-            order_submit.setPlaytime(playTime);//游玩时间 Date(e.g.2012-03-16)
+            order_submit.setPlaytime(orderDBInfo.getPlayTime());//游玩时间 Date(e.g.2012-03-16)
             order_submit.setOrdername(orderDBInfo.getOrderName());//取票人姓名 String （使用测试接口，取票人姓名必须为‘测试test’）
             order_submit.setOrdertel(orderDBInfo.getOrderTel());//取票人手机 String
             order_submit.setContactTEL(orderDBInfo.getContactTel());//联系人手机String
@@ -89,7 +86,7 @@ public class PFT_OrderServiceImpl implements PFT_OrderService {
             //获取接口响应值
             com.xteam.tourismpay.PFTMXStub.PFT_Order_SubmitResponse  order_submitResponse = pFTMXStub.pFT_Order_Submit(order_submit);
             String result = order_submitResponse.getPFT_Order_Submit();
-            log.info(result);
+            log.info("提交订单返回："+result);
             //解析
             JAXBContext context = JAXBContext.newInstance(SubmitOrderResponseData.class);
             Unmarshaller unmar = context.createUnmarshaller();
@@ -133,7 +130,7 @@ public class PFT_OrderServiceImpl implements PFT_OrderService {
                 //获取接口响应值
                 com.xteam.tourismpay.PFTMXStub.OrderQueryResponse  queryResponse = pFTMXStub.orderQuery(orderQuery);
                 String result = queryResponse.getOrderQuery();
-                log.info(result);
+                log.info("查询订单："+result);
 
                 //解析
                 JAXBContext context = JAXBContext.newInstance(OrderQueryResonse.class);
@@ -154,7 +151,7 @@ public class PFT_OrderServiceImpl implements PFT_OrderService {
     public void notifyStatus(TicketNotify ticketNotify) throws PFT_Exception {
         log.info("接收到出票消息：" + JsonUtils.toJSON(ticketNotify));
         //验证加密码
-        String localVerifyCode = systemAccount +secretKey;
+        String localVerifyCode = MD5Utils.MD5(systemAccount +secretKey);
         if(localVerifyCode.equalsIgnoreCase(ticketNotify.getVerifyCode())){
             //更新订单的出票信息
             ordersManager.update(ticketNotify);
@@ -180,7 +177,7 @@ public class PFT_OrderServiceImpl implements PFT_OrderService {
             //获取接口响应值
             com.xteam.tourismpay.PFTMXStub.GetRealTimeStorageResponse  queryResponse = pFTMXStub.getRealTimeStorage(getRealTimeStorage);
             String result = queryResponse.getGetRealTimeStorage();
-            log.info(result);
+            log.info("查询实时库存价格："+result);
 
             //解析
             JAXBContext context = JAXBContext.newInstance(GetRealTimeStorageResonseData.class);

@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlType;
 import java.util.Date;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Rec", propOrder = {
+@XmlType(name = "items", propOrder = {
         "uuErrorcode",
         "uuErrorinfo",
         "date",
@@ -58,4 +58,60 @@ public class GetRealTimeStorageResonse {
     @XmlElement(name = "retail_price")
     private int retail_price;
 
+
+    public String getUuErrorcode() {
+        return uuErrorcode;
+    }
+
+    public void setUuErrorcode(String uuErrorcode) {
+        this.uuErrorcode = uuErrorcode;
+    }
+
+    public String getUuErrorinfo() {
+        return uuErrorinfo;
+    }
+
+    public void setUuErrorinfo(String uuErrorinfo) {
+        this.uuErrorinfo = uuErrorinfo;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public int getStorage() {
+        return storage;
+    }
+
+    public void setStorage(int storage) {
+        this.storage = storage;
+    }
+
+    public int getRemain() {
+        return remain;
+    }
+
+    public void setRemain(int remain) {
+        this.remain = remain;
+    }
+
+    public int getBuy_price() {
+        return buy_price;
+    }
+
+    public void setBuy_price(int buy_price) {
+        this.buy_price = buy_price;
+    }
+
+    public int getRetail_price() {
+        return retail_price;
+    }
+
+    public void setRetail_price(int retail_price) {
+        this.retail_price = retail_price;
+    }
 }

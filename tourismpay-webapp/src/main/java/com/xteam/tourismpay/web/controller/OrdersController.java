@@ -78,7 +78,7 @@ public class OrdersController {
             //保存本地订单
             ordersService.insert(ordersDto);
             attr.addAttribute("out_trade_no", ordersDto.getOrderNo());
-            Integer  total_amount = ordersDto.getTprice().multiply(BigDecimal.valueOf(ordersDto.getTnum())).multiply(BigDecimal.valueOf(100)).intValue();
+            Integer  total_amount = ordersDto.getTprice().multiply(BigDecimal.valueOf(ordersDto.getTnum())).intValue();
             attr.addAttribute("total_amount",total_amount );
             attr.addAttribute("subject", "ticket");
             attr.addAttribute("productId", ordersDto.getProductSn());

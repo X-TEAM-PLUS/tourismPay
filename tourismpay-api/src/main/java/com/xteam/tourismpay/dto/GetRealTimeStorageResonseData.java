@@ -4,11 +4,11 @@ import javax.xml.bind.annotation.*;
 
 @XmlRootElement(name = "Rec")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "items", propOrder = {
+@XmlType(name = "Rec", propOrder = {
         "getRealTimeStorageResonse"
 })
 public class GetRealTimeStorageResonseData {
-    @XmlElement(name = "Rec")
+    @XmlElement(name = "items")
     private GetRealTimeStorageResonse getRealTimeStorageResonse;
 
     public GetRealTimeStorageResonse getGetRealTimeStorageResonse() {

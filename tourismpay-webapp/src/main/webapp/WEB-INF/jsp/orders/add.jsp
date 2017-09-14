@@ -171,7 +171,7 @@
 <span class="input-group-addon input-circle-left">
 <i class="fa   fa-font"></i>
 </span>
-                                    <input type="text" name="playTime" id="playTime" class="form-control" placeholder="play_time" value="2017-09-13"></div>
+                                    <input type="text" name="playTime" id="playTime" class="form-control" placeholder="play_time" value="2017-11-13"></div>
                             </div>
                         </div>
                         <div class="form-group"><label class="col-md-3 control-label">contact_tel<span class="required">* </span>

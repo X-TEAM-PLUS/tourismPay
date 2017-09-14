@@ -3,6 +3,7 @@ package com.xteam.tourismpay.service;
 import com.xteam.tourismpay.api.OrdersService;
 import com.xteam.tourismpay.api.PFT_OrderService;
 import com.xteam.tourismpay.common.JsonUtils;
+import com.xteam.tourismpay.common.MD5Utils;
 import com.xteam.tourismpay.dto.GetRealTimeStorageResonseData;
 import com.xteam.tourismpay.dto.SubmitOrderResponseData;
 import com.xteam.tourismpay.dto.OrdersDto;
@@ -61,5 +62,12 @@ public class PFT_OrderServiceImplTest {
         System.out.println(JsonUtils.toJSON(response));
 
     }
+    @Test
+    public void md5() throws Exception {
+       String str = MD5Utils.MD5("100019" + "jjl4yk11f82ce6c0f33a5c003f2fec56");
+        System.out.println(str);
+
+    }
+
 
 }
