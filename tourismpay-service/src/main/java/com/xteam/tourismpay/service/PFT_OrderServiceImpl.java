@@ -71,7 +71,8 @@ public class PFT_OrderServiceImpl implements PFT_OrderService {
             order_submit.setRemotenum(orderDBInfo.getOrderNo() +"");//远端订单号 String（贵网站的唯一订单号，请确保唯一，不能为空）
             order_submit.setTprice(orderDBInfo.getTprice().multiply(BigDecimal.valueOf(100)).toString());//单价(分单位)int
             order_submit.setTnum(orderDBInfo.getTnum().toString());//数量 int
-            order_submit.setPlaytime(orderDBInfo.getPlayTime());//游玩时间 Date(e.g.2012-03-16)
+            String playTime = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+            order_submit.setPlaytime(playTime);//游玩时间 Date(e.g.2012-03-16)
             order_submit.setOrdername(orderDBInfo.getOrderName());//取票人姓名 String （使用测试接口，取票人姓名必须为‘测试test’）
             order_submit.setOrdertel(orderDBInfo.getOrderTel());//取票人手机 String
             order_submit.setContactTEL(orderDBInfo.getContactTel());//联系人手机String

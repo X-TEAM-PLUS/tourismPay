@@ -10,6 +10,7 @@ import com.xteam.tourismpay.api.service.impl.WxPayThirdPartyPaymentServiceImpl;
 import com.xteam.tourismpay.dto.SubmitOrderResponseData;
 import com.xteam.tourismpay.web.controller.util.XMLUtil4jdom;
 import com.xteam.tourismpay.wx.util.PayCommonUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jdom.JDOMException;
@@ -54,6 +55,11 @@ public class WxPayController {
         ModelAndView modelAndView = new ModelAndView("getrq/wxpay");
         try {
             HashMap orderInfo = new HashMap();
+            if (StringUtils.isEmpty(out_trade_no) || StringUtils.isEmpty(total_amount) || StringUtils.isEmpty(productId) || StringUtils.isEmpty(subject)) {
+                modelAndView = new ModelAndView("error/error");
+                modelAndView.addObject("errorInfo", "参数不合法");
+                return modelAndView;
+            }
             orderInfo.put("total_amount", total_amount);
             orderInfo.put("productId", productId);
             orderInfo.put("subject", subject);
@@ -69,11 +75,13 @@ public class WxPayController {
                 concurrentMapWordCounts.put(out_trade_no, orderInfo);
             } else {
                 modelAndView = new ModelAndView("error/error");
+                modelAndView.addObject("errorInfo", "获取二维码失败");
             }
             modelAndView.addObject("rq", orderInfo);
             modelAndView.addObject("out_trade_no", out_trade_no);
         } catch (Exception e) {
             modelAndView = new ModelAndView("error/error");
+            modelAndView.addObject("errorInfo", "系统异常");
             log.error("获取数据异常", e);
         }
         return modelAndView;
@@ -179,6 +187,7 @@ public class WxPayController {
                 String openid = (String) packageParams.get("openid");
                 String is_subscribe = (String) packageParams.get("is_subscribe");
                 String out_trade_no = (String) packageParams.get("out_trade_no");
+                System.out.println("order_id_weixin :" + out_trade_no);
                 SubmitOrderResponseData responseData = pft_orderService.submit(out_trade_no);
 
                 String total_fee = (String) packageParams.get("total_fee");
