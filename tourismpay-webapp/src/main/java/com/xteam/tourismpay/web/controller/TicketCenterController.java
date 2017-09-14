@@ -35,12 +35,12 @@ public class TicketCenterController {
      */
     @RequestMapping(value = "/notify")
     @ResponseBody
-    public String notify(@RequestBody String json ) throws Exception {
+    public String notify(@RequestBody String  json ) throws Exception {
         String result = "success";
         try {
             if(json!=null && !"".equalsIgnoreCase(json)) {
                 //解析通知
-                TicketNotify ticketNotify = JsonUtils.transform(json, TicketNotify.class);
+                TicketNotify ticketNotify = JsonUtils.fromJSON(json, TicketNotify.class);
                 //更新记录
                 pft_orderService.notifyStatus(ticketNotify);
                 result = "200";

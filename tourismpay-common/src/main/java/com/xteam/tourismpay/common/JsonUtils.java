@@ -115,6 +115,7 @@ public class JsonUtils {
             String content = toJSON(source);
             return mapper.readValue(content, targetClass);
         } catch (Exception e) {
+            e.printStackTrace();
             return null;
         }
     }

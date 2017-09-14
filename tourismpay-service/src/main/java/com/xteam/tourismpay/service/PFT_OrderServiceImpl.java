@@ -151,7 +151,7 @@ public class PFT_OrderServiceImpl implements PFT_OrderService {
     public void notifyStatus(TicketNotify ticketNotify) throws PFT_Exception {
         log.info("接收到出票消息：" + JsonUtils.toJSON(ticketNotify));
         //验证加密码
-        String localVerifyCode = MD5Utils.MD5(systemAccount +secretKey);
+        String localVerifyCode = MD5Utils.MD5(systemAccount +secretKey).toLowerCase();
         if(localVerifyCode.equalsIgnoreCase(ticketNotify.getVerifyCode())){
             //更新订单的出票信息
             ordersManager.update(ticketNotify);

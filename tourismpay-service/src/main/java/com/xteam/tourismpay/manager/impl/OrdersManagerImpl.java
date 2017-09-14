@@ -92,8 +92,10 @@ public class OrdersManagerImpl implements OrdersManager {
         record.setSource(ticketNotify.getSource());
         record.setRefundType(ticketNotify.getRefundtype());
         record.setRemark(ticketNotify.getExplain());
-        record.setRefundAmount(BigDecimal.valueOf(Long.valueOf(ticketNotify.getRefundAmount())));
-        record.setRefundFee(BigDecimal.valueOf(Long.valueOf(ticketNotify.getRefundFee())));
+        record.setRefundAmount(ticketNotify.getRefundAmount()!=null?BigDecimal.valueOf(Long.valueOf(ticketNotify.getRefundAmount())):BigDecimal.ZERO);
+        record.setRefundFee(ticketNotify.getRefundFee()!=null?BigDecimal.valueOf(Long.valueOf(ticketNotify.getRefundFee())):BigDecimal.ZERO);
+        record.setCreated(new Date());
+        record.setUpdated(new Date());
         return recordDao.insert(record);
 
     }
