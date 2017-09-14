@@ -10,10 +10,27 @@
 </head>
 <body>
 <script>
+    var interval;
     window.onload=function show2dBarCode(){
         $("#imageId").attr("src","getImage?out_trade_no=${out_trade_no}");
-    }
 
+        interval = setInterval("checkstatus()",1000);
+    }
+    function checkstatus(){
+        var out_trade_no = '${out_trade_no}';
+        $.ajax({
+            type: "get",
+            url: "/tourismpay/getrq/checkStatus",
+            data: "out_trade_no=" + out_trade_no,
+            success: function (result) {
+                if (result.status == "0"){
+                    alert("支付成功，订单已经发到您的手机号，请注意查收!");
+                    clearInterval(interval);
+                    window.close();
+                }
+            }
+        });
+    }
 
     var sh=window.screen.height;
     var sw=window.screen.width;

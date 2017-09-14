@@ -6,7 +6,6 @@ import com.xteam.tourismpay.dto.OrdersDto;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.xalan.xsltc.dom.SAXImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -111,9 +110,17 @@ public class OrdersController {
                 modelAndView = new ModelAndView("/error/error");
                 return modelAndView;
             }
+
+            if (StringUtils.isEmpty(ordersDto.getOrderName())){
+                modelAndView.addObject("errorInfo", "联系人姓名不能为空");
+                modelAndView = new ModelAndView("/error/error");
+                return modelAndView;
+            }
             ordersDto.setPayMode(2);
             ordersDto.setOrderTel(ordersDto.getContactTel());
-            ordersDto.setOrderName("用户购买门票");
+            if (StringUtils.isEmpty(ordersDto.getOrderName())) {
+                ordersDto.setOrderName("用户购买门票");
+            }
             ordersDto.setSmsSend(0);
             ordersDto.setPlayTime(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
             //保存本地订单
@@ -126,7 +133,7 @@ public class OrdersController {
         } catch (Exception e) {
             log.error("提交数据异常", e);
             modelAndView = new ModelAndView("/error/error");
-            modelAndView.addObject("errorInfo","系统异常");
+            modelAndView.addObject("errorInfo", "系统异常");
             return modelAndView;
         }
         return modelAndView;

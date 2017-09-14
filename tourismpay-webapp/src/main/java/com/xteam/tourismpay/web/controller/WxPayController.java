@@ -7,6 +7,7 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.xteam.tourismpay.api.PFT_OrderService;
 import com.xteam.tourismpay.api.service.impl.WxPayThirdPartyPaymentServiceImpl;
+import com.xteam.tourismpay.common.JsonResult;
 import com.xteam.tourismpay.dto.SubmitOrderResponseData;
 import com.xteam.tourismpay.web.controller.util.XMLUtil4jdom;
 import com.xteam.tourismpay.wx.util.PayCommonUtil;
@@ -16,6 +17,7 @@ import org.apache.commons.logging.LogFactory;
 import org.jdom.JDOMException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
@@ -51,7 +53,7 @@ public class WxPayController {
     private static final int BLACK = 0xFF000000;
 
     @RequestMapping("/getRqWx")
-    public ModelAndView edit(String out_trade_no, String total_amount, String subject, String productId) {
+    public ModelAndView getRqWx(String out_trade_no, String total_amount, String subject, String productId) {
         ModelAndView modelAndView = new ModelAndView("getrq/wxpay");
         try {
             HashMap orderInfo = new HashMap();
@@ -86,6 +88,23 @@ public class WxPayController {
             log.error("获取数据异常", e);
         }
         return modelAndView;
+    }
+    @RequestMapping("/checkStatus")
+    @ResponseBody
+    public JsonResult checkStatus(String out_trade_no){
+        JsonResult jsonResult = new JsonResult();
+        HashMap map = concurrentMapWordCounts.get(out_trade_no);
+        if (!map.isEmpty() && map.get("status").equals("0")){
+            jsonResult.put("status",0);
+            jsonResult.setMessage("查询异常");
+            jsonResult.setSuccess(true);
+        }else {
+            jsonResult.put("status",1);
+            jsonResult.setMessage("查询异常");
+            jsonResult.setSuccess(true);
+        }
+        return jsonResult;
+
     }
 
     @RequestMapping("/getImage")
@@ -190,6 +209,8 @@ public class WxPayController {
                 String out_trade_no = (String) packageParams.get("out_trade_no");
                 System.out.println("order_id_weixin :" + out_trade_no);
                 SubmitOrderResponseData responseData = pft_orderService.submit(out_trade_no);
+                HashMap map = concurrentMapWordCounts.get(out_trade_no);
+                map.put("status","0");
 
                 String total_fee = (String) packageParams.get("total_fee");
 
