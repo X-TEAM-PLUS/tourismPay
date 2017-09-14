@@ -66,6 +66,7 @@ public class WxPayController {
             Map<String, Object> returnValue = wxPayThirdPartyPaymentService.getQRCode(out_trade_no, total_amount, subject, productId);
             if (returnValue.get("result_code") != null && returnValue.get("result_code").equals("FAIL")) {
                 modelAndView = new ModelAndView("error/error");
+                modelAndView.addObject("errorInfo", "获取二维码失败");
                 return modelAndView;
             }
             if ((Boolean) returnValue.get("success")) {
