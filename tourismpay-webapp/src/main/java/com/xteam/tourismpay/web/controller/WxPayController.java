@@ -7,6 +7,7 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.xteam.tourismpay.api.PFT_OrderService;
 import com.xteam.tourismpay.api.service.impl.WxPayThirdPartyPaymentServiceImpl;
+import com.xteam.tourismpay.dto.SubmitOrderResponseData;
 import com.xteam.tourismpay.web.controller.util.XMLUtil4jdom;
 import com.xteam.tourismpay.wx.util.PayCommonUtil;
 import org.apache.commons.logging.Log;
@@ -178,7 +179,8 @@ public class WxPayController {
                 String openid = (String) packageParams.get("openid");
                 String is_subscribe = (String) packageParams.get("is_subscribe");
                 String out_trade_no = (String) packageParams.get("out_trade_no");
-                pft_orderService.submit(out_trade_no);
+                SubmitOrderResponseData responseData = pft_orderService.submit(out_trade_no);
+
                 String total_fee = (String) packageParams.get("total_fee");
 
                 //////////执行自己的业务逻辑////////////////

@@ -26,13 +26,13 @@ public class PFT_OrderServiceImpl implements PFT_OrderService {
     /**
      * 账户
      */
-    @Value("${system.account}")
+    @Value("#{configProperties['system.account']}")
     private String systemAccount;
 
     /**
      * 密钥
      */
-    @Value("${system.secretKey}")
+    @Value("#{configProperties['system.secretKey']}")
     private String secretKey;
 
 

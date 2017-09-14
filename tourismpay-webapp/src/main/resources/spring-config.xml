@@ -17,4 +17,16 @@
     <!--数据源配置-->
     <import resource="classpath:spring-datasource.xml"/>
     <import resource="spring-config-wxpay.xml"/>
+
+
+    <bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="locations">
+            <list>
+                <value>classpath*:important.properties</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+        <property name="properties" ref="configProperties" />
+    </bean>
 </beans>

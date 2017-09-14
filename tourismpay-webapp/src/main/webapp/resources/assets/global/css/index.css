@@ -176,11 +176,11 @@ a.wsjb{ display: block; width: 377px; height: 137px; overflow: hidden; backgroun
 a.wsjb:hover{ background:url(../images/wpa2.png) no-repeat; }
 .mtp{ top:520px; }
 .ntp{ top:540px; }
-.btp{ top:558px; }
-.ftbp{ position: relative; top:558px;z-index: 0; }
+.btp{ top:250px; }
+.ftbp{ position: relative; top:250px;z-index: 0; }
 .mainMask { /*background-color:rgba(0,0,0,0.8);*/ display: none; background-color: #13251f; top:120px;  width: 1920px; height:880px; overflow: hidden; position:absolute; z-index:10; }
 /*#bcont{ overflow-x: hidden; }*/
-.indcont{ z-index: 9;   margin: 0 auto 0; width: 100%;   }
+.indcont{ z-index: 9;   margin: 0 auto 0; width: 100%; background: #845b3d;  }
 /*banner css*/
 .bgcont{ position:relative; z-index: 0 ; width: 100%; margin:0 auto;  height: 954px; overflow: hidden; }
 .flexslider { margin: 0px auto; position: relative; width: 100%; height: 954px; overflow: hidden; zoom: 1; }
@@ -688,3 +688,15 @@ a.ydbtn{ display: block; background: url(../images/yd_btn.png) no-repeat; width:
 	height:120px;
 }
 
+#imageId{
+	display: block;
+	margin: 0 auto;
+	padding-top: 100px;
+}
+.indcont small{
+	font-size: 20px;
+	line-height: 30px;
+	color: #fff !important;
+	display: block;
+	text-align: center;
+}
