@@ -116,6 +116,8 @@ public class OrdersController {
                 modelAndView = new ModelAndView("/error/error");
                 return modelAndView;
             }
+            ordersDto.setOrderMode(0);
+            ordersDto.setOrderStatus(0);
             ordersDto.setPayMode(2);
             ordersDto.setOrderTel(ordersDto.getContactTel());
             if (StringUtils.isEmpty(ordersDto.getOrderName())) {
