@@ -62,12 +62,7 @@ public class PFT_OrderServiceImplTest {
         System.out.println(JsonUtils.toJSON(response));
 
     }
-    @Test
-    public void md5() throws Exception {
-       String str = MD5Utils.MD5("100019" + "jjl4yk11f82ce6c0f33a5c003f2fec56");
-        System.out.println(str);
 
-    }
 
 
 }

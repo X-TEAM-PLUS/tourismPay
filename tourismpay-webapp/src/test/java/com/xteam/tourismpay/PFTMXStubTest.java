@@ -1,6 +1,16 @@
 package com.xteam.tourismpay;
 
 
+import com.xteam.tourismpay.common.JsonUtils;
+import com.xteam.tourismpay.common.MD5Utils;
+import com.xteam.tourismpay.dto.TicketNotify;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicHeader;
+import org.apache.http.protocol.HTTP;
+import org.apache.http.util.EntityUtils;
 import org.junit.Test;
 
 public class PFTMXStubTest {
@@ -81,4 +91,70 @@ public class PFTMXStubTest {
         }
 
     }
+
+    @Test
+    public void testNotify(){
+        String json = "{\"VerifyCode\":\"aa67c1bf2b411aa617c9d9e224582458\",\"Order16U\":\"4694091\",\"" +
+                "ActionTime\":\"2016‐06‐14" +
+                "16:44:35\",\"OrderCall\":\"2175807442‐22710996\",\"Tnumber\":\"3\",\"OrderState\":" +
+                "1,\"AllCheckNum\":\"3\",\"Source\":\"4\",\"Action\":\"1\"}";
+
+
+        TicketNotify ticketNotify = JsonUtils.fromJSON(json, TicketNotify.class);
+        System.out.println(json);
+        System.out.println(JsonUtils.toJSON(ticketNotify));
+    }
+
+    @Test
+    public void md5() throws Exception {
+        String str = MD5Utils.MD5("100019" + "jjl4yk11f82ce6c0f33a5c003f2fec56");
+        System.out.println(str.toLowerCase().equalsIgnoreCase("ab54f9d58e7774b14750ff468ce25a67"));
+
+    }
+
+
+    @Test
+    public void synYxGoodsInfoTest() {
+
+        try {
+
+            String url = "http://localhost:8080/ticket/center/notify";
+
+            String json = "{\"VerifyCode\":\"ab54f9d58e7774b14750ff468ce25a67\",\"Order16U\":\"4694091\",\"" +
+                    "ActionTime\":\"2016‐06‐14" +
+                    "16:44:35\",\"OrderCall\":\"1\",\"Tnumber\":\"3\",\"OrderState\":" +
+                    "1,\"AllCheckNum\":\"3\",\"Source\":\"4\",\"Action\":\"1\"}";
+            DefaultHttpClient httpClient = new DefaultHttpClient();
+
+            HttpPost httpPost = new HttpPost(url);
+
+            httpPost.addHeader(HTTP.CONTENT_TYPE, "application/json");
+
+
+
+            StringEntity se = new StringEntity(json);
+
+            se.setContentType("text/json");
+
+            se.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
+
+            httpPost.setEntity(se);
+
+            HttpResponse response=httpClient.execute(httpPost);
+            String result=EntityUtils.toString(response.getEntity());
+//输出调用结果
+    System.out.println(result);
+
+
+
+        } catch (Exception e) {
+
+            System.out.println("======回不来了=======" );
+
+        }
+
+
+
+    }
+
 }
