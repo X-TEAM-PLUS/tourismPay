@@ -115,31 +115,17 @@ public class PFTMXStubTest {
 
     @Test
     public void synYxGoodsInfoTest() {
-
         try {
-
             String url = "http://localhost:8080/ticket/center/notify";
-
-            String json = "{\"VerifyCode\":\"ab54f9d58e7774b14750ff468ce25a67\",\"Order16U\":\"4694091\",\"" +
-                    "ActionTime\":\"2016‐06‐14" +
-                    "16:44:35\",\"OrderCall\":\"1\",\"Tnumber\":\"3\",\"OrderState\":" +
-                    "1,\"AllCheckNum\":\"3\",\"Source\":\"4\",\"Action\":\"1\"}";
+           //String url = "http://101.200.210.122:8080/ticket/center/notify";
+            String json = "{\"VerifyCode\":\"ab54f9d58e7774b14750ff468ce25a67\",\"Order16U\":\"16377381\",\"ActionTime\":\"2017-09-14 15:14:41\",\"OrderCall\":\"10023\",\"Tnumber\":1,\"OrderState\":1,\"AllCheckNum\":1,\"Source\":4,\"Action\":2}";
             DefaultHttpClient httpClient = new DefaultHttpClient();
-
             HttpPost httpPost = new HttpPost(url);
-
             httpPost.addHeader(HTTP.CONTENT_TYPE, "application/json");
-
-
-
             StringEntity se = new StringEntity(json);
-
             se.setContentType("text/json");
-
             se.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
-
-            httpPost.setEntity(se);
-
+            httpPost.setEntity(null);
             HttpResponse response=httpClient.execute(httpPost);
             String result=EntityUtils.toString(response.getEntity());
 //输出调用结果

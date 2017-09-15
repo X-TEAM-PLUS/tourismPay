@@ -54,68 +54,67 @@
         init();
 
         function viewPagingToolBar(result) {
-            var limit =(pageNo *pageSize)>result.rowCount?result.rowCount:(pageNo *pageSize);
-                //总页数
-                var totalPageCount = Math.ceil(result.rowCount / pageSize);
-                //获取翻页对象pagination-toolbar
-                var paginationUI = $(selector + " .pagination-toolbar");
+            var limit = (pageNo * pageSize) > result.rowCount ? result.rowCount : (pageNo * pageSize);
+            //总页数
+            var totalPageCount = Math.ceil(result.rowCount / pageSize);
+            //获取翻页对象pagination-toolbar
+            var paginationUI = $(selector + " .pagination-toolbar");
 
-                if (paginationUI) {
-                    paginationUI.empty();
-                    var rowDiv = $("<div class='row'></div>");
-                    var displayInfoDiv = $("<div class='col-md-4'> 显示  "+ (result.rowCount>0?start+1:0)+ " 到  "+ limit+" 条，共 "+ result.rowCount +" 条</div>");
-                    var paginationtoolbarPanel = $("<div class='col-md-8'></div>");
-                    // 显示  1 到  10 条，共 43 条
-                    var paginationtoolbarDiv = $(" <ul class='pagination pull-right no-margin'></ul>");
-                    //上一页
-                    if (pageNo > 1) {
-                        paginationtoolbarDiv.append($("<li><a href=\"javascript:goPage('" + selector + "','" + getPagingParams((pageNo - 1)) + "')\"><i class=\"fa fa-arrow-left\"></li></a></li>"));
-                    } else {
-                        paginationtoolbarDiv.append($("<li  class=\"disabled\"><span><i class=\" disabled fa fa-arrow-left\"></i></span></li>"));
-                    }
-
-                    var pageNoStep = 10;
-                    var startPageNo = pageNo > pageNoStep ? (pageNo % pageNoStep == 0 ? pageNo - pageNoStep + 1 : pageNo - pageNo % pageNoStep + 1) : 1;
-                    var maxPageNo = startPageNo + pageNoStep > totalPageCount ? totalPageCount : startPageNo + pageNoStep;
-
-                    //首页
-                    if (pageNo > pageNoStep) {
-                        paginationtoolbarDiv.append($("<li><a href=\"javascript:goPage('" + selector + "','" + getPagingParams(1) + "')\">1</a></li>"));
-                        paginationtoolbarDiv.append($("<i class=\"fa fa-arrow-left\"></i>"));
-                    }
-
-                    //中间页码
-                    for (var i = startPageNo; i <= maxPageNo; i++) {
-                        var classContent;
-                        if (i == pageNo) {
-                            classContent = "class=\"active\"";
-                        } else {
-                            classContent = "";
-                        }
-                        paginationtoolbarDiv.append($("<li " + classContent + "><a href=\"javascript:goPage('" + selector + "','" + getPagingParams(i) + "')\">" + i + "</a></li>"));
-                    }
-
-                    if (totalPageCount - maxPageNo > 1) {
-                        paginationtoolbarDiv.append($("<li><span>&hellip;</span></li>"));
-                    }
-
-                    //尾页
-                    if (maxPageNo < totalPageCount) {
-                        paginationtoolbarDiv.append($("<li><a href=\"javascript:goPage('" + selector + "','" + getPagingParams(totalPageCount) + "')\">" + totalPageCount + "</a></li>"));
-                    }
-                    //下一页
-                    if (totalPageCount <= pageNo) {
-                        paginationtoolbarDiv.append($("<li class=\"disabled\"><a href=\"#\"><i class=\"fa  fa-arrow-right\"></li></a></li>"));
-                    } else {
-                        paginationtoolbarDiv.append($("<li><a href=\"javascript:goPage('" + selector + "','" + getPagingParams((pageNo + 1)) + "')\"><i class=\"fa  fa-arrow-right\"></li></a></li>"));
-                    }
-
-                    paginationtoolbarPanel.append(paginationtoolbarDiv);
-
-                    rowDiv.append(displayInfoDiv);
-                    rowDiv.append(paginationtoolbarPanel);
-                    paginationUI.append(rowDiv);
+            if (paginationUI) {
+                paginationUI.empty();
+                var rowDiv = $("<div class='row'></div>");
+                var displayInfoDiv = $("<div class='col-md-4'> 显示  " + (result.rowCount > 0 ? start + 1 : 0) + " 到  " + limit + " 条，共 " + result.rowCount + " 条</div>");
+                var paginationtoolbarPanel = $("<div class='col-md-8'></div>");
+                var paginationtoolbarDiv = $(" <ul class='pagination pull-right no-margin'></ul>");
+                //上一页
+                if (pageNo > 1) {
+                    paginationtoolbarDiv.append($("<li><a href=\"javascript:goPage('" + selector + "','" + getPagingParams((pageNo - 1)) + "')\"><i class=\"fa fa-arrow-left\"></li></a></li>"));
+                } else {
+                    paginationtoolbarDiv.append($("<li  class=\"disabled\"><span><i class=\" disabled fa fa-arrow-left\"></i></span></li>"));
                 }
+
+                var pageNoStep = 10;
+                var startPageNo = pageNo > pageNoStep ? (pageNo % pageNoStep == 0 ? pageNo - pageNoStep + 1 : pageNo - pageNo % pageNoStep + 1) : 1;
+                var maxPageNo = startPageNo + pageNoStep > totalPageCount ? totalPageCount : startPageNo + pageNoStep;
+
+                //首页
+                if (pageNo > pageNoStep) {
+                    paginationtoolbarDiv.append($("<li><a href=\"javascript:goPage('" + selector + "','" + getPagingParams(1) + "')\">1</a></li>"));
+                    paginationtoolbarDiv.append($("<li><span>&hellip;</span></li>"));
+                }
+
+                //中间页码
+                for (var i = startPageNo; i <= maxPageNo; i++) {
+                    var classContent;
+                    if (i == pageNo) {
+                        classContent = "class=\"active\"";
+                    } else {
+                        classContent = "";
+                    }
+                    paginationtoolbarDiv.append($("<li " + classContent + "><a href=\"javascript:goPage('" + selector + "','" + getPagingParams(i) + "')\">" + i + "</a></li>"));
+                }
+
+                if (totalPageCount - maxPageNo > 1) {
+                    paginationtoolbarDiv.append($("<li><span>&hellip;</span></li>"));
+                }
+
+                //尾页
+                if (maxPageNo < totalPageCount) {
+                    paginationtoolbarDiv.append($("<li><a href=\"javascript:goPage('" + selector + "','" + getPagingParams(totalPageCount) + "')\">" + totalPageCount + "</a></li>"));
+                }
+                //下一页
+                if (totalPageCount <= pageNo) {
+                    paginationtoolbarDiv.append($("<li class=\"disabled\"><a href=\"#\"><i class=\"fa  fa-arrow-right\"></li></a></li>"));
+                } else {
+                    paginationtoolbarDiv.append($("<li><a href=\"javascript:goPage('" + selector + "','" + getPagingParams((pageNo + 1)) + "')\"><i class=\"fa  fa-arrow-right\"></li></a></li>"));
+                }
+
+                paginationtoolbarPanel.append(paginationtoolbarDiv);
+
+                rowDiv.append(displayInfoDiv);
+                rowDiv.append(paginationtoolbarPanel);
+                paginationUI.append(rowDiv);
+            }
         }
 
         /**
@@ -174,8 +173,20 @@
                 return getActionTD(rowValue);
             } else { //普通单元格
                 var valueName = tdValue.attr("column");
-                if (valueName) {
-                    return $("<td>" + getColumnValue(rowValue, valueName) + "</td>");
+                var dataType = tdValue.attr('dataType');
+                if (dataType == "enum") {
+                    var convertValue = eval("(" + tdValue.attr("dataValue") + ")");
+                    if (valueName) {
+                        if (convertValue[rowValue[valueName]]!=null){
+                            return $("<td>" + convertValue[rowValue[valueName]] + "</td>");
+                        }else{
+                            return $("<td></td>");
+                        }
+                    }
+                } else {
+                    if (valueName) {
+                        return $("<td>" + getColumnValue(rowValue, valueName) + "</td>");
+                    }
                 }
             }
         }
@@ -189,14 +200,11 @@
         function getButtonDom(dock, rowValue) {
             var url = contextPath + dock.action + "?" + dock.parmaName + "=" + getColumnValue(rowValue, dock.column);
             var parmas = dock.name + "," + url + "," + dock.confirm + "," + dock.ajax;
-            var buttonColor = "default";
-            if(typeof(dock.buttonColor)!= 'undefined'){
-                buttonColor = dock.buttonColor;
-            }
-            var button  =$("<button  class='btn "+ buttonColor +" btn-flat btn-xs' onclick=\"execAction('" + selector + "','" + escape(parmas) + "','" + getPagingParams(opts.pageNo) + "');\"><i class='"+ dock.iconClass+"'></i></button>");
-            //var a = $("<a title='" + dock.name + "' href=\"javascript:execAction('" + selector + "','" + escape(parmas) + "','" + getPagingParams(opts.pageNo) + "');\" class='btn btn-"+ buttonColor+" btn-flat btn-xs'><i class='" + dock.iconClass + "'></i></a>");
-            return button;
+            var a = $("<a title='" + dock.name + "' href=\"javascript:execAction('" + selector + "','" + escape(parmas) + "','" + getPagingParams(opts.pageNo) + "');\" class='btn green  btn-flat btn-xs'><i class='" + dock.iconClass + "'></i></a>");
+            return a;
         }
+
+
 
 
         /**
@@ -205,25 +213,24 @@
          * @param rowValue
          */
         function getButtonGroupDom(dock, rowValue) {
-             var dom = $("<div class='btn-group'></div>");
-            var buttonColor = "default";
-            if(typeof(dock.buttonColor)!= 'undefined'){
-                buttonColor = dock.buttonColor;
-            }
-             var buttonGroup  =$("<button  class='btn "+ buttonColor +" dropdown-toggle'  data-toggle='dropdown'><i class='"+ dock.iconClass+"'></i> "+dock.name +" <i class='fa fa-angle-down'></i> </button>");
-             var dropdownMenu = $("<ul class='dropdown-menu' role='menu'></ul>");
+            var dom = $("<div class='btn-group'></div>");
+            var buttonGroup = $("<button  class='btn green dropdown-toggle btn-sm'  data-toggle='dropdown'><i class='" + dock.iconClass + "'></i> " + dock.name + " <i class='fa fa-angle-down'></i> </button>");
+            var dropdownMenu = $("<ul class='dropdown-menu' role='menu'></ul>");
             if (dock.items != 'undefined' && dock.items.length > 0) {
                 $.each(dock.items, function (index, item) {
                     var url = contextPath + item.action + "?" + item.parmaName + "=" + getColumnValue(rowValue, item.column);
                     var parmas = item.name + "," + url + "," + item.confirm + "," + item.ajax;
-                    var button = $("<li><a  href=\"javascript:execAction('" + selector + "','" + escape(parmas) + "','" + getPagingParams(opts.pageNo) + "');\"><i class='"+ item.iconClass +"'></i> "+ item.name+" </a></li>");
+                    var button = $("<li><a  href=\"javascript:execAction('" + selector + "','" + escape(parmas) + "','" + getPagingParams(opts.pageNo) + "');\"><i class='" + item.iconClass + "'></i> " + item.name + " </a></li>");
                     //控制可见性
-                    if(typeof(item.equalField)!= 'undefined' && typeof(item.equalValue) != 'undefined'){
-                        var checkValue = getColumnValue(rowValue,item.equalField);
-                        if(checkValue==item.equalValue){
+                    if (typeof(item.equalField) != 'undefined' && typeof(item.equalValue) != 'undefined') {
+                        var checkValue = getColumnValue(rowValue, item.equalField);
+                        if (checkValue == item.equalValue) {
                             dropdownMenu.append(button);
                         }
-                    }else{
+                        if(checkValue == ""){
+                            dropdownMenu.append(button);
+                        }
+                    } else {
                         dropdownMenu.append(button);
                     }
 
@@ -234,15 +241,15 @@
             return dom;
         }
 
-        function getXtypeDom(dock,rowValue) {
+        function getXtypeDom(dock, rowValue) {
             var xtype = "button";
-            if(typeof(dock.xtype) != 'undefined'){
+            if (typeof(dock.xtype) != 'undefined') {
                 xtype = dock.xtype;
             }
-            if(xtype=='button'){
-                    return getButtonDom(dock,rowValue);
-            }else if(xtype=='buttongroup'){
-                return getButtonGroupDom(dock,rowValue);
+            if (xtype == 'button') {
+                return getButtonDom(dock, rowValue);
+            } else if (xtype == 'buttongroup') {
+                return getButtonGroupDom(dock, rowValue);
             }
         }
 
@@ -257,13 +264,13 @@
                 //表格信息
                 $.each(opts.dockedItems, function (index, dock) {
                     //控制可见性
-                    if(typeof(dock.equalField) != 'undefined' && typeof(dock.equalValue)!= 'undefined'){
-                        var checkValue = getColumnValue(rowValue,dock.equalField);
-                        if(checkValue==dock.equalValue){
-                            td.append(getXtypeDom(dock,rowValue));
+                    if (typeof(dock.equalField) != 'undefined' && typeof(dock.equalValue) != 'undefined') {
+                        var checkValue = getColumnValue(rowValue, dock.equalField);
+                        if (checkValue == dock.equalValue) {
+                            td.append(getXtypeDom(dock, rowValue));
                         }
-                    }else{
-                        td.append(getXtypeDom(dock,rowValue));
+                    } else {
+                        td.append(getXtypeDom(dock, rowValue));
                     }
                 });
             }
@@ -319,7 +326,7 @@ function execAction(selector, parmas, pagingParams) {
     action.url = params[1];
     action.confirm = params[2];
     action.ajax = params[3];
-    if ("undefined" != action.confirm) {
+    if ("undefined" != action.confirm  && 'true'==action.confirm) {
         confirmAction(selector, action, pagingParams);
     } else {
         if ("undefined" != action.ajax) {
@@ -341,11 +348,14 @@ function execAction(selector, parmas, pagingParams) {
             success: function (result) {
                 var success = result.success;
                 if (success) {
-                    window.wxc.xcConfirm(action.name + "成功。", window.wxc.xcConfirm.typeEnum.info);
+                    window.wxc.xcConfirm(action.name + "成功。", window.wxc.xcConfirm.typeEnum.success);
                     goPage(selector, pagingParams);
                 } else {
                     window.wxc.xcConfirm(result.message, window.wxc.xcConfirm.typeEnum.error);
                 }
+            }
+            ,error:function (textStatus, errorThrown) {
+                window.wxc.xcConfirm("服务端响应异常:[statusCode:"+ textStatus.status +"]", window.wxc.xcConfirm.typeEnum.error);
             }
         });
     }

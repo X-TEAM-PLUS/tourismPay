@@ -76,6 +76,6 @@ public interface OrdersManager {
      * @param ticketNotify
      * @return
      */
-    int update(TicketNotify ticketNotify);
+    int update(TicketNotify ticketNotify) throws Exception;
 
 }

@@ -72,11 +72,14 @@ public class OrdersManagerImpl implements OrdersManager {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public int update(TicketNotify ticketNotify) {
+    public int update(TicketNotify ticketNotify) throws Exception {
         Orders queryBean = new Orders();
         queryBean.setOrderNo(BigDecimal.valueOf(Long.valueOf(ticketNotify.getOrderCall())));
         Orders orders =ordersDao.get(queryBean);
 
+        if(orders==null){
+            throw  new Exception("原订单不存在： 订单号【"+ticketNotify.getOrderCall() +"");
+        }
         //更新出票成功
         orders.setOrderStatus(3);
         orders.setUpdated(new Date());

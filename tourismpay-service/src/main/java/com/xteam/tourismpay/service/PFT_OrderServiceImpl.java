@@ -154,7 +154,11 @@ public class PFT_OrderServiceImpl implements PFT_OrderService {
         String localVerifyCode = MD5Utils.MD5(systemAccount +secretKey).toLowerCase();
         if(localVerifyCode.equalsIgnoreCase(ticketNotify.getVerifyCode())){
             //更新订单的出票信息
-            ordersManager.update(ticketNotify);
+            try {
+                ordersManager.update(ticketNotify);
+            } catch (Exception e) {
+                throw new PFT_Exception(e.getMessage());
+            }
         }else{
             throw  new PFT_Exception("加密码不一致");
         }
