@@ -45,11 +45,7 @@
                     <div class="table-toolbar">
                         <div class="row">
                             <div class="col-md-10">
-                                <div class="btn-group">
-                                    <button id="newOrdersButton" class="btn green" onclick="location.href = 'add';">
-                                        添加订单 <i class="fa fa-plus"></i>
-                                    </button>
-                                </div>
+
                             </div>
                             <div class="col-md-2 pull-right">
                                 <form id="ordersTableForm" onsubmit="init();return false;">
@@ -69,35 +65,22 @@
                     <table class="table table-striped table-bordered templatemo-user-table">
                         <thead>
                         <tr>
-                            
-<th column="orderNo" checkbox="true"><input type="checkbox" name="allCheckBox"></th>
-<th column="orderNo">order_no</th>
-<th column="pftOrderNo">pft_order_no</th>
-<th column="productSn">product_sn</th>
-<th column="orderMode">order_mode</th>
-<th column="series">series</th>
-<th column="assembly">assembly</th>
-<th column="pCode">p_code</th>
-<th column="concatId">concat_id</th>
-<th column="personId">person_id</th>
-<th column="m">m</th>
-<th column="uuOrderNum">uu_order_num</th>
-<th column="memo">memo</th>
-<th column="orderStatus">order_status</th>
-<th column="responseMsg">response_msg</th>
-<th column="responeCode">respone_code</th>
-<th column="tid">tid</th>
-<th column="updated">updated</th>
-<th column="lid">lid</th>
-<th column="created">created</th>
-<th column="tnum">tnum</th>
-<th column="tprice">tprice</th>
-<th column="orderName">order_name</th>
-<th column="playTime">play_time</th>
-<th column="contactTel">contact_tel</th>
-<th column="orderTel">order_tel</th>
-<th column="payMode">pay_mode</th>
-<th column="smsSend">sms_send</th>
+                            <th column="orderNo">订单号</th>
+                            <th column="pftOrderNo">票付通订单号</th>
+                            <th column="orderStatus" dataType="enum" dataValue="{0:'未支付',1:'已支付',2:'票付通下单成功',3:'已出票'}">订单状态</th>
+                            <th column="lid">景区id</th>
+                            <th column="tid">门票id</th>
+                            <th column="productSn">产品ID</th>
+                            <th column="orderMode" dataType="enum" dataValue="{0:'正常下单'}">下单方式</th>
+                            <th column="m">供应商id</th>
+                            <th column="tnum">数量</th>
+                            <th column="tprice">价格</th>
+                            <th column="playTime">游玩日期</th>
+                            <th column="orderTel">手机号</th>
+                            <th column="payMode" dataType="enum" dataValue="{0:'使用账户余额',2:'使用供应商授信支付',4:'现场支付'}">扣款方式</th>
+                            <th column="smsSend" dataType="enum" dataValue="{0:'发送',1:'不发送'}">是否发送短信</th>
+                            <th column="updated">更新时间</th>
+                            <th column="created">创建时间</th>
 <th action="true">操作</th>
                         </tr>
                         </thead>

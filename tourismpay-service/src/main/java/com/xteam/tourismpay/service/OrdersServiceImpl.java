@@ -65,6 +65,7 @@ public class OrdersServiceImpl implements OrdersService {
                 orders.setUpdated(new Date());
                 count = ordersManager.insert(orders);
                 ordersDto.setOrderNo(orders.getOrderNo());//回写本地订单号
+                ordersDto.setTprice(orders.getTprice());//价格
             }else{
                 throw new Exception("查询库存异常");
             }
