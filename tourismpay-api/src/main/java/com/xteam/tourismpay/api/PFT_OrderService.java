@@ -6,6 +6,14 @@ import com.xteam.tourismpay.dto.*;
  * 票付通订单接口
  */
 public interface PFT_OrderService {
+
+    /**
+     * 查询景区所有门票
+     * @param uuLld
+     * @return
+     * @throws PFT_Exception
+     */
+    public GetTicketListResponseData getTicketList(String uuLld ) throws PFT_Exception;
     /**
      * 提交订单
      *

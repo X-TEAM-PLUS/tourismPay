@@ -39,6 +39,40 @@ public class PFT_OrderServiceImpl implements PFT_OrderService {
 
 
     @Override
+    public GetTicketListResponseData getTicketList(String uuLld) throws PFT_Exception {
+        GetTicketListResponseData response = null;
+        try {
+
+            //通过axis2自动生成的web service客户端的代码类
+            com.xteam.tourismpay.PFTMXStub pFTMXStub = new com.xteam.tourismpay.PFTMXStub();
+            //创建接口对应对象
+            com.xteam.tourismpay.PFTMXStub.Get_Ticket_List   getTicketList = new com.xteam.tourismpay.PFTMXStub.Get_Ticket_List();
+            //设置接口调用参数
+            getTicketList.setAc(systemAccount);
+            getTicketList.setPw(secretKey);
+            getTicketList.setN(uuLld); //景区的ID 号int （注：2.1&门票接口的UUlid）  2633
+
+            //获取接口响应值
+            com.xteam.tourismpay.PFTMXStub.Get_Ticket_ListResponse  getTicketListResponse = pFTMXStub.get_Ticket_List(getTicketList);
+            String result = getTicketListResponse.getGet_Ticket_List();
+            log.info("查询门票列表："+result);
+            //解析
+            JAXBContext context = JAXBContext.newInstance(GetTicketListResponseData.class);
+            Unmarshaller unmar = context.createUnmarshaller();
+            response = (GetTicketListResponseData) unmar.unmarshal( new StringReader(result));
+            if(response.getGetTicketListResponse()[0].getUuErrorcode()!=null){
+                throw new PFT_Exception("["+response.getGetTicketListResponse()[0].getUuErrorcode()+"]:"+response.getGetTicketListResponse()[0].getUuErrorinfo());
+            }
+        }
+        catch (Exception e) {
+            log.error("查询门票列表接口调用异常",e);
+            throw  new PFT_Exception("查询门票列表接口调用异常");
+        }
+
+        return response;
+    }
+
+    @Override
     public SubmitOrderResponseData submit(String orderNo) throws PFT_Exception {
         SubmitOrderResponseData response = null;
         try {

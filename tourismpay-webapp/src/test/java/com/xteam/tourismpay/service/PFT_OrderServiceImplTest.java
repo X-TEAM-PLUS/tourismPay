@@ -3,8 +3,8 @@ package com.xteam.tourismpay.service;
 import com.xteam.tourismpay.api.OrdersService;
 import com.xteam.tourismpay.api.PFT_OrderService;
 import com.xteam.tourismpay.common.JsonUtils;
-import com.xteam.tourismpay.common.MD5Utils;
 import com.xteam.tourismpay.dto.GetRealTimeStorageResonseData;
+import com.xteam.tourismpay.dto.GetTicketListResponseData;
 import com.xteam.tourismpay.dto.SubmitOrderResponseData;
 import com.xteam.tourismpay.dto.OrdersDto;
 import org.junit.Test;
@@ -63,6 +63,12 @@ public class PFT_OrderServiceImplTest {
 
     }
 
+    @Test
+    public void getGetTicketList() throws Exception {
+        GetTicketListResponseData  response = pft_orderService.getTicketList("2633");
+        System.out.println(JsonUtils.toJSON(response));
+
+    }
 
 
 }

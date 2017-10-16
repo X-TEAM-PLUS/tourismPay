@@ -3,6 +3,7 @@ package com.xteam.tourismpay.web.controller;
 import com.xteam.tourismpay.api.PFT_OrderService;
 import com.xteam.tourismpay.common.JsonResult;
 import com.xteam.tourismpay.common.JsonUtils;
+import com.xteam.tourismpay.dto.GetTicketListResponseData;
 import com.xteam.tourismpay.dto.TicketNotify;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
@@ -85,4 +86,29 @@ public class TicketCenterController {
         }
     }
 
+
+
+    @RequestMapping(value = "/getTicketList")
+    @ResponseBody
+    public JsonResult getTicketList(String uuLld) throws Exception {
+        JsonResult jsonResult = new JsonResult();
+        try {
+            //查询景区的所有票信息列表
+            GetTicketListResponseData data = pft_orderService.getTicketList(uuLld);
+            if(data.getGetTicketListResponse()[0].getUuErrorcode()==null){
+                // 设置结果集
+                jsonResult.put("list", data.getGetTicketListResponse());
+                jsonResult.setSuccess(true);
+            }else{
+                jsonResult.setSuccess(false);
+                jsonResult.put("errorCode",data.getGetTicketListResponse()[0].getUuErrorcode());
+                jsonResult.put("errorInfo",data.getGetTicketListResponse()[0].getUuErrorinfo());
+            }
+        } catch (Exception e) {
+            log.error("查询异常", e);
+            jsonResult.setMessage("查询异常");
+            jsonResult.setSuccess(false);
+        }
+        return jsonResult;
+    }
 }
