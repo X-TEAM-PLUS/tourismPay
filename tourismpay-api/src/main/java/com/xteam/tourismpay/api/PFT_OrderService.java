@@ -18,10 +18,11 @@ public interface PFT_OrderService {
      * 提交订单
      *
      * @param orderNo 本地订单号
+     * @param payWay 1微信支付 2支付宝支付 3银联支会
      * @return
      * @throws Exception
      */
-    public SubmitOrderResponseData submit(String orderNo) throws PFT_Exception;
+    public SubmitOrderResponseData submit(String orderNo,int  payWay) throws PFT_Exception;
 
     /**
      * 查询订单

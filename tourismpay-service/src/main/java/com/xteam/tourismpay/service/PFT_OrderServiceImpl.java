@@ -73,7 +73,7 @@ public class PFT_OrderServiceImpl implements PFT_OrderService {
     }
 
     @Override
-    public SubmitOrderResponseData submit(String orderNo) throws PFT_Exception {
+    public SubmitOrderResponseData submit(String orderNo,int  payWay) throws PFT_Exception {
         SubmitOrderResponseData response = null;
         try {
             //查询本地订单
@@ -88,6 +88,8 @@ public class PFT_OrderServiceImpl implements PFT_OrderService {
             orderDBInfo.setUpdated(new Date());
             //订单状态已支付
             orderDBInfo.setOrderStatus(1);
+            //支付方式
+            orderDBInfo.setPayWay(payWay);
             //更新数据
             ordersManager.update(orderDBInfo);
 

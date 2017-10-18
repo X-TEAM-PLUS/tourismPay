@@ -9,6 +9,7 @@ import com.xteam.tourismpay.api.OrdersService;
 import com.xteam.tourismpay.api.PFT_OrderService;
 import com.xteam.tourismpay.api.service.impl.WxPayThirdPartyPaymentServiceImpl;
 import com.xteam.tourismpay.common.JsonResult;
+import com.xteam.tourismpay.common.PayWay;
 import com.xteam.tourismpay.dto.OrdersDto;
 import com.xteam.tourismpay.dto.SubmitOrderResponseData;
 import com.xteam.tourismpay.web.controller.util.XMLUtil4jdom;
@@ -220,7 +221,7 @@ public class WxPayController {
                 String is_subscribe = (String) packageParams.get("is_subscribe");
                 String out_trade_no = (String) packageParams.get("out_trade_no");
                 System.out.println("order_id_weixin :" + out_trade_no);
-                SubmitOrderResponseData responseData = pft_orderService.submit(out_trade_no);
+                SubmitOrderResponseData responseData = pft_orderService.submit(out_trade_no, PayWay.WeiXin.value());
                 HashMap map = concurrentMapWordCounts.get(out_trade_no);
                 map.put("status", "0");
 
