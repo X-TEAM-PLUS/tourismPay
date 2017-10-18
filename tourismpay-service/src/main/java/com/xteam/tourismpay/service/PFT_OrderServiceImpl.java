@@ -159,7 +159,7 @@ public class PFT_OrderServiceImpl implements PFT_OrderService {
                 com.xteam.tourismpay.PFTMXStub.OrderQuery orderQuery = new com.xteam.tourismpay.PFTMXStub.OrderQuery();
                 orderQuery.setAc(systemAccount);
                 orderQuery.setPw(secretKey);
-                orderQuery.setPftOrdernum(orderDBInfo.getUuOrderNum());
+                orderQuery.setPftOrdernum(orderDBInfo.getPftOrderNo());
                 orderQuery.setRemoteOrdernum(orderDBInfo.getOrderNo().toString());
                 //获取接口响应值
                 com.xteam.tourismpay.PFTMXStub.OrderQueryResponse  queryResponse = pFTMXStub.orderQuery(orderQuery);

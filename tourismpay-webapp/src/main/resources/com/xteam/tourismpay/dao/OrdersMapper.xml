@@ -2,23 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.xteam.tourismpay.dao.OrdersDao" >
   <resultMap id="BaseResultMap" type="com.xteam.tourismpay.domain.Orders" >
-      <id  column="ORDER_NO" property="orderNo" jdbcType="DECIMAL"  />
+      <id  column="ORDER_NO" property="orderNo" jdbcType="INTEGER"  />
 <result  column="ORDER_TEL" property="orderTel" jdbcType="VARCHAR"  />
 <result  column="SMS_SEND" property="smsSend" jdbcType="INTEGER"  />
 <result  column="CONTACT_TEL" property="contactTel" jdbcType="VARCHAR"  />
-<result  column="ORDER_MODE" property="orderMode" jdbcType="INTEGER"  />
 <result  column="PAY_MODE" property="payMode" jdbcType="INTEGER"  />
-<result  column="SERIES" property="series" jdbcType="VARCHAR"  />
+<result  column="PAY_WAY" property="payWay" jdbcType="INTEGER"  />
 <result  column="ASSEMBLY" property="assembly" jdbcType="VARCHAR"  />
-<result  column="P_CODE" property="pCode" jdbcType="VARCHAR"  />
+<result  column="ORDER_MODE" property="orderMode" jdbcType="INTEGER"  />
 <result  column="CONCAT_ID" property="concatId" jdbcType="VARCHAR"  />
-<result  column="M" property="m" jdbcType="VARCHAR"  />
-<result  column="MEMO" property="memo" jdbcType="VARCHAR"  />
+<result  column="SERIES" property="series" jdbcType="VARCHAR"  />
+<result  column="P_CODE" property="pCode" jdbcType="VARCHAR"  />
 <result  column="PERSON_ID" property="personId" jdbcType="VARCHAR"  />
+<result  column="M" property="m" jdbcType="VARCHAR"  />
 <result  column="PRODUCT_SN" property="productSn" jdbcType="VARCHAR"  />
 <result  column="ORDER_STATUS" property="orderStatus" jdbcType="INTEGER"  />
 <result  column="PFT_ORDER_NO" property="pftOrderNo" jdbcType="VARCHAR"  />
-<result  column="UU_ORDER_NUM" property="uuOrderNum" jdbcType="VARCHAR"  />
+<result  column="MEMO" property="memo" jdbcType="VARCHAR"  />
 <result  column="TID" property="tid" jdbcType="VARCHAR"  />
 <result  column="RESPONSE_MSG" property="responseMsg" jdbcType="VARCHAR"  />
 <result  column="LID" property="lid" jdbcType="VARCHAR"  />
@@ -35,7 +35,7 @@
   </resultMap>
   <!--删除记录-->
   <delete id="delete" parameterType="com.xteam.tourismpay.domain.Orders" >
-      delete from T_ORDERS  where ORDER_NO=#{orderNo,jdbcType=DECIMAL}
+      delete from T_ORDERS  where ORDER_NO=#{orderNo,jdbcType=INTEGER}
   </delete>
 
   <!--插入记录-->
@@ -43,19 +43,19 @@
          insert into T_ORDERS ( ORDER_TEL
  , SMS_SEND
  , CONTACT_TEL
- , ORDER_MODE
  , PAY_MODE
- , SERIES
+ , PAY_WAY
  , ASSEMBLY
- , P_CODE
+ , ORDER_MODE
  , CONCAT_ID
- , M
- , MEMO
+ , SERIES
+ , P_CODE
  , PERSON_ID
+ , M
  , PRODUCT_SN
  , ORDER_STATUS
  , PFT_ORDER_NO
- , UU_ORDER_NUM
+ , MEMO
  , TID
  , RESPONSE_MSG
  , LID
@@ -71,19 +71,19 @@
 )values(#{orderTel,jdbcType=VARCHAR}
  , #{smsSend,jdbcType=INTEGER}
  , #{contactTel,jdbcType=VARCHAR}
- , #{orderMode,jdbcType=INTEGER}
  , #{payMode,jdbcType=INTEGER}
- , #{series,jdbcType=VARCHAR}
+ , #{payWay,jdbcType=INTEGER}
  , #{assembly,jdbcType=VARCHAR}
- , #{pCode,jdbcType=VARCHAR}
+ , #{orderMode,jdbcType=INTEGER}
  , #{concatId,jdbcType=VARCHAR}
- , #{m,jdbcType=VARCHAR}
- , #{memo,jdbcType=VARCHAR}
+ , #{series,jdbcType=VARCHAR}
+ , #{pCode,jdbcType=VARCHAR}
  , #{personId,jdbcType=VARCHAR}
+ , #{m,jdbcType=VARCHAR}
  , #{productSn,jdbcType=VARCHAR}
  , #{orderStatus,jdbcType=INTEGER}
  , #{pftOrderNo,jdbcType=VARCHAR}
- , #{uuOrderNum,jdbcType=VARCHAR}
+ , #{memo,jdbcType=VARCHAR}
  , #{tid,jdbcType=VARCHAR}
  , #{responseMsg,jdbcType=VARCHAR}
  , #{lid,jdbcType=VARCHAR}
@@ -104,19 +104,19 @@
            insert into T_ORDERS ( ORDER_TEL
  , SMS_SEND
  , CONTACT_TEL
- , ORDER_MODE
  , PAY_MODE
- , SERIES
+ , PAY_WAY
  , ASSEMBLY
- , P_CODE
+ , ORDER_MODE
  , CONCAT_ID
- , M
- , MEMO
+ , SERIES
+ , P_CODE
  , PERSON_ID
+ , M
  , PRODUCT_SN
  , ORDER_STATUS
  , PFT_ORDER_NO
- , UU_ORDER_NUM
+ , MEMO
  , TID
  , RESPONSE_MSG
  , LID
@@ -135,19 +135,19 @@
 #{item.orderTel,jdbcType=VARCHAR}
  , #{item.smsSend,jdbcType=INTEGER}
  , #{item.contactTel,jdbcType=VARCHAR}
- , #{item.orderMode,jdbcType=INTEGER}
  , #{item.payMode,jdbcType=INTEGER}
- , #{item.series,jdbcType=VARCHAR}
+ , #{item.payWay,jdbcType=INTEGER}
  , #{item.assembly,jdbcType=VARCHAR}
- , #{item.pCode,jdbcType=VARCHAR}
+ , #{item.orderMode,jdbcType=INTEGER}
  , #{item.concatId,jdbcType=VARCHAR}
- , #{item.m,jdbcType=VARCHAR}
- , #{item.memo,jdbcType=VARCHAR}
+ , #{item.series,jdbcType=VARCHAR}
+ , #{item.pCode,jdbcType=VARCHAR}
  , #{item.personId,jdbcType=VARCHAR}
+ , #{item.m,jdbcType=VARCHAR}
  , #{item.productSn,jdbcType=VARCHAR}
  , #{item.orderStatus,jdbcType=INTEGER}
  , #{item.pftOrderNo,jdbcType=VARCHAR}
- , #{item.uuOrderNum,jdbcType=VARCHAR}
+ , #{item.memo,jdbcType=VARCHAR}
  , #{item.tid,jdbcType=VARCHAR}
  , #{item.responseMsg,jdbcType=VARCHAR}
  , #{item.lid,jdbcType=VARCHAR}
@@ -178,32 +178,32 @@ SMS_SEND=#{smsSend,jdbcType=INTEGER},
 <if test="contactTel!=null ">
 CONTACT_TEL=#{contactTel,jdbcType=VARCHAR},
 </if>
-<if test="orderMode!=null ">
-ORDER_MODE=#{orderMode,jdbcType=INTEGER},
-</if>
 <if test="payMode!=null ">
 PAY_MODE=#{payMode,jdbcType=INTEGER},
 </if>
-<if test="series!=null ">
-SERIES=#{series,jdbcType=VARCHAR},
+<if test="payWay!=null ">
+PAY_WAY=#{payWay,jdbcType=INTEGER},
 </if>
 <if test="assembly!=null ">
 ASSEMBLY=#{assembly,jdbcType=VARCHAR},
 </if>
-<if test="pCode!=null ">
-P_CODE=#{pCode,jdbcType=VARCHAR},
+<if test="orderMode!=null ">
+ORDER_MODE=#{orderMode,jdbcType=INTEGER},
 </if>
 <if test="concatId!=null ">
 CONCAT_ID=#{concatId,jdbcType=VARCHAR},
 </if>
-<if test="m!=null ">
-M=#{m,jdbcType=VARCHAR},
+<if test="series!=null ">
+SERIES=#{series,jdbcType=VARCHAR},
 </if>
-<if test="memo!=null ">
-MEMO=#{memo,jdbcType=VARCHAR},
+<if test="pCode!=null ">
+P_CODE=#{pCode,jdbcType=VARCHAR},
 </if>
 <if test="personId!=null ">
 PERSON_ID=#{personId,jdbcType=VARCHAR},
+</if>
+<if test="m!=null ">
+M=#{m,jdbcType=VARCHAR},
 </if>
 <if test="productSn!=null ">
 PRODUCT_SN=#{productSn,jdbcType=VARCHAR},
@@ -214,8 +214,8 @@ ORDER_STATUS=#{orderStatus,jdbcType=INTEGER},
 <if test="pftOrderNo!=null ">
 PFT_ORDER_NO=#{pftOrderNo,jdbcType=VARCHAR},
 </if>
-<if test="uuOrderNum!=null ">
-UU_ORDER_NUM=#{uuOrderNum,jdbcType=VARCHAR},
+<if test="memo!=null ">
+MEMO=#{memo,jdbcType=VARCHAR},
 </if>
 <if test="tid!=null ">
 TID=#{tid,jdbcType=VARCHAR},
@@ -255,21 +255,21 @@ PLAY_TIME=#{playTime,jdbcType=VARCHAR},
 </if>
 </trim>
 </set>
-  where ORDER_NO=#{orderNo,jdbcType=DECIMAL}
+  where ORDER_NO=#{orderNo,jdbcType=INTEGER}
 </update>
 
  <!--查询单条记录-->
  <select id="get" resultMap="BaseResultMap" parameterType="com.xteam.tourismpay.domain.Orders" >
-    select  ORDER_NO , ORDER_TEL , SMS_SEND , CONTACT_TEL , ORDER_MODE , PAY_MODE , SERIES , ASSEMBLY , P_CODE , CONCAT_ID , M , MEMO , PERSON_ID , PRODUCT_SN , ORDER_STATUS , PFT_ORDER_NO , UU_ORDER_NUM , TID , RESPONSE_MSG , LID , RESPONE_CODE , RETAIL_PRICE , UPDATED , TPRICE , CREATED , TNUM , ORDER_AMOUNT , ORDER_NAME , PLAY_TIME from T_ORDERS  where ORDER_NO=#{orderNo,jdbcType=DECIMAL}
+    select  ORDER_NO , ORDER_TEL , SMS_SEND , CONTACT_TEL , PAY_MODE , PAY_WAY , ASSEMBLY , ORDER_MODE , CONCAT_ID , SERIES , P_CODE , PERSON_ID , M , PRODUCT_SN , ORDER_STATUS , PFT_ORDER_NO , MEMO , TID , RESPONSE_MSG , LID , RESPONE_CODE , RETAIL_PRICE , UPDATED , TPRICE , CREATED , TNUM , ORDER_AMOUNT , ORDER_NAME , PLAY_TIME from T_ORDERS  where ORDER_NO=#{orderNo,jdbcType=INTEGER}
 </select>
 
 <!--查询记录-->
 <select id="query" resultMap="BaseResultMap" parameterType="com.xteam.tourismpay.domain.Orders">
-      select  ORDER_NO , ORDER_TEL , SMS_SEND , CONTACT_TEL , ORDER_MODE , PAY_MODE , SERIES , ASSEMBLY , P_CODE , CONCAT_ID , M , MEMO , PERSON_ID , PRODUCT_SN , ORDER_STATUS , PFT_ORDER_NO , UU_ORDER_NUM , TID , RESPONSE_MSG , LID , RESPONE_CODE , RETAIL_PRICE , UPDATED , TPRICE , CREATED , TNUM , ORDER_AMOUNT , ORDER_NAME , PLAY_TIME from T_ORDERS 
+      select  ORDER_NO , ORDER_TEL , SMS_SEND , CONTACT_TEL , PAY_MODE , PAY_WAY , ASSEMBLY , ORDER_MODE , CONCAT_ID , SERIES , P_CODE , PERSON_ID , M , PRODUCT_SN , ORDER_STATUS , PFT_ORDER_NO , MEMO , TID , RESPONSE_MSG , LID , RESPONE_CODE , RETAIL_PRICE , UPDATED , TPRICE , CREATED , TNUM , ORDER_AMOUNT , ORDER_NAME , PLAY_TIME from T_ORDERS 
 <where>
 <if test="orderNo!=null">
 <![CDATA[
- and ORDER_NO=#{orderNo,jdbcType=DECIMAL}
+ and ORDER_NO=#{orderNo,jdbcType=INTEGER}
 ]]>
 </if>
 <if test="orderTel!=null and orderTel!=''">
@@ -283,36 +283,38 @@ PLAY_TIME=#{playTime,jdbcType=VARCHAR},
 <if test="contactTel!=null and contactTel!=''">
 <![CDATA[ and CONTACT_TEL=#{contactTel,jdbcType=VARCHAR}]]>
 </if>
-<if test="orderMode!=null">
-<![CDATA[
- and ORDER_MODE=#{orderMode,jdbcType=INTEGER}
-]]>
-</if>
 <if test="payMode!=null">
 <![CDATA[
  and PAY_MODE=#{payMode,jdbcType=INTEGER}
 ]]>
 </if>
-<if test="series!=null and series!=''">
-<![CDATA[ and SERIES=#{series,jdbcType=VARCHAR}]]>
+<if test="payWay!=null">
+<![CDATA[
+ and PAY_WAY=#{payWay,jdbcType=INTEGER}
+]]>
 </if>
 <if test="assembly!=null and assembly!=''">
 <![CDATA[ and ASSEMBLY=#{assembly,jdbcType=VARCHAR}]]>
 </if>
-<if test="pCode!=null and pCode!=''">
-<![CDATA[ and P_CODE=#{pCode,jdbcType=VARCHAR}]]>
+<if test="orderMode!=null">
+<![CDATA[
+ and ORDER_MODE=#{orderMode,jdbcType=INTEGER}
+]]>
 </if>
 <if test="concatId!=null and concatId!=''">
 <![CDATA[ and CONCAT_ID=#{concatId,jdbcType=VARCHAR}]]>
 </if>
-<if test="m!=null and m!=''">
-<![CDATA[ and M=#{m,jdbcType=VARCHAR}]]>
+<if test="series!=null and series!=''">
+<![CDATA[ and SERIES=#{series,jdbcType=VARCHAR}]]>
 </if>
-<if test="memo!=null and memo!=''">
-<![CDATA[ and MEMO=#{memo,jdbcType=VARCHAR}]]>
+<if test="pCode!=null and pCode!=''">
+<![CDATA[ and P_CODE=#{pCode,jdbcType=VARCHAR}]]>
 </if>
 <if test="personId!=null and personId!=''">
 <![CDATA[ and PERSON_ID=#{personId,jdbcType=VARCHAR}]]>
+</if>
+<if test="m!=null and m!=''">
+<![CDATA[ and M=#{m,jdbcType=VARCHAR}]]>
 </if>
 <if test="productSn!=null and productSn!=''">
 <![CDATA[ and PRODUCT_SN=#{productSn,jdbcType=VARCHAR}]]>
@@ -325,8 +327,8 @@ PLAY_TIME=#{playTime,jdbcType=VARCHAR},
 <if test="pftOrderNo!=null and pftOrderNo!=''">
 <![CDATA[ and PFT_ORDER_NO=#{pftOrderNo,jdbcType=VARCHAR}]]>
 </if>
-<if test="uuOrderNum!=null and uuOrderNum!=''">
-<![CDATA[ and UU_ORDER_NUM=#{uuOrderNum,jdbcType=VARCHAR}]]>
+<if test="memo!=null and memo!=''">
+<![CDATA[ and MEMO=#{memo,jdbcType=VARCHAR}]]>
 </if>
 <if test="tid!=null and tid!=''">
 <![CDATA[ and TID=#{tid,jdbcType=VARCHAR}]]>
@@ -388,7 +390,7 @@ and CREATED <=  str_to_date(CONCAT(date_format(#{created},'%Y-%m-%d'), ' 23:59:5
 <where>
 <if test="orderNo!=null">
 <![CDATA[
- and ORDER_NO=#{orderNo,jdbcType=DECIMAL}
+ and ORDER_NO=#{orderNo,jdbcType=INTEGER}
 ]]>
 </if>
 <if test="orderTel!=null and orderTel!=''">
@@ -406,19 +408,14 @@ and CREATED <=  str_to_date(CONCAT(date_format(#{created},'%Y-%m-%d'), ' 23:59:5
  and CONTACT_TEL=#{contactTel,jdbcType=VARCHAR}
 ]]>
 </if>
-<if test="orderMode!=null">
-<![CDATA[
- and ORDER_MODE=#{orderMode,jdbcType=INTEGER}
-]]>
-</if>
 <if test="payMode!=null">
 <![CDATA[
  and PAY_MODE=#{payMode,jdbcType=INTEGER}
 ]]>
 </if>
-<if test="series!=null and series!=''">
+<if test="payWay!=null">
 <![CDATA[
- and SERIES=#{series,jdbcType=VARCHAR}
+ and PAY_WAY=#{payWay,jdbcType=INTEGER}
 ]]>
 </if>
 <if test="assembly!=null and assembly!=''">
@@ -426,9 +423,9 @@ and CREATED <=  str_to_date(CONCAT(date_format(#{created},'%Y-%m-%d'), ' 23:59:5
  and ASSEMBLY=#{assembly,jdbcType=VARCHAR}
 ]]>
 </if>
-<if test="pCode!=null and pCode!=''">
+<if test="orderMode!=null">
 <![CDATA[
- and P_CODE=#{pCode,jdbcType=VARCHAR}
+ and ORDER_MODE=#{orderMode,jdbcType=INTEGER}
 ]]>
 </if>
 <if test="concatId!=null and concatId!=''">
@@ -436,19 +433,24 @@ and CREATED <=  str_to_date(CONCAT(date_format(#{created},'%Y-%m-%d'), ' 23:59:5
  and CONCAT_ID=#{concatId,jdbcType=VARCHAR}
 ]]>
 </if>
-<if test="m!=null and m!=''">
+<if test="series!=null and series!=''">
 <![CDATA[
- and M=#{m,jdbcType=VARCHAR}
+ and SERIES=#{series,jdbcType=VARCHAR}
 ]]>
 </if>
-<if test="memo!=null and memo!=''">
+<if test="pCode!=null and pCode!=''">
 <![CDATA[
- and MEMO=#{memo,jdbcType=VARCHAR}
+ and P_CODE=#{pCode,jdbcType=VARCHAR}
 ]]>
 </if>
 <if test="personId!=null and personId!=''">
 <![CDATA[
  and PERSON_ID=#{personId,jdbcType=VARCHAR}
+]]>
+</if>
+<if test="m!=null and m!=''">
+<![CDATA[
+ and M=#{m,jdbcType=VARCHAR}
 ]]>
 </if>
 <if test="productSn!=null and productSn!=''">
@@ -466,9 +468,9 @@ and CREATED <=  str_to_date(CONCAT(date_format(#{created},'%Y-%m-%d'), ' 23:59:5
  and PFT_ORDER_NO=#{pftOrderNo,jdbcType=VARCHAR}
 ]]>
 </if>
-<if test="uuOrderNum!=null and uuOrderNum!=''">
+<if test="memo!=null and memo!=''">
 <![CDATA[
- and UU_ORDER_NUM=#{uuOrderNum,jdbcType=VARCHAR}
+ and MEMO=#{memo,jdbcType=VARCHAR}
 ]]>
 </if>
 <if test="tid!=null and tid!=''">

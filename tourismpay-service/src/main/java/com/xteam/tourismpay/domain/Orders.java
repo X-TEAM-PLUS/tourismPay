@@ -8,14 +8,14 @@ import java.util.Date;
 /**
  * Created by IntelliJ IDEA.
  * User: yankun
- * Date: 2017年09月14日
- * Time: 11:23:40
+ * Date: 2017年10月18日
+ * Time: 15:03:08
  * TableName:T_ORDERS
  */
 
 public class Orders implements Serializable {
 
-    private Integer start;
+    private Integer start = 0;
 
     private Integer limit = 20;
 
@@ -37,41 +37,41 @@ public class Orders implements Serializable {
      */
     private String contactTel;
     /**
-     * order_mode
-     */
-    private Integer orderMode;
-    /**
      * pay_mode
      */
     private Integer payMode;
     /**
-     * series
+     * pay_way
      */
-    private String series;
+    private Integer payWay;
     /**
      * assembly
      */
     private String assembly;
     /**
-     * p_code
+     * order_mode
      */
-    private String pCode;
+    private Integer orderMode;
     /**
      * concat_id
      */
     private String concatId;
     /**
-     * m
+     * series
      */
-    private String m;
+    private String series;
     /**
-     * memo
+     * p_code
      */
-    private String memo;
+    private String pCode;
     /**
      * person_id
      */
     private String personId;
+    /**
+     * m
+     */
+    private String m;
     /**
      * product_sn
      */
@@ -85,9 +85,9 @@ public class Orders implements Serializable {
      */
     private String pftOrderNo;
     /**
-     * uu_order_num
+     * memo
      */
-    private String uuOrderNum;
+    private String memo;
     /**
      * tid
      */
@@ -206,23 +206,6 @@ public class Orders implements Serializable {
     }
 
     /**
-     * 设置 orderMode
-     *
-     * @param orderMode order_mode
-     */
-    public void setOrderMode(Integer orderMode) {
-        this.orderMode = orderMode;
-    }
-
-    /**
-     * 获取 orderMode
-     * return
-     */
-    public Integer getOrderMode() {
-        return this.orderMode;
-    }
-
-    /**
      * 设置 payMode
      *
      * @param payMode pay_mode
@@ -240,20 +223,20 @@ public class Orders implements Serializable {
     }
 
     /**
-     * 设置 series
+     * 设置 payWay
      *
-     * @param series series
+     * @param payWay pay_way
      */
-    public void setSeries(String series) {
-        this.series = series;
+    public void setPayWay(Integer payWay) {
+        this.payWay = payWay;
     }
 
     /**
-     * 获取 series
+     * 获取 payWay
      * return
      */
-    public String getSeries() {
-        return this.series;
+    public Integer getPayWay() {
+        return this.payWay;
     }
 
     /**
@@ -274,20 +257,20 @@ public class Orders implements Serializable {
     }
 
     /**
-     * 设置 pCode
+     * 设置 orderMode
      *
-     * @param pCode p_code
+     * @param orderMode order_mode
      */
-    public void setPCode(String pCode) {
-        this.pCode = pCode;
+    public void setOrderMode(Integer orderMode) {
+        this.orderMode = orderMode;
     }
 
     /**
-     * 获取 pCode
+     * 获取 orderMode
      * return
      */
-    public String getPCode() {
-        return this.pCode;
+    public Integer getOrderMode() {
+        return this.orderMode;
     }
 
     /**
@@ -308,37 +291,37 @@ public class Orders implements Serializable {
     }
 
     /**
-     * 设置 m
+     * 设置 series
      *
-     * @param m m
+     * @param series series
      */
-    public void setM(String m) {
-        this.m = m;
+    public void setSeries(String series) {
+        this.series = series;
     }
 
     /**
-     * 获取 m
+     * 获取 series
      * return
      */
-    public String getM() {
-        return this.m;
+    public String getSeries() {
+        return this.series;
     }
 
     /**
-     * 设置 memo
+     * 设置 pCode
      *
-     * @param memo memo
+     * @param pCode p_code
      */
-    public void setMemo(String memo) {
-        this.memo = memo;
+    public void setPCode(String pCode) {
+        this.pCode = pCode;
     }
 
     /**
-     * 获取 memo
+     * 获取 pCode
      * return
      */
-    public String getMemo() {
-        return this.memo;
+    public String getPCode() {
+        return this.pCode;
     }
 
     /**
@@ -356,6 +339,23 @@ public class Orders implements Serializable {
      */
     public String getPersonId() {
         return this.personId;
+    }
+
+    /**
+     * 设置 m
+     *
+     * @param m m
+     */
+    public void setM(String m) {
+        this.m = m;
+    }
+
+    /**
+     * 获取 m
+     * return
+     */
+    public String getM() {
+        return this.m;
     }
 
     /**
@@ -410,20 +410,20 @@ public class Orders implements Serializable {
     }
 
     /**
-     * 设置 uuOrderNum
+     * 设置 memo
      *
-     * @param uuOrderNum uu_order_num
+     * @param memo memo
      */
-    public void setUuOrderNum(String uuOrderNum) {
-        this.uuOrderNum = uuOrderNum;
+    public void setMemo(String memo) {
+        this.memo = memo;
     }
 
     /**
-     * 获取 uuOrderNum
+     * 获取 memo
      * return
      */
-    public String getUuOrderNum() {
-        return this.uuOrderNum;
+    public String getMemo() {
+        return this.memo;
     }
 
     /**

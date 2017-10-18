@@ -8,8 +8,8 @@ import java.util.Date;
 /**
  * Created by IntelliJ IDEA.
  * User: yankun
- * Date: 2017年09月14日
- * Time: 11:23:41
+ * Date: 2017年10月18日
+ * Time: 15:03:09
  * TableName:T_ORDERS  DTO对象
  */
 
@@ -37,41 +37,41 @@ public class OrdersDto implements Serializable {
      */
     private String contactTel;
     /**
-     * order_mode
-     */
-    private Integer orderMode;
-    /**
      * pay_mode
      */
     private Integer payMode;
     /**
-     * series
+     * pay_way
      */
-    private String series;
+    private Integer payWay;
     /**
      * assembly
      */
     private String assembly;
     /**
-     * p_code
+     * order_mode
      */
-    private String pCode;
+    private Integer orderMode;
     /**
      * concat_id
      */
     private String concatId;
     /**
-     * m
+     * series
      */
-    private String m;
+    private String series;
     /**
-     * memo
+     * p_code
      */
-    private String memo;
+    private String pCode;
     /**
      * person_id
      */
     private String personId;
+    /**
+     * m
+     */
+    private String m;
     /**
      * product_sn
      */
@@ -85,9 +85,9 @@ public class OrdersDto implements Serializable {
      */
     private String pftOrderNo;
     /**
-     * uu_order_num
+     * memo
      */
-    private String uuOrderNum;
+    private String memo;
     /**
      * tid
      */
@@ -138,7 +138,7 @@ public class OrdersDto implements Serializable {
     private String playTime;
 
     /**
-     * 设置 orderNo
+     * 设置 order_no
      *
      * @param orderNo order_no
      */
@@ -147,7 +147,7 @@ public class OrdersDto implements Serializable {
     }
 
     /**
-     * 获取 orderNo
+     * 获取 order_no
      * return
      */
     public BigDecimal getOrderNo() {
@@ -155,7 +155,7 @@ public class OrdersDto implements Serializable {
     }
 
     /**
-     * 设置 orderTel
+     * 设置 order_tel
      *
      * @param orderTel order_tel
      */
@@ -164,7 +164,7 @@ public class OrdersDto implements Serializable {
     }
 
     /**
-     * 获取 orderTel
+     * 获取 order_tel
      * return
      */
     public String getOrderTel() {
@@ -172,7 +172,7 @@ public class OrdersDto implements Serializable {
     }
 
     /**
-     * 设置 smsSend
+     * 设置 sms_send
      *
      * @param smsSend sms_send
      */
@@ -181,7 +181,7 @@ public class OrdersDto implements Serializable {
     }
 
     /**
-     * 获取 smsSend
+     * 获取 sms_send
      * return
      */
     public Integer getSmsSend() {
@@ -189,7 +189,7 @@ public class OrdersDto implements Serializable {
     }
 
     /**
-     * 设置 contactTel
+     * 设置 contact_tel
      *
      * @param contactTel contact_tel
      */
@@ -198,7 +198,7 @@ public class OrdersDto implements Serializable {
     }
 
     /**
-     * 获取 contactTel
+     * 获取 contact_tel
      * return
      */
     public String getContactTel() {
@@ -206,24 +206,7 @@ public class OrdersDto implements Serializable {
     }
 
     /**
-     * 设置 orderMode
-     *
-     * @param orderMode order_mode
-     */
-    public void setOrderMode(Integer orderMode) {
-        this.orderMode = orderMode;
-    }
-
-    /**
-     * 获取 orderMode
-     * return
-     */
-    public Integer getOrderMode() {
-        return this.orderMode;
-    }
-
-    /**
-     * 设置 payMode
+     * 设置 pay_mode
      *
      * @param payMode pay_mode
      */
@@ -232,7 +215,7 @@ public class OrdersDto implements Serializable {
     }
 
     /**
-     * 获取 payMode
+     * 获取 pay_mode
      * return
      */
     public Integer getPayMode() {
@@ -240,20 +223,20 @@ public class OrdersDto implements Serializable {
     }
 
     /**
-     * 设置 series
+     * 设置 pay_way
      *
-     * @param series series
+     * @param payWay pay_way
      */
-    public void setSeries(String series) {
-        this.series = series;
+    public void setPayWay(Integer payWay) {
+        this.payWay = payWay;
     }
 
     /**
-     * 获取 series
+     * 获取 pay_way
      * return
      */
-    public String getSeries() {
-        return this.series;
+    public Integer getPayWay() {
+        return this.payWay;
     }
 
     /**
@@ -274,24 +257,24 @@ public class OrdersDto implements Serializable {
     }
 
     /**
-     * 设置 pCode
+     * 设置 order_mode
      *
-     * @param pCode p_code
+     * @param orderMode order_mode
      */
-    public void setPCode(String pCode) {
-        this.pCode = pCode;
+    public void setOrderMode(Integer orderMode) {
+        this.orderMode = orderMode;
     }
 
     /**
-     * 获取 pCode
+     * 获取 order_mode
      * return
      */
-    public String getPCode() {
-        return this.pCode;
+    public Integer getOrderMode() {
+        return this.orderMode;
     }
 
     /**
-     * 设置 concatId
+     * 设置 concat_id
      *
      * @param concatId concat_id
      */
@@ -300,11 +283,62 @@ public class OrdersDto implements Serializable {
     }
 
     /**
-     * 获取 concatId
+     * 获取 concat_id
      * return
      */
     public String getConcatId() {
         return this.concatId;
+    }
+
+    /**
+     * 设置 series
+     *
+     * @param series series
+     */
+    public void setSeries(String series) {
+        this.series = series;
+    }
+
+    /**
+     * 获取 series
+     * return
+     */
+    public String getSeries() {
+        return this.series;
+    }
+
+    /**
+     * 设置 p_code
+     *
+     * @param pCode p_code
+     */
+    public void setPCode(String pCode) {
+        this.pCode = pCode;
+    }
+
+    /**
+     * 获取 p_code
+     * return
+     */
+    public String getPCode() {
+        return this.pCode;
+    }
+
+    /**
+     * 设置 person_id
+     *
+     * @param personId person_id
+     */
+    public void setPersonId(String personId) {
+        this.personId = personId;
+    }
+
+    /**
+     * 获取 person_id
+     * return
+     */
+    public String getPersonId() {
+        return this.personId;
     }
 
     /**
@@ -325,6 +359,57 @@ public class OrdersDto implements Serializable {
     }
 
     /**
+     * 设置 product_sn
+     *
+     * @param productSn product_sn
+     */
+    public void setProductSn(String productSn) {
+        this.productSn = productSn;
+    }
+
+    /**
+     * 获取 product_sn
+     * return
+     */
+    public String getProductSn() {
+        return this.productSn;
+    }
+
+    /**
+     * 设置 order_status
+     *
+     * @param orderStatus order_status
+     */
+    public void setOrderStatus(Integer orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
+    /**
+     * 获取 order_status
+     * return
+     */
+    public Integer getOrderStatus() {
+        return this.orderStatus;
+    }
+
+    /**
+     * 设置 pft_order_no
+     *
+     * @param pftOrderNo pft_order_no
+     */
+    public void setPftOrderNo(String pftOrderNo) {
+        this.pftOrderNo = pftOrderNo;
+    }
+
+    /**
+     * 获取 pft_order_no
+     * return
+     */
+    public String getPftOrderNo() {
+        return this.pftOrderNo;
+    }
+
+    /**
      * 设置 memo
      *
      * @param memo memo
@@ -339,91 +424,6 @@ public class OrdersDto implements Serializable {
      */
     public String getMemo() {
         return this.memo;
-    }
-
-    /**
-     * 设置 personId
-     *
-     * @param personId person_id
-     */
-    public void setPersonId(String personId) {
-        this.personId = personId;
-    }
-
-    /**
-     * 获取 personId
-     * return
-     */
-    public String getPersonId() {
-        return this.personId;
-    }
-
-    /**
-     * 设置 productSn
-     *
-     * @param productSn product_sn
-     */
-    public void setProductSn(String productSn) {
-        this.productSn = productSn;
-    }
-
-    /**
-     * 获取 productSn
-     * return
-     */
-    public String getProductSn() {
-        return this.productSn;
-    }
-
-    /**
-     * 设置 orderStatus
-     *
-     * @param orderStatus order_status
-     */
-    public void setOrderStatus(Integer orderStatus) {
-        this.orderStatus = orderStatus;
-    }
-
-    /**
-     * 获取 orderStatus
-     * return
-     */
-    public Integer getOrderStatus() {
-        return this.orderStatus;
-    }
-
-    /**
-     * 设置 pftOrderNo
-     *
-     * @param pftOrderNo pft_order_no
-     */
-    public void setPftOrderNo(String pftOrderNo) {
-        this.pftOrderNo = pftOrderNo;
-    }
-
-    /**
-     * 获取 pftOrderNo
-     * return
-     */
-    public String getPftOrderNo() {
-        return this.pftOrderNo;
-    }
-
-    /**
-     * 设置 uuOrderNum
-     *
-     * @param uuOrderNum uu_order_num
-     */
-    public void setUuOrderNum(String uuOrderNum) {
-        this.uuOrderNum = uuOrderNum;
-    }
-
-    /**
-     * 获取 uuOrderNum
-     * return
-     */
-    public String getUuOrderNum() {
-        return this.uuOrderNum;
     }
 
     /**
@@ -444,7 +444,7 @@ public class OrdersDto implements Serializable {
     }
 
     /**
-     * 设置 responseMsg
+     * 设置 response_msg
      *
      * @param responseMsg response_msg
      */
@@ -453,7 +453,7 @@ public class OrdersDto implements Serializable {
     }
 
     /**
-     * 获取 responseMsg
+     * 获取 response_msg
      * return
      */
     public String getResponseMsg() {
@@ -478,7 +478,7 @@ public class OrdersDto implements Serializable {
     }
 
     /**
-     * 设置 responeCode
+     * 设置 respone_code
      *
      * @param responeCode respone_code
      */
@@ -487,7 +487,7 @@ public class OrdersDto implements Serializable {
     }
 
     /**
-     * 获取 responeCode
+     * 获取 respone_code
      * return
      */
     public String getResponeCode() {
@@ -495,7 +495,7 @@ public class OrdersDto implements Serializable {
     }
 
     /**
-     * 设置 retailPrice
+     * 设置 retail_price
      *
      * @param retailPrice retail_price
      */
@@ -504,7 +504,7 @@ public class OrdersDto implements Serializable {
     }
 
     /**
-     * 获取 retailPrice
+     * 获取 retail_price
      * return
      */
     public BigDecimal getRetailPrice() {
@@ -580,7 +580,7 @@ public class OrdersDto implements Serializable {
     }
 
     /**
-     * 设置 orderAmount
+     * 设置 order_amount
      *
      * @param orderAmount order_amount
      */
@@ -589,7 +589,7 @@ public class OrdersDto implements Serializable {
     }
 
     /**
-     * 获取 orderAmount
+     * 获取 order_amount
      * return
      */
     public BigDecimal getOrderAmount() {
@@ -597,7 +597,7 @@ public class OrdersDto implements Serializable {
     }
 
     /**
-     * 设置 orderName
+     * 设置 order_name
      *
      * @param orderName order_name
      */
@@ -606,7 +606,7 @@ public class OrdersDto implements Serializable {
     }
 
     /**
-     * 获取 orderName
+     * 获取 order_name
      * return
      */
     public String getOrderName() {
@@ -614,7 +614,7 @@ public class OrdersDto implements Serializable {
     }
 
     /**
-     * 设置 playTime
+     * 设置 play_time
      *
      * @param playTime play_time
      */
@@ -623,7 +623,7 @@ public class OrdersDto implements Serializable {
     }
 
     /**
-     * 获取 playTime
+     * 获取 play_time
      * return
      */
     public String getPlayTime() {
