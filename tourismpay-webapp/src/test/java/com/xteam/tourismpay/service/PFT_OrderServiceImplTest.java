@@ -3,10 +3,11 @@ package com.xteam.tourismpay.service;
 import com.xteam.tourismpay.api.OrdersService;
 import com.xteam.tourismpay.api.PFT_OrderService;
 import com.xteam.tourismpay.common.JsonUtils;
+import com.xteam.tourismpay.common.PayWay;
 import com.xteam.tourismpay.dto.GetRealTimeStorageResonseData;
 import com.xteam.tourismpay.dto.GetTicketListResponseData;
-import com.xteam.tourismpay.dto.SubmitOrderResponseData;
 import com.xteam.tourismpay.dto.OrdersDto;
+import com.xteam.tourismpay.dto.SubmitOrderResponseData;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,20 +53,20 @@ public class PFT_OrderServiceImplTest {
         ordersService.insert(ordersDto);
 
         //票付通下单
-        SubmitOrderResponseData response =  pft_orderService.submit(ordersDto.getOrderNo().toString());
+        SubmitOrderResponseData response = pft_orderService.submit(ordersDto.getOrderNo().toString(), PayWay.WangYin.value());
         System.out.println(JsonUtils.toJSON(response));
     }
 
     @Test
     public void getRealTimeStorage() throws Exception {
-        GetRealTimeStorageResonseData response = pft_orderService.getRealTimeStorage("113", "2803","2017-11-02");
+        GetRealTimeStorageResonseData response = pft_orderService.getRealTimeStorage("113", "2803", "2017-11-02");
         System.out.println(JsonUtils.toJSON(response));
 
     }
 
     @Test
     public void getGetTicketList() throws Exception {
-        GetTicketListResponseData  response = pft_orderService.getTicketList("2633");
+        GetTicketListResponseData response = pft_orderService.getTicketList("64667");
         System.out.println(JsonUtils.toJSON(response));
 
     }

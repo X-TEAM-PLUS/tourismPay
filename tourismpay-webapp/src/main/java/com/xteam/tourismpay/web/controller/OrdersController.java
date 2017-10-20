@@ -77,7 +77,8 @@ public class OrdersController {
      */
     @RequestMapping(value = "/post")
     public ModelAndView post(OrdersDto ordersDto, RedirectAttributes attr, HttpServletRequest request) throws Exception {
-        ModelAndView modelAndView = new ModelAndView("redirect:/tourismpay/getrq/getRqWx");
+//        ModelAndView modelAndView = new ModelAndView("redirect:/tourismpay/getrq/getRqWx");
+        ModelAndView modelAndView = new ModelAndView("/orders/balance");
         try {
             if (StringUtils.isEmpty(ordersDto.getContactTel())) {
                 modelAndView.addObject("errorInfo", "联系人手机号不能为空");
@@ -127,11 +128,12 @@ public class OrdersController {
             ordersDto.setPlayTime(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
             //保存本地订单
             ordersService.insert(ordersDto);
-            attr.addAttribute("out_trade_no", ordersDto.getOrderNo());
+            modelAndView.addObject("out_trade_no", ordersDto.getOrderNo());
             Integer total_amount = ordersDto.getTprice().multiply(BigDecimal.valueOf(ordersDto.getTnum())).intValue();
-            attr.addAttribute("total_amount", total_amount);
-            attr.addAttribute("subject", "ticket");
-            attr.addAttribute("productId", ordersDto.getProductSn());
+            modelAndView.addObject("total_amount", total_amount);
+            modelAndView.addObject("subject", "ticket");
+            modelAndView.addObject("productId", ordersDto.getProductSn());
+
         } catch (Exception e) {
             log.error("提交数据异常", e);
             modelAndView = new ModelAndView("/error/error");

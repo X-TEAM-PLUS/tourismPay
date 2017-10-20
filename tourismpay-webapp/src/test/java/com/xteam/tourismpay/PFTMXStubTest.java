@@ -14,9 +14,9 @@ import org.apache.http.util.EntityUtils;
 import org.junit.Test;
 
 public class PFTMXStubTest {
-    private static final String account = "100019";
+    private static final String account = "127193";
 
-    private static final String pwd = "jjl4yk11f82ce6c0f33a5c003f2fec56";
+    private static final String pwd = "584b18bb8bdee1489594e41689f4337d";
 
     /**
      * 通过webService调用景区列表接口1.1
