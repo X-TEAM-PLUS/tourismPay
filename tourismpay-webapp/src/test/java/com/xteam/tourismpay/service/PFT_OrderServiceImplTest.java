@@ -66,7 +66,7 @@ public class PFT_OrderServiceImplTest {
 
     @Test
     public void getGetTicketList() throws Exception {
-        GetTicketListResponseData response = pft_orderService.getTicketList("64667");
+        GetTicketListResponseData response = pft_orderService.getTicketList("65077");
         System.out.println(JsonUtils.toJSON(response));
 
     }

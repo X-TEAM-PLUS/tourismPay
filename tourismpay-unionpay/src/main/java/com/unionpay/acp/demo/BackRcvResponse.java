@@ -7,8 +7,10 @@ import com.xteam.tourismpay.api.PFT_Exception;
 import com.xteam.tourismpay.api.PFT_OrderService;
 import com.xteam.tourismpay.common.PayWay;
 import org.apache.commons.io.IOUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -42,12 +44,14 @@ import java.util.Map;
  */
 
 public class BackRcvResponse extends HttpServlet {
-
-    @Resource
+    @Autowired
     private PFT_OrderService pft_orderService;
+
+    private static WebApplicationContext springContext;
 
     @Override
     public void init() throws ServletException {
+        WebApplicationContextUtils.getWebApplicationContext(this.getServletContext()).getAutowireCapableBeanFactory().autowireBean(this);
         /**
          * 请求银联接入地址，获取证书文件，证书路径等相关参数初始化到SDKConfig类中
          * 在java main 方式运行时必须每次都执行加载
@@ -63,11 +67,12 @@ public class BackRcvResponse extends HttpServlet {
             throws ServletException, IOException {
 
         LogUtil.writeLog("BackRcvResponse接收后台通知开始");
-
+        printReq(req);
         String encoding = req.getParameter(SDKConstants.param_encoding);
         // 获取银联通知服务器发送的后台通知参数
-        Map<String, String> reqParam = getAllRequestParamStream(req);
+        Map<String, String> reqParam = getAllRequest(req);
         LogUtil.printRequestLog(reqParam);
+        System.out.println("reqParm reqParm[" + reqParam + "]");
 
         //重要！验证签名前不要修改reqParam中的键值对的内容，否则会验签不过
         if (!AcpService.validate(reqParam, encoding)) {
@@ -80,11 +85,13 @@ public class BackRcvResponse extends HttpServlet {
 
             String orderId = reqParam.get("orderId"); //获取后台通知的数据，其他字段也可用类似方式获取
             String respCode = reqParam.get("respCode");
-            System.out.println("银行回调 orderId [" + orderId + "] respCode [" + respCode + "]");
-            try {
-                pft_orderService.submit(orderId, PayWay.WangYin.value());
-            } catch (PFT_Exception e) {
-                e.printStackTrace();
+            if (respCode.equals("00") || respCode.equals("A6")) {
+                System.out.println("银行回调 orderId [" + orderId + "] respCode [" + respCode + "]");
+                try {
+                    pft_orderService.submit(orderId, PayWay.WangYin.value());
+                } catch (PFT_Exception e) {
+                    e.printStackTrace();
+                }
             }
             //判断respCode=00、A6后，对涉及资金类的交易，请再发起查询接口查询，确定交易成功后更新数据库。
 
@@ -158,4 +165,52 @@ public class BackRcvResponse extends HttpServlet {
         }
         return res;
     }
+    public HashMap<String,String> getAllRequest(HttpServletRequest request){
+        HashMap<String, String> res = new HashMap<String, String>();
+        Enumeration paramNames = request.getParameterNames();
+        while(paramNames.hasMoreElements()) {
+            String paraName = (String)paramNames.nextElement();
+            String[] paramValues = request.getParameterValues(paraName);
+            if(paramValues.length == 1) {
+                String paramValue = paramValues[0];
+                if(paramValue.length() == 0) {
+                    LogUtil.writeLog("<I>no value</I>");
+                } else {
+                    LogUtil.writeLog(paramValue);
+                    res.put(paraName,paramValue);
+                }
+            }
+        }
+        return res;
+    }
+
+    public void printReq(HttpServletRequest request){
+        Enumeration paramNames = request.getParameterNames();
+        // Tests if this enumeration contains more elements.
+        while(paramNames.hasMoreElements()) {
+            // Returns the next element of this enumeration if this enumeration object has at least one more element to provide.
+            String paraName = (String)paramNames.nextElement();
+            LogUtil.writeLog("<tr><td>" + paraName + "/n<td>");
+            // Returns an array of String objects containing all of the values the given request parameter has, or null if the parameter does not exist.
+            // 注意参数paraName（变量）不能加双引号，否则就是找参数名叫paraName的对应值了。
+            String[] paramValues = request.getParameterValues(paraName);
+            // 这个参数只有一个值
+            if(paramValues.length == 1) {
+                String paramValue = paramValues[0];
+                if(paramValue.length() == 0) {
+                    LogUtil.writeLog("<I>no value</I>");
+                } else {
+                    LogUtil.writeLog(paramValue);
+                }
+            }else {
+                // 这个参数有好几条值
+                LogUtil.writeLog("<UL>");
+                for(int i = 0; i < paramValues.length; i++) {
+                    LogUtil.writeLog("<LI>" + paramValues[i]);
+                }
+                LogUtil.writeLog("</UL>");
+            }
+        }
+    }
+
 }

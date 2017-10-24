@@ -265,8 +265,8 @@
             <properties>
                 <!--数据库连接-->
                 <mvn.jdbc.url><![CDATA[jdbc:mysql://localhost:3306/tourismpay?useUnicode=true&characterEncoding=utf-8]]></mvn.jdbc.url>
-                <mvn.jdbc.user></mvn.jdbc.user>
-                <mvn.jdbc.pwd></mvn.jdbc.pwd>
+                <mvn.jdbc.user>root</mvn.jdbc.user>
+                <mvn.jdbc.pwd>1fkgh1rit5960782sd234s</mvn.jdbc.pwd>
                 <mvn.jdbc.maxActive>30</mvn.jdbc.maxActive>
                 <mvn.jdbc.maxIdle>5</mvn.jdbc.maxIdle>
                 <mvn.jdbc.minIdle>2</mvn.jdbc.minIdle>
