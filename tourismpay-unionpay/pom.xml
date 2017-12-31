@@ -27,14 +27,21 @@
             <version>3.1</version>
         </dependency>
 
+        <!--<dependency>-->
+            <!--<groupId>bcprov-jdk15on</groupId>-->
+            <!--<artifactId>bcprov-jdk</artifactId>-->
+            <!--<version>1.54</version>-->
+            <!--<scope>system</scope>-->
+            <!--&lt;!&ndash;本地jar的路径,相对或者绝对都可以&ndash;&gt;-->
+            <!--<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/bcprov-jdk15on-1.54.jar</systemPath>-->
+        <!--</dependency>-->
+        <!-- https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk15on -->
         <dependency>
-            <groupId>bcprov-jdk15on</groupId>
-            <artifactId>bcprov-jdk</artifactId>
-            <version>1.54</version>
-            <scope>system</scope>
-            <!--本地jar的路径,相对或者绝对都可以-->
-            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/bcprov-jdk15on-1.54.jar</systemPath>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+            <version>1.58</version>
         </dependency>
+
         <!-- spring -->
         <dependency>
             <groupId>org.springframework</groupId>
